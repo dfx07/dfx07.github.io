@@ -3,189 +3,112 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Andy Huynh" />
-  <meta name="copyright" content="Andy Huynh" />
-
-  <title>Home thuong</title>
 </head>
+
 <link href="./assert/css/slim-081711.css" rel="stylesheet" type="text/css" />
 <link href="./assert/css/bootstrap-combined.min.css" rel="stylesheet" />
 <link href="./assert/css/bootstrap-combined.min.css" rel="stylesheet" />
 <link href="./assert/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="./assert/css/usercustom.css" rel="stylesheet" type="text/css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./Home_files/solarizedlight.css" media="screen" />
-<link rel="shortcut icon" href="https://experiencor.github.io/theme/images/favicon.ico" type="image/x-icon" />
-<link rel="apple-touch-icon" href="https://experiencor.github.io/theme/images/apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="57x57"  href="https://experiencor.github.io/theme/images/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="72x72"  href="https://experiencor.github.io/theme/images/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="114x114"
-  href="https://experiencor.github.io/theme/images/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="144x144"
-  href="https://experiencor.github.io/theme/images/apple-touch-icon-144x144.png" />
-<link rel="icon" href="https://experiencor.github.io/theme/images/apple-touch-icon-144x144.png" />
-<link href="localhost:8899/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-  title="Home - Full Atom Feed" />
-<link href="localhost:8899/feeds/Computer-Vision.atom.xml" type="application/atom+xml" rel="alternate"
-  title="Home - Computer Vision Category Atom Feed" />
-<link href="localhost:8899/feeds/Practical-ML.atom.xml" type="application/atom+xml" rel="alternate"
-  title="Home - Practical ML Category Atom Feed" />
-<link href="localhost:8899/feeds/Theoretical-ML.atom.xml" type="application/atom+xml" rel="alternate"
-  title="Home - Theoretical ML Category Atom Feed" />
-<style type="text/css">
-  @keyframes caretBlink {
-    from {
-      opacity: 1;
-    }
+<link href="./assert/css/solarizedlight.css" rel="stylesheet" type="text/css" media="screen" />
 
-    to {
-      opacity: 0;
-    }
-  }
-</style>
+<script src="./assert/js/jquery.min.js"></script>
+<script src="./assert/js/cus.load.js"></script>
 
 <body>
-  <div id="content-sans-footer">
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="https://experiencor.github.io/"><span class="site-name">Home</span></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav pull-right top-menu">
-              <li class="active">
-                <a href="https://experiencor.github.io/">Home</a>
-              </li>
-              <li>
-                <a href="https://experiencor.github.io/categories.html">Categories</a>
-              </li>
-              <li>
-                <a href="https://experiencor.github.io/tags.html">Tags</a>
-              </li>
-              <li>
-                <a href="https://dfx07.github.io/archives.html">Archives</a>
-              </li>
-              <li>
-                <form class="navbar-search" action="https://experiencor.github.io/search.html"
-                  onsubmit="return validateForm(this.elements[&#39;q&#39;].value);">
-                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" />
-                </form>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span1"></div>
-        <div class="span10">
-          <div class="row-fluid">
+  <!-- Header -->
+  <div class="navbar navbar-static-top" data-include="header"></div>
+  <!-- Body   -->
+  <div class="content">
+    <div id="content-sans-footer">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span1"></div>
+          <div class="span10">
             <div class="row-fluid">
+              <div class="row-fluid">
                 <header>
                   <h1 id="my-projects">Xin chào !</h1>
-                  <p>Blog này là nơi chia sẻ những kiến thức mà mình tích lũy được trong quá trình học tập và làm việc.</p>
+                  <p>Blog này là nơi chia sẻ những kiến thức mà mình tích lũy được trong quá trình học tập và làm việc.
+                  </p>
                   <p>Mong là các bài viếc có thể giúp ích được mọi người.</p>
                   </ul>
                 </header>
-            </div>
+              </div>
 
-            <div class="row-fluid">
-              <div class="span12">
-                <header>
-                  <h1 id="recent-posts">  Recent Posts
-                    <a id="allposts" href="https://experiencor.github.io/archives.html">all
-                      posts</a>
-                  </h1>
-                </header>
-                <ul class="list-all-articles">
-                  <li>
-                    <a href="https://experiencor.github.io/basic_ml.html">A
-                      Review of Machine Learning
-                      Algorithms
-                    </a>
-                    <time pubdate="pubdate" datetime="2017-07-07T22:00:00+02:00">Jum
-                      07 Juli 2017</time>
-                  </li>
-                  <li class="post-summary">
-                    <div class="left-image">
+              <div class="row-fluid">
+                <div class="span12">
+                  <header>
+                    <h1 id="recent-posts"> Recent Posts
+                      <a id="allposts" href="https://experiencor.github.io/archives.html">all
+                        posts</a>
+                    </h1>
+                  </header>
+                  <ul class="list-all-articles">
+                    <li>
+                      <a href="https://experiencor.github.io/basic_ml.html">A
+                        Review of Machine Learning
+                        Algorithms
+                      </a>
+                      <time pubdate="pubdate" datetime="2017-07-07T22:00:00+02:00">Jum
+                        07 Juli 2017</time>
+                    </li>
+                    <li class="post-summary">
+                      <div class="left-image">
                         <img src="assert/image/temp/no_image.jpg"></img>
-                    </div>
-                    <div class="right-summary">
-                      Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
-                    </div>
-                  </li>
-                </ul>
-                <ul class="list-all-articles">
-                  <li>
-                    <a href="https://experiencor.github.io/cnn_visual.html">Visualizing
-                      and Understanding Convolutional
-                      Network
-                    </a>
-                    <time pubdate="pubdate" datetime="2017-06-22T20:00:00+02:00">Kam
-                      22 Juni 2017</time>
-                  </li>
-                  <li class="post-summary">
-                    <div class="left-image">
+                      </div>
+                      <div class="right-summary">
+                        Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
+                      </div>
+                    </li>
+                  </ul>
+                  <ul class="list-all-articles">
+                    <li>
+                      <a href="https://experiencor.github.io/cnn_visual.html">Visualizing
+                        and Understanding Convolutional
+                        Network
+                      </a>
+                      <time pubdate="pubdate" datetime="2017-06-22T20:00:00+02:00">Kam
+                        22 Juni 2017</time>
+                    </li>
+                    <li class="post-summary">
+                      <div class="left-image">
                         <img src="assert/image/temp/no_image.jpg"></img>
-                    </div>
-                    <div class="right-summary">
-                      Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
-                    </div>
-                  </li>
-                </ul>
-                <ul class="list-all-articles">
-                  <li>
-                    <a href="https://experiencor.github.io/cnn_visual.html">Visualizing
-                      and Understanding Convolutional
-                      Network
-                    </a>
-                    <time pubdate="pubdate" datetime="2017-06-22T20:00:00+02:00">Kam
-                      22 Juni 2017</time>
-                  </li>
-                  <li class="post-summary">
-                    <div class="left-image">
+                      </div>
+                      <div class="right-summary">
+                        Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
+                      </div>
+                    </li>
+                  </ul>
+                  <ul class="list-all-articles">
+                    <li>
+                      <a href="https://experiencor.github.io/cnn_visual.html">Visualizing
+                        and Understanding Convolutional
+                        Network
+                      </a>
+                      <time pubdate="pubdate" datetime="2017-06-22T20:00:00+02:00">Kam
+                        22 Juni 2017</time>
+                    </li>
+                    <li class="post-summary">
+                      <div class="left-image">
                         <img src="assert/image/temp/no_image.jpg"></img>
-                    </div>
-                    <div class="right-summary">
-                      Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
-                    </div>
-                  </li>
-                </ul>
+                      </div>
+                      <div class="right-summary">
+                        Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
+          <div class="span1"></div>
         </div>
-        <div class="span1"></div>
       </div>
     </div>
   </div>
-  <footer>
-    <div id="footer">
-      <ul class="footer-content">
-        <li class="elegant-power">
-          Powered by
-          <a href="http://getpelican.com/" title="Pelican Home Page"> thuong.nv </a>. Theme:
-          <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a>
-          by
-          <a href="http://oncrashreboot.com/" title="Talha Mansoor Home Page">Talha
-            Mansoor</a>
-        </li>
-      </ul>
-    </div>
-  </footer>
-  <script src="./Home_files/jquery.min.js.download"></script>
-  <script src="./Home_files/bootstrap.min.js.download"></script>
-  <script>
-    function validateForm(query) {
-      return query.length > 0;
-    }
-  </script>
+  <!-- Footer -->
+  <footer class="navbar-footer" data-include="footer"></footer>
 </body>
 
 </html>
