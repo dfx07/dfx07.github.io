@@ -1,18 +1,30 @@
 $(function () {
 
-      // var template_html = $('html')
-      // $.each(template_html, function () {
-      //       var file = 'views/' + $(this).data('include') + '.html'
-      //       $(this).load(file)
-      // })
+      /* Define Page type */
+      const PageType = {
+            Common: 1,
+            Post: 2,
+      }
 
-      var includes = $('[data-include]')
-      $.each(includes, function () {
-            var file = 'views/' + $(this).data('include') + '.html'
-            $(this).load(file)
-      })
+      var tag_page_type = $("head").attr("type-page")
 
-      var post_content = $(".post-content")
-      var template_content = $(".content")
-      post_content.detach().appendTo(template_content)
+      var page_type = tag_page_type === "Common" ? 
+            PageType.Common : PageType.Post
+
+      /* Load header and footer section */
+      if(page_type === PageType.Common){
+            var page_load = $('[page-content]')
+            $.each(page_load, function () {
+                  var file = 'views/' + $(this).attr('include') + '.html'
+                  $(this).load(file)
+            })
+      }
+      else {
+            var page_load = $('[page-content]')
+
+            $.each(page_load, function () {
+                  var file = '../../views/' + $(this).attr('page-content') + '.html'
+                  $(this).load(file)
+            })
+      }
 })
