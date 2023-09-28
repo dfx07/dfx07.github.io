@@ -432,7 +432,7 @@ dt:hover > a.headerlink {
 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
      "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    max-width: 1000px;
+    max-width: 1050px;
     margin: 0 auto;
     border-width: 0px;
     border: 1px solid #ededed;
@@ -442,4 +442,94 @@ dt:hover > a.headerlink {
 .wapper
 {
     padding: 20px;
+}
+
+.bg-light
+{
+    padding-block: 2rem;
+}
+
+.container-row
+{
+    display: grid;
+    grid-template-columns: 350px 1.2fr;
+    padding-top: 25px;
+    gap: 1em;
+}
+
+@media (min-width: 1500px){ 
+    .container-row {
+        display: grid;
+        grid-template-columns: 350px 1.2fr 5%;
+        gap: 1rem;
+    }
+}
+
+.container-navbar
+{
+    border-radius: 5px;
+    align-self: start;
+    padding-inline: 2rem;
+}
+
+@media (max-width: 992px){ 
+    .container-navbar {
+        display: none;
+    }
+
+    .container-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+}
+
+.navbar-static-top
+{
+    box-sizing: border-box;
+    position: fixed;
+    top: 0px;
+    padding-right: 0px;
+    left: 0;
+    right: 0;
+}
+
+/*-- Archives - header*/
+.articles
+{
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+}
+
+.archives-header
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-image: -webkit-linear-gradient(top, #ffffff, #f7f7f7);
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.archives-list
+{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    min-height: 100px;
+    height: auto;
+}
+
+.container-fluid12
+{
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
 }

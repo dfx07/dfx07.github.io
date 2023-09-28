@@ -5,28 +5,67 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
+
 <link href="../../assert/css/slim-081711.css" rel="stylesheet" type="text/css" />
 <link href="../../assert/css/bootstrap-combined.min.css" rel="stylesheet" />
 <link href="../../assert/css/bootstrap-combined.min.css" rel="stylesheet" />
 <link href="../../assert/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="../../assert/css/usercustom.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="../../assert/css/solarizedlight.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../assert/css/cxstree.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script src="../../assert/js/jquery.min.js"></script>
 <script src="../../assert/js/cus.load.js"></script>
+<script src="../../assert/js/post.cus.load.js"></script>
+
 <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 
 <body>
   <!-- Header -->
   <div class="navbar navbar-static-top" page-content="header"></div>
   <!-- Body   -->
-  <div class="content"> 
-        <div class="md-content-wapper">
-            <div class ="wapper">
-                <md-block src="content.md"></md-block>
+  <div class="bg-light">
+    <div class="container-fluid12">
+        <div class="container-row">
+            <div class="container-navbar">
+                <div class="articles">
+                    <div class="archives-header">
+                        <span>Các bài Post gần đây</span>
+                    </div>
+                    <div class="archives-list">
+                        <nav class="tree-nav">
+                            <details class="tree-nav__item is-expandable">
+                              <summary class="tree-nav__item-title">The Realm of the Elderlings</summary>
+                                <div class="tree-nav__item">
+                                    <a class="tree-nav__item-title"><i class="icon ion-cube"></i> FOOL'S ERRAND</a>
+                                    <a class="tree-nav__item-title"><i class="icon ion-ios-book"></i> GOLDEN FOOL</a>
+                                    <a class="tree-nav__item-title"><i class="icon ion-ios-bookmarks"></i> FOOL'S FATE</a>
+                                </div>
+                            </details>
+                          
+                            <details class="tree-nav__item is-expandable">
+                              <summary class="tree-nav__item-title">The Soldier Son trilogy</summary>
+                              <div class="tree-nav__item">
+                                <a class="tree-nav__item-title"><i class="icon ion-edit"></i> SHAMAN'S CROSSING</a>
+                                <a class="tree-nav__item-title"><i class="icon ion-paperclip"></i> FOREST MAGE</a>
+                              </div>
+                            </details>
+                        </nav>
+                    </div>
+                </div>
             </div>
+            <div class="container-content"> 
+                  <div class="md-content-wapper">
+                      <div class ="wapper">
+                          <md-block src="content.md"></md-block>
+                      </div>
+                  </div>
+            </div>
+            <div class="container-padding"></div>
         </div>
+      </div>
   </div>
+
   <!-- Footer -->
   <footer class="navbar-footer" page-content="footer"></footer>
 </body>
