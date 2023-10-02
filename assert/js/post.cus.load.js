@@ -26,14 +26,14 @@ $(function () {
         var add_folder = function($root, $items){
             $.each($items, function(key, item){
                 if(item.type === "folder"){
-                    var tag_folder_added = create_tag_folder($root, item.name);
+                    var tag_push = $root.children("div.tree-nav__item:first");
+                    var tag_folder_added = create_tag_folder(tag_push, item.name);
                     if(item.sub !== undefined)
                     {
                         add_folder(tag_folder_added, item.sub)
                     }
                 }else if(item.type === "link"){
-                    var tag_push = $root.closest("div.tree-nav__item");
-                    console.log(tag_push)
+                    var tag_push = $root.children("div.tree-nav__item:first");
                     add_link(tag_push, item.name, item.href);
                 }
                 else {
