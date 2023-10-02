@@ -1,0 +1,56 @@
+{
+    "comments" :
+    " name : folder name | type = {folder | link} ",
+
+
+    "options":
+    {
+        "showconfig" : true
+    },
+    "archives":[
+        {
+            "name" : "Post folder",
+            "type" : "folder",
+            "sub":[
+                
+            ]
+        },
+        {
+            "name" : "Visual studio folder",
+            "type" : "folder",
+            "sub" :[
+                {
+                    "name" : " Cài đặt visual studio",
+                    "type" : "link",
+                    "href" : "https://www.google.com"
+                },
+                {
+                    "name" : " Cài đặt VS SDK",
+                    "type" : "link",
+                    "href" : "https://www.google.com"
+                },
+                {
+                    "name" : " Cài đặt VS SDK 2",
+                    "type" : "folder",
+                    "sub":[
+                        {
+                            "name" : " Cài đặt visual studio",
+                            "type" : "link",
+                            "href" : "https://www.google.com"
+                        },
+                        {
+                            "name" : " Cài đặt VS SDK",
+                            "type" : "link",
+                            "href" : "https://www.google.com"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name" : "setting app",
+            "type" : "link",
+            "href" : "https://www.google.com"
+        }
+    ]
+}

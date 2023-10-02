@@ -1,4 +1,5 @@
 body,html{
+    -webkit-font-smoothing: antialiased;
     height:100%;
 }
 
@@ -430,13 +431,20 @@ dt:hover > a.headerlink {
 
 .md-content-wapper
 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font: 14px/22.5px "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
     max-width: 1050px;
     margin: 0 auto;
     border-width: 0px;
     border: 1px solid #ededed;
     border-radius: 5px;
+}
+
+blockquote p
+{
+    font: 13px/22.5px "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    line-height: 2.75;
+    color: #808080;
 }
 
 .wapper
@@ -492,6 +500,7 @@ dt:hover > a.headerlink {
     padding-right: 0px;
     left: 0;
     right: 0;
+    z-index: 100;
 }
 
 /*-- Archives - header*/
@@ -521,8 +530,8 @@ dt:hover > a.headerlink {
 
 .archives-list
 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    -webkit-font-smoothing: antialiased;
+    font: 12px/22.5px "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
     min-height: 100px;
     height: auto;
 }
