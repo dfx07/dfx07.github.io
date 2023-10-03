@@ -9,34 +9,60 @@
     },
     "archives":[
         {
-            "name" : "Post folder",
+            "name" : "Geometry",
             "type" : "folder",
             "sub":[
-                
+                {
+                    "name" : "Vector 2D cơ bản",
+                    "type" : "link",
+                    "href" : "/post/GeometryVector/vector-2d.html"
+                },
+                {
+                    "name" : "Các thuật toán 2D",
+                    "type" : "link",
+                    "href" : "https://www.google.com"
+                }
             ]
         },
         {
-            "name" : "Visual studio folder",
+            "name" : "C++",
+            "type" : "folder",
+            "sub":[
+                {
+                    "name" : "Da luồng",
+                    "type" : "link",
+                    "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
+                }
+            ]
+        },
+        {
+            "name" : "Thủ thật",
             "type" : "folder",
             "sub" :[
                 {
-                    "name" : " Cài đặt visual studio",
-                    "type" : "link",
-                    "href" : "https://www.google.com"
-                },
-                {
-                    "name" : " Cài đặt VS SDK",
-                    "type" : "link",
-                    "href" : "https://www.google.com"
-                },
-                {
-                    "name" : " Cài đặt VS SDK 2",
+                    "name" : "Git",
                     "type" : "folder",
                     "sub":[
                         {
-                            "name" : " Cài đặt visual studio",
+                            "name" : "Remote Debug sử dụng Teamviewer",
+                            "type" : "link",
+                            "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
+                        },
+                        {
+                            "name" : " Cài đặt VS SDK",
                             "type" : "link",
                             "href" : "https://www.google.com"
+                        }
+                    ]
+                },
+                {
+                    "name" : "Visual studio",
+                    "type" : "folder",
+                    "sub":[
+                        {
+                            "name" : "Remote Debug sử dụng Teamviewer",
+                            "type" : "link",
+                            "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
                         },
                         {
                             "name" : " Cài đặt VS SDK",
