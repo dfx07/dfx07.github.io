@@ -4,8 +4,16 @@ body,html{
 }
 
 h1, h2, h3, h4, h5, h5 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: normal;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #5c5b5b;
+    font-family: 'Monda', sans-serif;
+}
+
+h2 {
+    font-size: 26px;
+    line-height: 1.4;
+    letter-spacing: -1px;
 }
     
 #content-sans-footer{
@@ -431,12 +439,18 @@ dt:hover > a.headerlink {
 
 .md-content-wapper
 {
-    font: 14px/22.5px "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
-    max-width: 1050px;
+    font-family: Helvetica, arial, sans-serif;
+    color: #555555;
+    max-width: 1000px;
     margin: 0 auto;
     border-width: 0px;
-    border: 1px solid #ededed;
+    border: 1px solid var(--border-color-default);
     border-radius: 5px;
+}
+
+.md-content-wapper p{
+    margin-bottom: 20px;
+    font-size: 14px;
 }
 
 blockquote p
@@ -460,24 +474,28 @@ blockquote p
 .container-row
 {
     display: grid;
-    grid-template-columns: 350px 1.2fr;
+    grid-template-columns: minmax(0,1fr) minmax(0,2.5fr);
     padding-top: 25px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     gap: 1em;
 }
 
-@media (min-width: 1500px){ 
+@media screen and (min-width: 1400px){ 
     .container-row {
-        display: grid;
-        grid-template-columns: 350px 1.2fr 5%;
-        gap: 1rem;
+        grid-gap: 3rem;
+        gap: 2rem;
+        grid-template-areas: "container-navbar container-content container-padding";
+        grid-template-columns: minmax(0,0.9fr) minmax(0,2.5fr) minmax(0,15rem);
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
 .container-navbar
 {
-    border-radius: 5px;
+    border-radius: var(--border-radius-default);
     align-self: start;
-    padding-inline: 2rem;
 }
 
 @media (max-width: 992px){ 
@@ -508,8 +526,8 @@ blockquote p
 {
     padding: 0;
     margin: 0;
-    border-radius: 5px;
-    border: 1px solid #e3e3e3;
+    border-radius: var(--border-radius-default);
+    border: 1px solid var(--border-color-default);
 }
 
 .archives-header
@@ -541,4 +559,10 @@ blockquote p
     display: flex;
     justify-content: center;
     min-width: 100%;
+}
+
+:root
+{
+    --border-radius-default : 5px;
+    --border-color-default : #d4d4d4;
 }

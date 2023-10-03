@@ -26,5 +26,8 @@ $(function () {
                   var file = '../../views/' + $(this).attr('page-content') + '.html'
                   $(this).load(file)
             })
+
+            /* Load tree define from XML */
+            
       }
 })
