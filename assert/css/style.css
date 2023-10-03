@@ -441,7 +441,7 @@ dt:hover > a.headerlink {
 {
     font-family: Helvetica, arial, sans-serif;
     color: #555555;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
     border-width: 0px;
     border: 1px solid var(--border-color-default);
@@ -565,4 +565,17 @@ blockquote p
 {
     --border-radius-default : 5px;
     --border-color-default : #d4d4d4;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #print-area{ 
+        visibility: visible;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }
