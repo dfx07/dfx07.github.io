@@ -579,3 +579,20 @@ blockquote p
         top: 0;
     }
 }
+
+a.anchor {
+    display: block;
+    position: relative;
+    visibility: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:target:before {
+    content: "";
+    display: block;
+    height: 100px;
+    margin: -100px 0 0;
+}
