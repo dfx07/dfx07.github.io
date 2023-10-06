@@ -1,7 +1,7 @@
 #  Vector 2D
 ---
 <p style="text-align: right; font-size:12px;">
-<b>Create date</b>: 2023.03.10 by <a href="#">thuong.nv</a>
+<b>Create date</b>: 2023.10.03 by <a href="#">thuong.nv</a>
 </p>
 
 ## Mục lục
