@@ -18,9 +18,14 @@
                     "href" : "/post/GeometryVector/vector-2d.html"
                 },
                 {
-                    "name" : "Các thuật toán 2D",
+                    "name" : "Thuật toán 2D cơ bản",
                     "type" : "link",
                     "href" : "/post/GeometryAlgorithm/geo-algorithm-2d.html"
+                },
+                {
+                    "name" : "Bài toán 2D nâng cao",
+                    "type" : "link",
+                    "href" : "/post/GeometryAdvanced/geo-algorithm-advanced.html"
                 }
             ]
         },

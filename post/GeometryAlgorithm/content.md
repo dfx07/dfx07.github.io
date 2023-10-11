@@ -1,4 +1,4 @@
-#  Geometry Algorithm
+#  Geometry 2D Algorithms
 ---
 <p style="text-align: right; font-size:12px;">
 <b>Create date</b>: 2023.10.04 by <a href="#">thuong.nv</a>
@@ -34,9 +34,8 @@
     * [Quan hệ điểm và polygon](#RelationPoint2Polygon)
     * [Quan hệ polygon và polygon](#Relation2Polygon)
     * [Quan hệ đoạn thẳng và polygon](#PerpPoint2Segment)
-    * [Kiểm tra chiều polygon (CW, CCW)](#PerpPoint2Segment)
-    * [Đảo ngược](#PerpPoint2Segment)
-    * [Clip polygon](#Intersect2Line)
+    * [Kiểm tra chiều polygon (CW, CCW)](#IsCCW)
+    * [Đảo ngược](#ReversePolygon)
     * [Tâm đường tròn ngoại tiếp tam giác](#Intersect2Line)
     * [Trọng tâm polygon](#Intersect2Line)
 
@@ -72,6 +71,21 @@ struct Vec2D
 ```
 
 > Dưới đây sẽ trình bày theo phong cách C, Ngoài ra có thể định nghĩa lại thành lớn phù hợp cho C++
+
+
+Note: Ta có thể sử dụng loại vòng lặp dưới đây để tiến hành lặp cạnh cho polygon 
+nó không sử dụng phép chia lấy dư vì thế sẽ nhanh hơn một chút.
+
+```cpp
+
+int i, j;
+for(i = nCnt - 1, j = 0; j < nCnt;  i = j, j++)
+{
+    // i first vertex, j next vertex
+}
+
+```
+
 
 ##### <b>Đường thẳng, đoạn thẳng</b>
 ___
@@ -664,7 +678,7 @@ ___
         <img src="./image/hull_alpha_shapes.png" >
     </p>
 
-2. Thổi phồng polygon (Inflat) <a id="Inflat"></a>
+1. Thổi phồng polygon (Inflat) <a id="Inflat"></a>
 
     [Điều kiện]
     > Đầu vào polygon theo chiều CCW
@@ -731,7 +745,7 @@ ___
 
     ```
 
-3. Giao điểm đường thẳng với polygon <a id="IntersectLine2Polygon"></a>
+1. Giao điểm đường thẳng với polygon <a id="IntersectLine2Polygon"></a>
 
     Hàm [IntersectLine2Segment](#IntersectLine2Segment) đã được trình bày bên trên
 
@@ -780,7 +794,7 @@ ___
     }
     ```
 
-3. Giao điểm đoạn thẳng với polygon <a id="IntersectSegment2Polygon"></a>
+1. Giao điểm đoạn thẳng với polygon <a id="IntersectSegment2Polygon"></a>
 
 
     Hàm [IntersectLine2Segment](#IntersectLine2Segment) đã được trình bày bên trên
@@ -946,7 +960,56 @@ ___
         return EnumRel2Poly::OUTSIDE;
     }
     ```
+1. Kiểm tra chiều polygon (CW, CCW) <a id="IsCCW"></a>
 
+    Kiểm tra một polygon là ngược hay cùng chiều kim đồng hồ.
+
+    Ở đây polygon được cho bởi danh sách các điểm.
+
+    [Giá trị trả về]
+    - true  : Ngược chiều kim đồng hồ
+    - false : Cùng chiều kim đồng hồ
+
+    <br>
+
+    ```cpp
+    bool IsCCW(IN const VecPoint2D& poly)
+    {
+        int nPolyCnt = static_cast<int>(poly.size());
+
+        int nNext; float fSum = 0.f;
+
+        for (int i = 0; i < nPolyCnt; i++)
+        {
+            nNext = (i + 1) % nPolyCnt;
+            fSum += (poly[nNext].X - poly[i].X) * (poly[nNext].Y + poly[i].Y);
+        }
+
+        return (fSum <= 0.f) ? false : true;
+    }
+    ```
+1. Đảo ngược polygon (CW <=> CCW) <a id="ReversePolygon"></a>
+
+    Nó sẽ đảo ngược chiều quay hiện tại của polygon (CW-> CCW) và ngược lại 
+
+    [Giá trị trả về]
+    - Polygon mới đã bị đảo ngược (dạng tham chiếu)
+
+    <br>
+
+    ```cpp
+    void ReversePolygon(IN VecPoint2D& poly)
+    {
+        int nPolyCnt = static_cast<int>(poly.size());
+
+        int nHalf = (nPolyCnt - 1) / 2;
+
+        for (int i = 1; i <= nHalf; i++)
+        {
+            std::swap(poly[i], poly[nPolyCnt - i]);
+        }
+    }
+    ```
 ## Tham khảo
 
 
