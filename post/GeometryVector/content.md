@@ -9,19 +9,28 @@
 <div style="padding:20px; margin-bottom:20px; background-color: #f3f3f587;border-radius: 10px;">
 
 * [Định nghĩa](#định-nghĩa)
+
+</br>
+
 * [Phép toán trên vector](#phép-toán-trên-vector)
     * [Cộng](#Add)
     * [Trừ](#Sub)
     * [Nhân](#Mul)
     * [Chia](#Div)
     * [Tích vô hướng (dot product)](#Dot)
-    * [Tích có hương (cross product)](#Cross)
+    * [Tích có hướng (cross product)](#Cross)
+    
+    </br>
 * [Tính chất vector](#toán-tử-vector)
     * [Độ lớn](#Mag)
     * [Vector đơn vị](#Normalize)
+
+    </br>
 * [Biến đổi vector](#biến-đổi-vector)
     * [Di chuyển](#Move)
     * [Quay](#Rotate)
+
+    </br>
 * [Bài toán điển hình trên vector](#biến-đổi-vector)
     * [Góc giữa 2 vector](#Angle2Vector)
     * [Hướng của điểm và vector](#OrientationPoint2Vector)
@@ -46,7 +55,7 @@ Cấn có các kiến thức cơ bản về Vector, Điểm, Độ lớn. Ngoài
 
 Ta sẽ sử dụng định nghĩa này xuyên xuốt 
 
-```C++
+```cpp
 struct Vec2D 
 {
     float x;
@@ -63,7 +72,7 @@ struct Vec2D
 
 1. Cộng (Add) <a id="Add"></a>
 
-    ```C++
+    ```cpp
     Vec2D Add(const Vec2D& v1, const Vec2D& v2)
     {
         return Vector(v1.x + v2.x, v1.y + v2.y);
@@ -73,7 +82,7 @@ struct Vec2D
 
 2. Trừ (Sub) <a id="Sub"></a>
 
-    ```C++
+    ```cpp
     Vec2D Sub(const Vec2D& v1, const Vec2D& v2)
     {
         return Vector(v1.x - v2.x, v1.y - v2.y);
@@ -84,7 +93,7 @@ struct Vec2D
 
 3. Nhân (Mul) <a id="Mul"></a>
 
-    ```C++
+    ```cpp
     template<typename T>
     Vec2D Mul(const Vec2D& v, const T& factor)
     {
@@ -99,7 +108,7 @@ struct Vec2D
 
     > Phép chia ở đây là chia vector với một nhân tố. Không phải giữa 2 vector
 
-    ```C++
+    ```cpp
     template<typename T>
     Vec2D Div(const Vec2D& v, const T& factor)
     {
@@ -126,7 +135,7 @@ struct Vec2D
 
     ![Alt text](./image/formula_dot.png)
 
-    ```C++
+    ```cpp
 
     float Dot(const Vec2D& vec1, const Vec2D& vec2)
     {
@@ -145,7 +154,7 @@ struct Vec2D
     
     ![Alt text](./image/formula_cross.png)
 
-    ```C++
+    ```cpp
 
     float Cross(Vec2D& v1, Vec2D& v2)
     {
@@ -159,7 +168,7 @@ struct Vec2D
 
 1. Độ lớn (Magnitude) <a id="Mag"></a>
 
-    ```C++
+    ```cpp
     float Mag(const Vec2D& v)
     {
         return std::sqrtf(v.x * v.x + v.y * v.y);
@@ -174,7 +183,7 @@ struct Vec2D
 
     Trong hàm ```Normalize``` có sử dụng hàm ```Mag``` định nghĩa trước đó
 
-    ```C++
+    ```cpp
     Vec2D Normalize(const Vec2D& v)
     {
         float fMagnitude = Mag(v);
@@ -195,7 +204,7 @@ struct Vec2D
  
     Di chuyển một điểm hoặc một vector sử dụng vector đơn vị và độ lớn.
 
-    ```C++
+    ```cpp
 
     Point2D Move(const Point2D& pt, const Vec2D& vn, const float fDistance)
     {
@@ -212,7 +221,7 @@ struct Vec2D
 
     2.1 Quay tại gốc tọa độ 
 
-    ```C++
+    ```cpp
 
     Vec2D Rotate(const Vec2D& v, const float fDegree)
     {
@@ -227,7 +236,7 @@ struct Vec2D
 
     2.2 Quay một điểm xung quanh điểm
   
-    ```C++
+    ```cpp
 
     Point2D	RotatePoint(const Point2D& ptPivot, const Point2D& ptRotate,
                         const float fDegree)
@@ -250,7 +259,7 @@ struct Vec2D
 
     Góc giữa 2 Vector là góc giữa 2 vector đơn bị của nó. Góc này có giá trị trong khoảng $([-\pi : \pi>])$
 
-    ```C++
+    ```cpp
     float Angle2Vector(const Vec2D& v1, const Vec2D& v2)
     {
         FLOAT fDot = Dot(v1, v2);
@@ -268,7 +277,7 @@ struct Vec2D
 
     ![Alt text](./image/orien_p2vec.png)
 
-    ```C++
+    ```cpp
     // Enum orientation
 	enum EnumOrien
 	{
@@ -301,7 +310,7 @@ struct Vec2D
 
     Hai vector được cho là cùng phương nếu nó cùng vector đơn vị
 
-    ```C++
+    ```cpp
     bool SameDirection(const Vec2D& v1, const Vec2D& v2)
     {
         Vec2D vNv1 = Normalize(v1);

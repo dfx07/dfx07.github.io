@@ -8,6 +8,7 @@ $(function () {
                                     <i class="icon ion-edit"></i>'+ $name + '\
                                 </a>';
             var tag_link = $(str_tag_link);
+
             $root_tag.append(tag_link);
             return tag_link;
         };
@@ -52,4 +53,36 @@ $(function () {
     {
         alert("An error has accurred.");
     })
-})
+
+
+    // only use post content
+    const obj_js_cus_load = 
+    {
+        mathjax : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default',
+        markdown: 'https://md-block.verou.me/md-block.js',
+        prism   : "../../assert/js/prism.js",
+    }
+
+    const obj_css_cus_load = 
+    {
+        prism   : "../../assert/css/prism.css",
+    }
+
+    $.each(obj_js_cus_load, function(key, src_item){
+        var js_tag = document.createElement("script");
+        if(key === "markdown"){
+            js_tag.type = "module";
+        }else {
+        }
+        js_tag.src = src_item;
+        $("head").append(js_tag); 
+    });
+
+    $.each(obj_css_cus_load, function(key, src_item){
+        var css_tag = document.createElement("link");
+        css_tag.href = src_item;
+        css_tag.rel = "stylesheet";
+        css_tag.style = "text/css"
+        $("head").append(css_tag); 
+    });
+});

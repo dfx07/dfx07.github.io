@@ -31,8 +31,8 @@
     * [Thổi phồng polygon (Inflat)](#Inflat)
     * [Giao điểm đường thẳng giao polygon](#IntersectLine2Polygon)
     * [Giao điểm đoạn thẳng giao polygon](#IntersectSegment2Polygon)
-    * [Quan hệ điểm và polygon](#PerpPoint2Segment)
-    * [Quan hệ polygon và polygon](#PerpPoint2Segment)
+    * [Quan hệ điểm và polygon](#RelationPoint2Polygon)
+    * [Quan hệ polygon và polygon](#Relation2Polygon)
     * [Quan hệ đoạn thẳng và polygon](#PerpPoint2Segment)
     * [Kiểm tra chiều polygon (CW, CCW)](#PerpPoint2Segment)
     * [Đảo ngược](#PerpPoint2Segment)
@@ -60,7 +60,7 @@ ___
 
 Ta sẽ sử dụng định nghĩa này xuyên xuốt 
 
-```C++
+```cpp
 struct Vec2D 
 {
     float x;
@@ -79,9 +79,8 @@ ___
 1. Kiểm tra điểm nằm trên đoạn thẳng <a id="IsPointInLineSegment"></a> 
 
 
-    ```C++
-    bool IsPointInLineSegment(const Point2D& pt1, const Point2D& pt2, 
-                            const Point2D& pt)
+    ```cpp
+    bool IsPointInLineSegment(const Point2D& pt1, const Point2D& pt2, const Point2D& pt)
     {
         Vec2D vp1p = pt - pt1; // Vector vp1p ;
         Vec2D vp2p = pt - pt2; // Vector vp2p ;
@@ -104,12 +103,60 @@ ___
         return FALSE;
     }
     ```
+    
+    Ngoài ra ta có thể lấy chính xác vị trí theo hàm dưới.
+
+    Giả sử có 3 điểm `A`, `B` và `C`. Muốn biết điểm `C` nằm giữa `A` và `B`. Ta có thể xác định bằng việc kiểm tra dotproduct của `AB` và `AC` là dương và nhỏ hơn dot product của `AB` và `AB`. Tính toán Kac và Kab theo công thức dưới:
+
+    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+    [Thuật toán]
+    - Kiểm tra nằm trên cùng đường thẳng AB, AC
+    - Kiểm tra dot AB và AC điểm xác định nằm trên đầu mút hoặc trong
+
+    </br>
+
+    [Trả về]
+    - 0: Không thuộc
+    - 1: Thuộc
+    - 2: Trùng với điểm p1 
+    - 3: Trùng với điểm p2
+
+    </br>
+
+    ```cpp
+    int RelationPoint2LineSegment(const Point2D& pt1, const Point2D& pt2, const Point2D& pt)
+    {
+        Vec2D vp1p  = pt  - pt1; // Vector vp1p ;
+        Vec2D vp1p2 = pt2 - pt1; // Vector vp2p ;
+
+        float fCrs = Cross(vp1p, vp2p);
+
+        // Điểm không nằm trên đường thẳng
+        if(!IsEqual(fCrs, 0.f, 0.01f))
+            return 0;
+
+        float fDot_p1p_p1p2 = Dot(vp1p2, vp1p);
+
+        // Điểm p gần điểm p1
+        if(fDot_p1p_p1p2 < 0) return 0;
+        if(IsEqual(fDot_p1p_p1p2, 0, 0.01f) == true) return 2;
+        
+        // Điểm p gần điểm p2
+        float fDot_p1p2_p1p2 = Dot(vp1p2, vp1p2);
+
+        if(fDot_p1p_p1p2 > fDot_p1p2_p1p2) return 0;
+        if(IsEqual(fDot_p1p_p1p2, fDot_p1p2_p1p2, 0.01f) == true) return 2;
+
+        return 1;
+    }
+    ```
 
 1. Kiểm tra điểm nằm trên đường thẳng <a id="IsPointInLine"></a> 
 
     Dưới đây sẽ trình bày điểm thuộc đường thẳng cho bởi 2 điểm hoặc 1 điểm và một vector đơn vị
 
-    ```C++
+    ```cpp
     // Line created by point and normalize vector
     bool IsPointInLine2(const Point2D& pt, const Vec2D& vn, const Point2D& ptc)
     {
@@ -155,7 +202,7 @@ ___
 
     </br>
 
-    ```C++
+    ```cpp
     bool Intersect2Line(const Point2D& pt1,		// L1
 	                    const Point2D& pt2,		// L1
 	                    const Point2D& pt3,		// L2
@@ -197,7 +244,7 @@ ___
 
     Trong trường hợp 2 đường thẳng cho bởi một điểm và một vector đơn vị thì có thể sử dụng hàm bên dưới.
 
-    ```C++
+    ```cpp
     bool Intersect2Line2(const Point2D& ptLine1,   // Point on the line 1
 	                     const Vec2D&   vnLine1,   // Unit vector line
 	                     const Point2D& ptLine2,   // Point on the line 2
@@ -233,7 +280,7 @@ ___
 
     </br>
 
-    ```C++
+    ```cpp
     bool Intersect2Segment( const Point2D& pt1,     // Seg1
                             const Point2D& pt2,     // Seg1
                             const Point2D& pt3,     // Seg2
@@ -290,7 +337,7 @@ ___
 
     </br>
 
-    ```C++
+    ```cpp
     bool IntersectLine2Segment( const Point2D& ptLine1,	// Point on the line
                                 const Point2D& ptLine2,	// Point on the line
                                 const Point2D& ptSeg1,	// Point start on line segment
@@ -323,7 +370,7 @@ ___
 
 4. Hình chiếu của một điểm xuống đường thẳng <a id="PerpPoint2Line"></a>
 
-    ```C++
+    ```cpp
     Point2D PerpPoint2Line(const Point2D& ptLine1, const Point2D& ptLine2,
                            const Point2D& pt)
     {
@@ -365,7 +412,7 @@ ___
 
     Hàm [PerpPoint2Line](#PerpPoint2Line) được định nghĩa ở trên
 
-    ```C++
+    ```cpp
 
     Point2D PerpPoint2Segment(const Point2D& ptSeg1, const Point2D& ptSeg2,
                               const Point2D& pt)
@@ -404,7 +451,7 @@ ___
 
     Hàm [IsPointInLine2](#Intersect2Line) được định nghĩa ở trên
 
-    ```C++
+    ```cpp
     bool IntersectRay2Line( const Point2D& ptRay  , const Vec2D& vnRay,
                             const Point2D& ptLine1, const Point2D& ptLine2,
                                   Point2D* pInter/* = NULL*/)
@@ -436,7 +483,7 @@ ___
 
     Hàm [IsPointInLine2](#Intersect2Line) được định nghĩa ở trên
 
-    ```C++
+    ```cpp
     bool IsPointInRay(const Point2D& pt, const Vec2D& vn, const Point2D& ptc)
     {
         // Line created by point and normalize vector
@@ -476,7 +523,7 @@ ___
 
     </br>
 
-    ```C++
+    ```cpp
     VecPoint2D ConvexHullListPoints_GiftWrap(const VecPoint2D& vecPoints)
     {
         if (vecPoints.size() < 3)
@@ -561,7 +608,7 @@ ___
 
 
     **PS:** Đoạn code dưới là một đoạn code cũ chưa chuyển đổi tương ứng
-    ```C++
+    ```cpp
     
     Ap2D DllExport ConvexHullListPoints_GrahamScan(const Ap2D& xap)
     {
@@ -635,7 +682,7 @@ ___
         <img src="./image/maxbounding_offset_style.png" />
     </p>
 
-    ```C++
+    ```cpp
 
     VecPoint2D InflatPolygon(IN const VecPoint2D& poly, IN float fOffset)
     {
@@ -692,7 +739,7 @@ ___
     > int       : số lượng giao điểm tìm thấy
     > vecInter  : Danh sách giao điểm
 
-    ```C++
+    ```cpp
     int IntersectLine2Polygon(const Point2D&    ptLine1,	 //[in] Point on the line
 	                          const Point2D&    ptLine2,	 //[in] Point on the line
                               const VecPoint2D& poly,	 //[in] polygon
@@ -742,7 +789,7 @@ ___
     > int       : số lượng giao điểm tìm thấy
     > vecInter  : Danh sách giao điểm
 
-    ```C++
+    ```cpp
     int IntersectSegment2Polygon(const Point2D&     pt1,	 //[in] Point on the line
                                  const Point2D&     pt2,	 //[in] Point on the line
                                  const VecPoint2D&  poly, //[in] polygon
@@ -780,6 +827,123 @@ ___
         }
 
         return nInter;
+    }
+    ```
+
+1. Quan hệ điểm với polygon <a id="RelationPoint2Polygon"></a>
+
+    Hàm [IsPointInLineSegment](#IsPointInLineSegment) đã được trình bày ở trên
+
+    ```cpp
+    // -1 outside | 0 on bound | 1 inside
+    INT RelationPoint2Polygon(const Point2D& pt, const VecPoint2D& poly)
+    {
+        if (poly.size() < 3)
+        {
+            ASSERT(0);
+            return -1;
+        }
+
+        float fMinX = poly[0].X;
+        float fMaxX = poly[0].X;
+        float fMinY = poly[0].Y;
+        float fMaxY = poly[0].Y;
+
+        int nPolyCount = static_cast<int>(poly.size());
+
+        for (int i = 1; i < nPolyCount; i++)
+        {
+            fMinX = std::min<float>(poly[i].X, fMinX);
+            fMaxX = std::max<float>(poly[i].X, fMaxX);
+            fMinY = std::min<float>(poly[i].Y, fMinY);
+            fMaxY = std::max<float>(poly[i].Y, fMaxY);
+        }
+
+        if (pt.X < fMinX || pt.X > fMaxX || pt.Y < fMinY || pt.Y > fMaxY)
+            return -1;
+
+        bool bInside = false;
+        for (int i = 0, j = nPolyCount - 1; i < nPolyCount; j = i++)
+        {
+            if(RelationPoint2LineSegment(poly[i], poly[j]) <= 0>)
+                return 0;
+
+            if ((poly[i].Y > pt.Y) != (poly[j].Y > pt.Y) &&
+                pt.X < (poly[j].X - poly[i].X) * (pt.Y - poly[i].Y) / (poly[j].Y - poly[i].Y) + poly[i].X)
+            {
+                bInside = !bInside;
+            }
+
+            // case inside edge and collinear
+            else if (IsEqual(poly[i].Y, pt.Y, GEO_XY_EPSILON) &&
+                     IsEqual(poly[j].Y, pt.Y, GEO_XY_EPSILON))
+            {
+                if ((poly[i].X > pt.X) != (poly[j].X > pt.X))
+                {
+                    return 0;
+                }
+            }
+        }
+
+        return bInside ? -1 : 1;
+    }
+    ```
+
+1. Quan hệ giữa 2 polygon <a id="Relation2Polygon"></a>
+
+    Hàm [IntersectSegment2Polygon](#IntersectSegment2Polygon) đã được trình bày ở trên.
+
+    [Thuật toán]
+    - Kiểm tra xem có điểm nào cạnh nào của polygon 1 và poly2 giao nhau hay không
+    - Nếu không có giao nhau thì kiểm tra thuộc hoặc nằm ngoài
+    - Nếu 1 điểm của poly1 thuộc poly2 -> poly1 nằm trong poly2
+    - Nếu 1 điểm poly2 nằm trong poly1 -> poly2 nằm trong poly1
+    - Còn lại là trường hợp 2 poly riêng biệt
+
+    ```cpp
+	// Enum relation two polygon
+	enum EnumRel2Poly
+	{
+		INVALID   = -1,	// invalid param
+		OUTSIDE   = 0,	// outside
+		INTERSECT = 1,	// intersect
+		INSIDE_1  = 2,	// poly1 inside poly2 
+		INSIDE_2  = 3,	// poly2 inside poly1 
+	};
+    ```
+
+    Thuật toán tìm liên hệ
+    ```cpp
+    EnumRel2Poly Relation2Polygon(const VecPoint2D& vecPoly1, const VecPoint2D& vecPoly2)
+    {
+        if (vecPoly1.size() < 3 || vecPoly2.size() < 3)
+        {
+            ASSERT(0);
+            return EnumRel2Poly::INVALID;
+        }
+
+        int nNext;
+        int nPolyCount = static_cast<int>(vecPoly1.size());
+
+        // Case 1 : intersect - check 2 intersecting polygons
+        for (int i = 0; i < nPolyCount; i++)
+        {
+            nNext = (i + 1) % nPolyCount; // next point index
+
+            if (IntersectSegment2Polygon(vecPoly1[i], vecPoly1[nNext], vecPoly2, NULL, TRUE) >= 1)
+                return EnumRel2Poly::INTERSECT;
+        }
+
+        // Case 2 : inside - check poly1 inside poly2 
+        if (TRUE == IsPointInPolygon(vecPoly1[0], vecPoly2))
+            return EnumRel2Poly::INSIDE_1;
+
+        // Case 3 : inside - check poly2 inside poly1 
+        if (TRUE == IsPointInPolygon(vecPoly2[0], vecPoly1))
+            return EnumRel2Poly::INSIDE_2;
+
+        // Case 4 (default): outside
+        return EnumRel2Poly::OUTSIDE;
     }
     ```
 
