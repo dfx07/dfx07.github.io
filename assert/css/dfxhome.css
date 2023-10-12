@@ -1,0 +1,19 @@
+.contain-data{
+    border-radius: var(--border-radius-default);
+    border: 1px solid var(--border-color-default);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.container-fluid12 {
+    display: block;
+    margin: 0 auto;
+    min-width: 100%;
+}
+
+.container-row {
+    display: block;
+    margin: 0 auto;
+    max-width: 920px;
+    padding-bottom: 25px;
+}

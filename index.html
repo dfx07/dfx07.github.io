@@ -11,102 +11,53 @@
 <link href="./assert/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="./assert/css/usercustom.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="./assert/css/solarizedlight.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="./assert/css/cxstree.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="./assert/css/dfxhome.css" rel="stylesheet" type="text/css" media="screen" />
 
-<script src="./assert/js/jquery.min.js"></script>
-<script src="./assert/js/cus.load.js"></script>
+<script src="./assert/js/jquery.min.js" type="module"></script>
+<script src="./assert/js/cus.load.js" type="module"></script>
 
 <body>
   <!-- Header -->
   <div class="navbar navbar-static-top" page-content="header"></div>
   <!-- Body   -->
-  <div class="content">
-    <div id="content-sans-footer">
-      <div class="container-fluid">
-        <div class="row-fluid">
-          <div class="span1"></div>
-          <div class="span10">
-            <div class="row-fluid">
-              <div class="row-fluid">
-                <header>
-                  <h1 id="my-projects">Xin chào !</h1>
-                  <p>Blog này là nơi chia sẻ những kiến thức mà mình tích lũy được trong quá trình học tập và làm việc.
-                  </p>
-                  <p>Mong là các bài viếc có thể giúp ích được mọi người.</p>
-                  </ul>
-                </header>
-              </div>
+  <div class="bg-light">
+    <div class="container-fluid12">
+        <div class="container-row">
+          <div class="container-navbar"></div>
+          <div class="container-content">
+            <h1> Xin Chào !</h1>
+            <div class="contain-author">
+              <p>Tôi là thường một lập trình viên C/C++.</p>
+            </div>
 
-              <div class="row-fluid">
-                <div class="span12">
-                  <header>
-                    <h1 id="recent-posts"> Bài viết gần đây
-                      <a id="allposts" href="https://experiencor.github.io/archives.html">all
-                        posts</a>
-                    </h1>
-                  </header>
-                  <ul class="list-all-articles">
-                    <li>
-                      <a href="https://experiencor.github.io/basic_ml.html">A
-                        Review of Machine Learning
-                        Algorithms
-                      </a>
-                      <time pubdate="pubdate" datetime="2017-07-07T22:00:00+02:00">Jum
-                        07 Juli 2017</time>
-                    </li>
-                    <li class="post-summary">
-                      <div class="left-image">
-                        <img src="assert/image/temp/no_image.jpg"></img>
-                      </div>
-                      <div class="right-summary">
-                        Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
-                      </div>
-                    </li>
-                  </ul>
-                  <ul class="list-all-articles">
-                    <li>
-                      <a href="https://experiencor.github.io/cnn_visual.html">Visualizing
-                        and Understanding Convolutional
-                        Network
-                      </a>
-                      <time pubdate="pubdate" datetime="2017-06-22T20:00:00+02:00">Kam
-                        22 Juni 2017</time>
-                    </li>
-                    <li class="post-summary">
-                      <div class="left-image">
-                        <img src="assert/image/temp/no_image.jpg"></img>
-                      </div>
-                      <div class="right-summary">
-                        Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
-                      </div>
-                    </li>
-                  </ul>
-                  <ul class="list-all-articles">
-                    <li>
-                      <a href="https://experiencor.github.io/cnn_visual.html">Visualizing
-                        and Understanding Convolutional
-                        Network
-                      </a>
-                      <time pubdate="pubdate" datetime="2017-06-22T20:00:00+02:00">Kam
-                        22 Juni 2017</time>
-                    </li>
-                    <li class="post-summary">
-                      <div class="left-image">
-                        <img src="assert/image/temp/no_image.jpg"></img>
-                      </div>
-                      <div class="right-summary">
-                        Đây là bài viết nói về thời gian không ai làm chủ mà chỉ có chính chúng ra không
-                      </div>
-                    </li>
-                  </ul>
+            <div class="contain-data contain-intro">
+              <p>Web này tôi sẽ trình bày nhưng kiến thức tôi đã được học tập và trải nghiệm</p>
+              <p>Mục đích chia sẻ kiến thức kinh nghiệm làm việc, ngoài ra là nơi lưu trữ dữ liệu</p>
+            </div>
+
+            <div class="contain-data contain-post">
+              <div class="articles">
+                <div class="archives-header">
+                    <span>Các bài Post gần đây</span>
                 </div>
-              </div>
+                <div class="archives-list">
+                    <nav class="tree-nav">
+                        <div class="tree-nav__item"></div>
+                    </nav>
+                </div>
+            </div>
+            </div>
+
+            <div class="contain-data ">
+              <p>Trong Web này tôi sẽ trình bày nhưng kiến thức tôi đã được học tập và trải nghiệm</p>
             </div>
           </div>
-          <div class="span1"></div>
+          <div class="container-padding"></div>
         </div>
       </div>
-    </div>
   </div>
+
   <!-- Footer -->
   <footer class="navbar-footer" page-content="footer"></footer>
 </body>

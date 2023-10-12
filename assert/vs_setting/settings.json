@@ -1,0 +1,8 @@
+{
+    "workbench.colorTheme": "Visual Studio Light",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.tree.indent": 19,
+    "editor.mouseWheelZoom": true,
+    "window.zoomLevel": -1,
+}
