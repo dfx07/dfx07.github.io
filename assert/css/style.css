@@ -584,23 +584,6 @@ blockquote p
     --border-color-default : #d4d4d4;
 }
 
-/* Util - print */
-
-@media print {
-    body * {
-        visibility: hidden;
-    }
-
-    #print-area{ 
-        visibility: visible;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-}
-
-
-
 /* Layout - smooth scroll */
 a.anchor {
     display: block;

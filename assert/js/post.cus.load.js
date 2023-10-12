@@ -66,6 +66,7 @@ $(function () {
     const obj_css_cus_load = 
     {
         prism   : "../../assert/css/prism.css",
+        print   : "../../assert/css/dfxprint.css",
     }
 
     $.each(obj_js_cus_load, function(key, src_item){
@@ -83,6 +84,12 @@ $(function () {
         css_tag.href = src_item;
         css_tag.rel = "stylesheet";
         css_tag.style = "text/css"
+        if(key === "print"){
+            css_tag.media ="print";
+        }else{
+            css_tag.media ="screen";
+        }
+
         $("head").append(css_tag); 
     });
 });

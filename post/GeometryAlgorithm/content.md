@@ -77,7 +77,6 @@ Note: Ta có thể sử dụng loại vòng lặp dưới đây để tiến hà
 nó không sử dụng phép chia lấy dư vì thế sẽ nhanh hơn một chút.
 
 ```cpp
-
 int i, j;
 for(i = nCnt - 1, j = 0; j < nCnt;  i = j, j++)
 {

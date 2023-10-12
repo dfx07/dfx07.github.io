@@ -1,0 +1,29 @@
+/* Util - print */
+
+@media print {
+    .navbar-static-top, .navbar-footer  {
+        display: none;
+    }
+
+    .container-navbar, .copy-to-clipboard-button
+    {
+        display: none;
+    }
+
+    .print-area {
+        display: block;
+        margin: 0 auto;
+    }
+
+    blockquote p{
+        font-size: 13px;
+        color: #d4d4d4;
+        line-height: 3.0;
+        font-style: italic;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 1.5cm;
+}
