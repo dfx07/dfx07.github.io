@@ -17,7 +17,7 @@ $(function () {
       if(page_type === PageType.Common){
             var page_load = $('[page-content]')
             $.each(page_load, function () {
-                  var file = 'views/' + $(this).attr('include') + '.html'
+                  var file = 'views/' + $(this).attr('page-content') + '.html'
                   $(this).load(file)
             })
 
