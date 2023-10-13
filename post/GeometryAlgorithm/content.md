@@ -532,7 +532,8 @@ ___
 
     </br>
 
-    Tham khảo: [https://en.wikipedia.org/wiki/Gift_wrapping_algorithm](https://en.wikipedia.org/wiki/Gift_wrapping_algorithm)
+    Tham khảo: 
+    - [Gift_wrapping_algorithm](https://en.wikipedia.org/wiki/Gift_wrapping_algorithm)
 
     </br>
 

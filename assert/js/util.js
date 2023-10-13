@@ -63,7 +63,44 @@ var treeview_util ={
     },
 }
 
+var src_loader ={
+
+    /**================================ Public function ============================= */
+    /**
+     * Load css file
+     * @param {*} $root_path : path load
+     * @param {*} $obj_type_src : object = {mediatype + src filename}
+     */
+    load_css : function($root_path, $arr_objCssNsrc){
+
+        $.each($arr_objCssNsrc, function(index, objCssIf){
+            var css_tag = document.createElement("link");
+            css_tag.href = $root_path + objCssIf.src;
+            css_tag.rel = "stylesheet";
+            css_tag.style = "text/css"
+            if(objCssIf.media != undefined){
+                css_tag.media = objCssIf.media ;
+            }
+    
+            $("head").append(css_tag); 
+        });
+    },
+
+    load_js : function($root_path, $arr_objJsNsrc){
+
+        $.each($arr_objJsNsrc, function(index, objJsIf){
+            var js_tag = document.createElement("script");
+            if(objJsIf.type != undefined){
+                js_tag.type = objJsIf.type;
+            }
+            js_tag.src =  $root_path + objJsIf.src;
+            $("head").append(js_tag); 
+        });
+    },
+}
+
 /** Define export */
 
 export {treeview_util}
+export {src_loader}
 

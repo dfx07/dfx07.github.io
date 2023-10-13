@@ -529,6 +529,8 @@ blockquote p
     .container-row {
         display: block;
         margin: 0 auto;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -608,7 +610,6 @@ html {
     margin: 20px 0;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 400px;
     border: 1px solid var(--border-color-default);
     border-radius: var(--border-radius-default);
     border-spacing: 0;

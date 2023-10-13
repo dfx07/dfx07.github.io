@@ -1,11 +1,11 @@
-import { treeview_util } from "./util.js"
+import { treeview_util, src_loader} from "./util.js"
 
 $(function () {
 
       /* Define Page type */
       const PageType = {
             Common: 1,
-            Post: 2,
+            Post  : 2,
       }
 
       var tag_page_type = $("head").attr("type-page")
@@ -29,6 +29,19 @@ $(function () {
       
                   treeview_util.create_treeview_from_json(root_nav, tree_archives, 0);
             });
+
+            // { media }  : { file name }
+            const css_loader = [
+                  { media : 'screen', src : 'bootstrap-combined.min.css'},
+            ]
+
+            // { type }  : { file name }
+            const js_loader = [
+                  { type : 'module', src : 'bootstrap.min.js'},
+            ]
+
+            src_loader.load_css('./assert/css/', css_loader);
+            src_loader.load_js('./assert/js/', js_loader);
       }
       else {
             var page_load = $('[page-content]')
@@ -38,7 +51,23 @@ $(function () {
                   $(this).load(file)
             })
 
-            /* Load tree define from XML */
-            
+            mathjax : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default';
+
+            // { media }  : { file name }
+            const css_loader = [
+                  { media : 'screen', src : 'bootstrap-combined.min.css'},
+                  { media : 'print' , src : 'dfxprint.css'},
+                  { media : 'screen', src : 'prism.css'},
+            ]
+
+            // { type }  : { file name }
+            const js_loader = [
+                  { type : 'module' , src : 'bootstrap.min.js'},
+                  { type : 'module' , src : 'md-block.js'},
+                  { type : undefined, src : 'prism.js'}
+            ]
+
+            src_loader.load_css('../../assert/css/', css_loader);
+            src_loader.load_js('../../assert/js/', js_loader);
       }
 })

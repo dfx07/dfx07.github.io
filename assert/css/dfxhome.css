@@ -17,3 +17,8 @@
     max-width: 920px;
     padding-bottom: 25px;
 }
+
+.contain-post{
+    padding: 0px;
+    border: 0px;
+}
