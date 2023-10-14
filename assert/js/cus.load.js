@@ -38,10 +38,12 @@ $(function () {
             // { type }  : { file name }
             const js_loader = [
                   { type : 'module', src : 'bootstrap.min.js'},
+                  
             ]
 
             src_loader.load_css('./assert/css/', css_loader);
             src_loader.load_js('./assert/js/', js_loader);
+   
       }
       else {
             var page_load = $('[page-content]')
@@ -64,10 +66,13 @@ $(function () {
             const js_loader = [
                   { type : 'module' , src : 'bootstrap.min.js'},
                   { type : 'module' , src : 'md-block.js'},
-                  { type : undefined, src : 'prism.js'}
+                  { type : undefined, src : 'prism.js'},
             ]
 
+            
             src_loader.load_css('../../assert/css/', css_loader);
             src_loader.load_js('../../assert/js/', js_loader);
+            src_loader.inject_queue_mathjax();
+            
       }
 })

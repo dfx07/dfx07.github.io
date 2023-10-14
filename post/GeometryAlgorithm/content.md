@@ -119,9 +119,8 @@ ___
     
     Ngoài ra ta có thể lấy chính xác vị trí theo hàm dưới.
 
-    Giả sử có 3 điểm `A`, `B` và `C`. Muốn biết điểm `C` nằm giữa `A` và `B`. Ta có thể xác định bằng việc kiểm tra dotproduct của `AB` và `AC` là dương và nhỏ hơn dot product của `AB` và `AB`. Tính toán Kac và Kab theo công thức dưới:
+    Giả sử có 3 điểm $A$, $B$ và $C$. Muốn biết điểm $C$ nằm giữa $A$ và $B$. Ta có thể xác định bằng việc kiểm tra dotproduct của $AB$ và $AC$ là dương và nhỏ hơn dot product của $AB$ và $AB$. Tính toán Kac và Kab theo công thức dưới:
 
-    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
     [Thuật toán]
     - Kiểm tra nằm trên cùng đường thẳng AB, AC

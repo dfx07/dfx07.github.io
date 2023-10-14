@@ -97,6 +97,29 @@ var src_loader ={
             $("head").append(js_tag); 
         });
     },
+
+    inject_queue_mathjax : function()
+    {
+        var js_mathjax_config = document.createElement("script");
+        js_mathjax_config.type ="text/javascript"
+
+        js_mathjax_config.textContent =
+            `MathJax.Hub.Config(
+            {
+                messageStyle: "none",
+                jax: ["input/TeX","output/HTML-CSS"],
+                tex2jax: 
+                {
+                    inlineMath: [ ['$','$']],
+                    displayMath: [ ['$$','$$']],
+                    processEscapes: true
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);`
+
+        $("head").append(js_mathjax_config); 
+    }
 }
 
 /** Define export */

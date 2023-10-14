@@ -466,11 +466,6 @@ blockquote p
     padding: 20px;
 }
 
-.bg-light
-{
-    padding-block: 2rem;
-}
-
 .container-row
 {
     display: grid;
