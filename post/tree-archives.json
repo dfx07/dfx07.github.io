@@ -13,9 +13,9 @@
             "type" : "folder",
             "sub":[
                 {
-                    "name" : "Vector 2D cơ bản",
+                    "name" : "2D Geometry",
                     "type" : "link",
-                    "href" : "/post/GeometryVector/vector-2d.html"
+                    "href" : "/post/2DGeometry/vector-2d.html"
                 },
                 {
                     "name" : "Thuật toán 2D cơ bản",

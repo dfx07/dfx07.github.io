@@ -1,4 +1,4 @@
-#  Geometry 2D Advanced 
+#  Algorithms 2D Geometry Advanced using C/C++
 ---
 <p style="text-align: right; font-size:12px;">
 <b>Create date</b>: 2023.10.11 by <a href="#">thuong.nv</a>
