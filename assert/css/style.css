@@ -479,7 +479,7 @@ blockquote p
 @media only screen and (min-width: 1400px){ 
     .container-row {
         grid-gap: 3rem;
-        gap: 2rem;
+        gap: 1rem;
         grid-template-areas: "container-navbar container-content container-padding";
         grid-template-columns: minmax(0,0.9fr) minmax(0,2.5fr) minmax(0,15rem);
         padding-left: 1rem;
@@ -562,6 +562,11 @@ blockquote p
     left: 0;
     right: 0;
     z-index: 100;
+}
+
+.sticky{
+    position: sticky;
+    top: 2px; 
 }
 
 /*-- Archives - header*/
