@@ -72,7 +72,13 @@ $(function () {
             
             src_loader.load_css('../../assert/css/', css_loader);
             src_loader.load_js('../../assert/js/', js_loader);
-            src_loader.inject_queue_mathjax();
             
+
+
       }
 })
+
+$("md-block").ready(function() {
+      var table_of_contents = $(".table-of-contents").detach();
+      $(".ml-tables").appendTo(table_of_contents)
+  });

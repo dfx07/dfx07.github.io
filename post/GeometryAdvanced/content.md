@@ -4,22 +4,22 @@
 <b>Create date</b>: 2023.10.11 by <a href="#">thuong.nv</a>
 </p>
 
-## Mục lục
-
-<div style="padding:20px; margin-bottom:20px; background-color: #f3f3f587;border-radius: 10px;">
+<div class="table-of-contents">
 
 * [Geometry 2D nâng cao](#geometry-2d-nâng-cao)
     * [Clip polygon](#Clip2Polygon)
         * [Sử dụng thuật toán Weiler Atherton](#Clip2PolygonUseWeilerAtherton)
         * [Sử dụng thuật toán Sutherland Hodgman](#Clip2PolygonUseSutherlandHodgman)
         <br>
-    
 </div>
+
+</br><!--Section-->
 
 ## Giới thiệu 
 
 Bài post này sẽ trình bày một vài thuật toán hình học 2D hay được sử dụng. Nó là nâng cao hơn và kết hợp nhiều bài toán nhỏ.
 
+</br><!--Section-->
 
 ## Yêu cầu
 
@@ -29,6 +29,8 @@ Ngoài ra trong bài post này sẽ sử dụng các thuật toán, hàm đã đ
 Vì thế cần tìm hiểu trước khi bắt đầu.
 - [Vector2D cơ bản](/post/GeometryVector/vector-2d.html)
 - [Thuật toán 2D cơ bản](/post/GeometryAlgorithm/geo-algorithm-2d.html)
+
+</br><!--Section-->
 
 ## Nội dung
 
