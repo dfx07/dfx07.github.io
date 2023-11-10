@@ -510,16 +510,19 @@ blockquote p
     z-index:1000;
     right:3px;
     top: 65px;
-    visibility: hidden;
-
+    display: none;
+    transition: opacity 0.5s linear, transform 0.5s linear;
+    opacity: 1;
+    
     border-color: var(--border-color-default);
     border: 1px solid var(--border-color-default);
 }
 
-.btn-table-of-contents:focus +
- .wapper > .table-of-contents
-{
-    display: block;
+.table-of-contents.hidden {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    transform: scaleY(0);
 }
 
 @media only screen and (min-width: 1400px){ 
@@ -531,9 +534,13 @@ blockquote p
         padding-left: 1rem;
         padding-right: 1rem;
     }
+}
+
+@media only screen and (min-width: 1700px){ 
     .table-of-contents
     {
-        visibility: visible;
+        display: block;
+
     }
 }
 
