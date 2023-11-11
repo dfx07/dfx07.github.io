@@ -476,53 +476,136 @@ blockquote p
     gap: 1em;
 }
 
-.ml-tables
-{
-    position: fixed;
-    top: 65px;
-    right:3px;
-    min-width: 300px;
-    max-width: 200px;
-}
-
-.btn-table-of-contents
+#lb-table-of-contets-check
 {
     position: fixed;
     width: 30px;
     height: 30px;
-    top: 65px;
+    top: 35px;
     right:3px;
-    border-radius: var(--border-radius-default);
-    border: 1px solid var(--border-color-default);
     color: black;
-    z-index: 1010;
+    z-index: 2010;
+    opacity: 0.1;
     background-color: #f7f7f787;
 }
-  
+
+/*Checkbox Menu*/
+#table-of-contents-check~label {
+    /* Show the 'hand' cursor when the user hovers over the icon */
+    cursor: pointer;
+
+    /* Increase the hit area of the icon */
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    z-index: 1011;
+}
+
+/* Hide the checkbox control */
+#table-of-contents-check {
+    display: none;
+}
+
+/* Set up the middle line of the hamburger icon */
+#table-of-contents-check~label span {
+    display: inline-block;
+    width: 32px;
+    height: 4px;
+    background-color: black;
+    border-radius: 3px;
+    margin-left: var(--space-small);
+}
+
+/* Set up the top and bottom lines of the hamburger icon */
+#table-of-contents-check~label span::after,
+#table-of-contents-check~label span::before {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 4px;
+    background-color: black;
+    border-radius: 3px;
+}
+
+/* Place the bottom line 8px below the middle */
+#table-of-contents-check~label span::after {
+    margin-top: 8px;
+}
+
+/* Place the top line 8px above the middle line */
+#table-of-contents-check~label span::before {
+    margin-top: -8px;
+}
+
+#table-of-contents-check~label span {
+    transition-duration: 0s;
+    transition-delay: 0.2s;
+}
+
+/* Apply styles to the top and bottom lines */
+#table-of-contents-check~label span::after,
+#table-of-contents-check~label span::before {
+    /* Set the transition time for the top and bottom lines to 0.2s. */
+    transition-duration: 0.2s;
+
+    /* Set the transition properties as we need these lines to animate */
+    /* upwards or downwards as applicable and then rotate */
+    transition-property: margin, transform;
+
+    /* These styles are applied in the unselected state of the */
+    /* control, so we need to setup the reverse animation here. */
+    /* This property animates the transform (rotation) immediately */
+    /* and the margin 0.2s later, as is needed when going from the */
+    /* cross to the hamburger icon */
+    transition-delay: 0.2s, 0s;
+}
+
+/* Hide the middle line when the control is selected */
+#table-of-contents-check:checked~label span {
+    background-color: transparent;
+}
+
+/* Set up the forward animation for the top and bottom lines. */
+#table-of-contents-check:checked~label span:before,
+#table-of-contents-check:checked~label span:after {
+    transition-delay: 0s, 0.2s;
+    margin-top: 0;
+}
+
+/* Rotate the top line by 45 degrees */
+#table-of-contents-check:checked~label span:before {
+    transform: rotate(45deg);
+}
+
+/* Rotate the bottom line by 45 degrees in the opposite direction */
+#table-of-contents-check:checked~label span:after {
+    transform: rotate(-45deg);
+}
 
 .table-of-contents
 {
-    padding:10px; 
-    margin-bottom:10px;
-    background-color: #f7f7f787;
-    border-radius: var(--border-radius-default);
     position: fixed;
-    z-index:1000;
-    right:3px;
-    top: 65px;
-    display: none;
-    transition: opacity 0.5s linear, transform 0.5s linear;
-    opacity: 1;
-    
-    border-color: var(--border-color-default);
+    min-width: 100px;
+    max-width: 300px;
+    top: 75px;
+    right:6px;
+    padding: 10px;
+
+    visibility: hidden;
+    transition: visibility 0s linear 0.33s, opacity 0.33s linear;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: var(--border-radius-default);
     border: 1px solid var(--border-color-default);
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+    opacity: 0;
 }
 
-.table-of-contents.hidden {
-    opacity: 0;
-    max-height: 0;
-    padding: 0;
-    transform: scaleY(0);
+#table-of-contents-check:checked~
+div > div.md-content-wapper > div > md-block > div.table-of-contents {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+    z-index: 1009;
 }
 
 @media only screen and (min-width: 1400px){ 
@@ -540,7 +623,6 @@ blockquote p
     .table-of-contents
     {
         display: block;
-
     }
 }
 

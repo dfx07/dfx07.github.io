@@ -71,15 +71,12 @@ $(function () {
 
             src_loader.load_css('../../assert/css/', css_loader);
             src_loader.load_js('../../assert/js/', js_loader);
-
-
-
       }
 })
 
 $(document).ready(function () {
-      $(".btn-table-of-contents").click(function () {
-            $(".table-of-contents").css("visibility", ($(".table-of-contents").css("visibility") == "visible") ?
-             "hidden" : "visible" );
-      });
+      // $(".btn-table-of-contents").click(function () {
+      //       $(".table-of-contents").css("visibility", ($(".table-of-contents").css("visibility") == "visible") ?
+      //        "hidden" : "visible" );
+      // });
 });
