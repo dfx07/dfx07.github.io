@@ -1,4 +1,38 @@
 
+var all_post_loader ={
+    /**
+     * Add all post index panel
+     * @param {*} $root_tag 
+     * Note : Function internal  
+     */
+    add_all_post : function($root_tag){
+        const str_div_all_post ='<div class="articles">\
+                                    <div class="archives-header">\
+                                        <span><b>Danh mục bài viết</b></span>\
+                                    </div>\
+                                <div class="archives-list">\
+                                    <nav class="tree-nav">\
+                                        <div class="tree-nav__item"></div>\
+                                    </nav>\
+                                </div>\
+                            </div>';
+
+        $root_tag.prepend(str_div_all_post);
+    },
+
+    add_table_of_content: function($root_tag){
+        const str_div_table_of_content= '<div class="articles article-table-of-contents">\
+                                            <div class="archives-header">\
+                                                <span><b>Mục lục</b></span>\
+                                            </div>\
+                                            <div class="archives-table-of-contents">\
+                                                <md-block src="content_index.md"></md-block>\
+                                            </div>\
+                                        </div>';
+        $root_tag.append(str_div_table_of_content);                                  
+    }
+}
+
 var treeview_util ={
     add_link : function($root_tag, $name, $href){
         const str_tag_link = '\
@@ -103,4 +137,5 @@ var src_loader ={
 
 export {treeview_util}
 export {src_loader}
+export {all_post_loader}
 

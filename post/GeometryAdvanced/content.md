@@ -4,17 +4,6 @@
 <b>Create date</b>: 2023.10.11 by <a href="#">thuong.nv</a>
 </p>
 
-<div class="table-of-contents">
-
-* [Geometry 2D nâng cao](#geometry-2d-nâng-cao)
-    * [Clip polygon](#Clip2Polygon)
-        * [Sử dụng thuật toán Weiler Atherton](#Clip2PolygonUseWeilerAtherton)
-        * [Sử dụng thuật toán Sutherland Hodgman](#Clip2PolygonUseSutherlandHodgman)
-        <br>
-</div>
-
-</br><!--Section-->
-
 ## Giới thiệu 
 
 Bài post này sẽ trình bày một vài thuật toán hình học 2D hay được sử dụng. Nó là nâng cao hơn và kết hợp nhiều bài toán nhỏ.

@@ -4,43 +4,6 @@
 <b>Create date</b>: 2023.10.04 by <a href="#">thuong.nv</a>
 </p>
 
-## Mục lục
-
-<div style="padding:20px; margin-bottom:20px; background-color: #f3f3f587;border-radius: 10px;">
-
-* [Đường thẳng, đoạn thẳng](#đường-thẳng-đoạn-thẳng)
-    * [Điểm nằm trên đoạn thẳng](#IsPointInLineSegment)
-    * [Điểm nằm trên đường thẳng](#IsPointInLine)
-    * [Giao điểm hai đường thẳng](#Intersect2Line)
-    * [Giao điểm hai đoạn thẳng](#Intersect2Segment)
-    * [Giao điểm đường thẳng và đoạn thẳng](#IntersectLine2Segment)
-    * [Hình chiếu của một điểm xuống đường thẳng](#PerpPoint2Line)
-    * [Hình chiếu của một điểm xuống đoạn thẳng](#PerpPoint2Segment)
-
-    </br>
-* [Tia](#tia)
-    * [Giao điểm tia với đường thẳng](#IntersectRay2Line)
-    * [Kiểm tra điểm thuộc tia](#IsPointInRay)
-
-    </br>
-* [Polygon](#đường-thẳng-đoạn-thẳng)
-    * [Tìm max polygon bounding](#MaxBounding)
-        * [Sử dụng thuật toán Gift_wrap](#Gift_wrap)
-        * [Sử dụng thuật toán Graham_scan](#Graham_scan)
-        * [Sử dụng thuật toán Alpha-Shapes](#Alpha_shapes)
-    * [Thổi phồng polygon (Inflat)](#Inflat)
-    * [Giao điểm đường thẳng giao polygon](#IntersectLine2Polygon)
-    * [Giao điểm đoạn thẳng giao polygon](#IntersectSegment2Polygon)
-    * [Quan hệ điểm và polygon](#RelationPoint2Polygon)
-    * [Quan hệ polygon và polygon](#Relation2Polygon)
-    * [Quan hệ đoạn thẳng và polygon](#PerpPoint2Segment)
-    * [Kiểm tra chiều polygon (CW, CCW)](#IsCCW)
-    * [Đảo ngược](#ReversePolygon)
-    * [Tâm đường tròn ngoại tiếp tam giác](#Intersect2Line)
-    * [Trọng tâm polygon](#Intersect2Line)
-
-</div>
-
 ## Giới thiệu 
 
 Sau khi giới thiệu xong về vector2D cơ bản. Bài viết sẽ trình bày các thuật toán liên quan.

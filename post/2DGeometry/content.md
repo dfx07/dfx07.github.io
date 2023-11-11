@@ -4,40 +4,6 @@
 <b>Create date</b>: 2023.10.03 by <a href="#">thuong.nv</a>
 </p>
 
-## Mục lục
-
-<div style="padding:20px; margin-bottom:20px; background-color: #f3f3f587;border-radius: 10px;">
-
-* [Định nghĩa](#định-nghĩa)
-
-</br>
-
-* [Phép toán trên vector](#phép-toán-trên-vector)
-    * [Cộng](#Add)
-    * [Trừ](#Sub)
-    * [Nhân](#Mul)
-    * [Chia](#Div)
-    * [Tích vô hướng (dot product)](#Dot)
-    * [Tích có hướng (cross product)](#Cross)
-    
-    </br>
-* [Tính chất vector](#toán-tử-vector)
-    * [Độ lớn](#Mag)
-    * [Vector đơn vị](#Normalize)
-
-    </br>
-* [Biến đổi vector](#biến-đổi-vector)
-    * [Di chuyển](#Move)
-    * [Quay](#Rotate)
-
-    </br>
-* [Bài toán điển hình trên vector](#biến-đổi-vector)
-    * [Góc giữa 2 vector](#Angle2Vector)
-    * [Hướng của điểm và vector](#OrientationPoint2Vector)
-    * [Hai vector cùng phương, chiều](#SameDirection)
-
-</div>
-
 ## Giới thiệu 
 
 Dưới đây sẽ trình bày về các xử lý cơ bản vector 2D. Nó là cơ sở để thực hiện các thuật toán liên quan đến hình học trong ứng dụng thực tế.
