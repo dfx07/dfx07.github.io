@@ -498,6 +498,9 @@ blockquote p
 {
     border-radius: var(--border-radius-default);
     align-self: start;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -587,11 +590,17 @@ blockquote p
 
 div.article-table-of-contents
 {
+    flex: 1;
+    overflow: hidden;
     margin-top: 10px;
+    margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
 }
 
 .archives-table-of-contents
 {
+    overflow: auto;
     padding: 5px;
 }
 .archives-table-of-contents  a{
@@ -605,7 +614,7 @@ div.article-table-of-contents
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 50px;
+    min-height: 50px;
     text-align: center;
     margin: 0;
     padding: 0;
