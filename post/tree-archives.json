@@ -37,6 +37,11 @@
                     "name" : "Da luồng",
                     "type" : "link",
                     "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
+                },
+                {
+                    "name" : "Bitwise",
+                    "type" : "link",
+                    "href" : "/post/Bitwise/bitwise.html"
                 }
             ]
         },

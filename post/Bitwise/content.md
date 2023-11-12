@@ -19,7 +19,7 @@ Giới thiệu bitwise bit shift và các bài toán liên quan
 
 ## Nội dung
 
-For test bit : 
+Công cụ kiểm tra (online) : 
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
 
 
