@@ -4,19 +4,6 @@
 <b>Create date</b>: 2023.09.26 by <a href="#">thuong.nv</a>
 </p>
 
-## Mục lục
-
-<div style="padding:20px; margin-bottom:20px; background-color: #f3f3f587;border-radius: 10px;">
-
-[Giới thiệu](#giới-thiệu) 
-
-[Yêu cầu](#yêu-cầu) 
-
-[Chuẩn bị](#chuẩn-bị) 
-
-[Thao tác](#thao-tác) 
-</div>
-
 ## Giới thiệu 
 
 Quá trình fix bug không phải lúc nào ta cũng có thể chạy code trực tiếp trên máy. Nguyên nhân có thể do: Dung lượng project hoặc cùng môi trường phức tạp,
