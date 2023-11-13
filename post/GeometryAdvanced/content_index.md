@@ -1,5 +1,8 @@
 * [Geometry 2D nâng cao](#geometry-2d-nâng-cao)
+    * [Polygon to triangle](#poly2tri)
+        * [Sử dụng kỹ thuật ear_clipping](#poly2trig_ear_clipping)
     * [Clip polygon](#Clip2Polygon)
         * [Sử dụng thuật toán Weiler Atherton](#Clip2PolygonUseWeilerAtherton)
         * [Sử dụng thuật toán Sutherland Hodgman](#Clip2PolygonUseSutherlandHodgman)
         <br>
+    * [Line cut polygon](#cut_line2poly)

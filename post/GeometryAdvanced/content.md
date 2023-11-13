@@ -25,7 +25,104 @@ Vì thế cần tìm hiểu trước khi bắt đầu.
 
 
 ##### <b>Geometry 2D nâng cao</b>
-___
+---
+
+1. Polygon to triangle <a id="poly2tri"></a>
+    
+    Chia một polygon thành một tập hợp các tam giác 3 đỉnh.
+
+    a. Sử dụng kỹ thuật ear_clipping <a id="poly2trig_ear_clipping"></a>
+
+    <p align="center">
+        <img src="./image/poly2trig_ear_clipping.png" />
+    </p>
+
+    [Thuật toán]
+    - Xét 3 điểm liền kề nhau nếu không giao với các cạnh của polygon thì sẽ tạo thành 1 tam giác
+    - Lặp đến khi nào hết điểm của polygon thì dừng lại
+
+    <br>
+
+    [Tham khảo]
+    - https://www.gamedev.net/tutorials/programming/graphics/polygon-triangulation-r3334/
+
+    <br>
+
+    [Lưu ý]
+    > * Đầu vào của polyon phải quay theo ngược chiều kim đồng hồ. <br>
+    > * Thuật toán này không áp dụng cho polygon có lỗ (hold polygon)
+
+    ```cpp
+    Dllexport VecPoint2D poly2trig_ear_clipping(const VecPoint2D& poly)
+    {
+        VecPoint2D list_trig; VecPoint2D vecPolyTemp;
+
+        int nPolyCnt = static_cast<int>(poly.size());
+        if (nPolyCnt < 3)
+        {
+            //_ASSERT(0);
+
+            return poly;
+        }
+
+        list_trig.reserve(nPolyCnt * 2);
+
+        vecPolyTemp = poly;
+
+        EnumOrien orien, orp12, orp23, orp31;
+        auto funCheckPointInTrigIdx = [&](VecPoint2D& _poly, int idx1, int idx2, int idx3)
+        {
+            int _nPolyCnt = static_cast<int>(_poly.size());
+
+            for (int i = 0; i < _nPolyCnt; i++)
+            {
+                // don't check index input
+                if (i == idx1 || i == idx2 || i == idx3)
+                    continue;
+
+                orp12 = get_orientation_point_vector(_poly[idx1], _poly[idx2], _poly[i]);
+                orp23 = get_orientation_point_vector(_poly[idx2], _poly[idx3], _poly[i]);
+                orp31 = get_orientation_point_vector(_poly[idx3], _poly[idx1], _poly[i]);
+
+                if (orp12 == orp23 && orp23 == orp31)
+                    return true;
+            }
+
+            return false;
+        };
+
+        int i, nOldSize, nCur, nNex, nPre;
+
+        while (vecPolyTemp.size() > 0)
+        {
+            //PS: prevent in case of infinite loops 
+            nPolyCnt = nOldSize = static_cast<int>(vecPolyTemp.size());
+
+            for (i = 0; i < nPolyCnt; i++)
+            {
+                nCur = i; nPre = ((i - 1) < 0) ? (nPolyCnt - 1) : (i - 1);
+                nNex = ((i + 1) >= nPolyCnt) ? 0 : (i + 1);
+
+                orien = get_orientation_point_vector(vecPolyTemp[nPre], vecPolyTemp[nCur], vecPolyTemp[nNex]);
+
+                if ((orien == EnumOrien::LEFT || orien == EnumOrien::COLLINEAR)
+                    && funCheckPointInTrigIdx(vecPolyTemp, nPre, nCur, nNex) == false)
+                {
+                    list_trig.push_back(vecPolyTemp[nPre]);
+                    list_trig.push_back(vecPolyTemp[nCur]);
+                    list_trig.push_back(vecPolyTemp[nNex]);
+                    vecPolyTemp.erase(vecPolyTemp.begin() + nCur);
+                }
+
+                nPolyCnt = static_cast<int>(vecPolyTemp.size());
+            }
+
+            if (vecPolyTemp.size() == nOldSize)
+                break;
+        }
+        return list_trig;
+    }
+    ```
 
 1. Clip polygon <a id="Clip2Polygon"></a>
 
@@ -51,6 +148,7 @@ ___
 
     <br>
 
+    [Lưu ý]
     > Chú ý đầu vào của polyon phải quay theo ngược chiều kim đồng hồ
 
     ```cpp
@@ -453,7 +551,193 @@ ___
     
     ```
 
+<!--Line cut polygon-->
 
+1. Line cut polygon <a id="cut_line2poly"></a>
+    
+    Sử dụng đoạn thẳng cắt polygon. Chỉ áp dụng cho concave hoặc convex polygon
+
+    <p align="center">
+        <img src="./image/cut_line2poly.png" />
+    </p>
+
+    [Thuật toán]
+    - Xét 2 điểm nối tiếp trên polygon.
+    - Nếu 2 điểm đó có chứa điểm cắt. 
+        - Đánh dấu điểm đầu đã duyệt. Thêm nó vào polygon cắt
+        - Tìm điểm cắt tiếp theo bên trái gần nhất.
+        - Xét điểm đầu và cuối của điểm cắt. Tiếp tục với điểm đó
+    - Lặp đến khi nào hết điểm của polygon thì dừng lại
+
+    <br>
+
+    [Tham khảo]
+    - https://stackoverflow.com/questions/3623703/how-can-i-split-a-polygon-by-a-line
+
+    <br>
+
+    [Lưu ý]
+    > * Đầu vào của polyon phải quay theo ngược chiều kim đồng hồ. <br>
+    > * Thuật toán này không áp dụng cho polygon có lỗ (hold polygon)
+
+    ```cpp
+    Dllexport VecPolyList cut_line2poly(const Point2D& pt1, const Point2D& pt2, const VecPoint2D& _poly)
+    {
+        VecPolyList vec_poly_split;
+        VecPoint2D poly = _poly; // copy data
+
+        if (_poly.size() < 3)
+        {
+            vec_poly_split.push_back(_poly);
+            _ASSERT(0);
+            return vec_poly_split;
+        }
+
+        struct MarkPointInterPoly
+        {
+            Point2D		pt;
+            int			idx_start;
+            int			idx_end;
+        };
+
+        typedef std::vector<MarkPointInterPoly> VecMarkPointInterPoly;
+
+        GBool bExist; Point2D ptInter;
+        VecMarkPointInterPoly vMarkInters;
+        GFloat fDis = 0.f;
+
+        // Polygon input is counterclockwise
+        if (is_ccw(poly) == GFalse) reverse_polygon(poly);
+
+        // seek all intersection point and index polygon between line and polygon
+        int nPolyCnt = static_cast<int>(poly.size());
+
+        for (int j = 0, i = nPolyCnt - 1; j < nPolyCnt; i = j++)
+        {
+            bExist = GFalse;
+            if (intersect_2lsegment(poly[i], poly[j], pt1, pt2, &ptInter) == GTrue)
+            {
+                for (int ii = 0; ii < vMarkInters.size(); ii++)
+                {
+                    fDis = mag(ptInter - vMarkInters[ii].pt);
+
+                    if (fDis < MATH_EPSILON)
+                    {
+                        bExist = GTrue;
+                        break;
+                    }
+                }
+
+                if (bExist == GFalse)
+                {
+                    vMarkInters.push_back({ ptInter, i,j });
+                }
+            }
+        }
+
+        bool* arMark = new bool[nPolyCnt];
+        std::memset(arMark, 0, sizeof(bool)*nPolyCnt);
+
+        // check existed intersection point in line segment of polygon
+        auto funExistIntersect = [&](int& idx, int& idx_next)
+        {
+            for (int in = 0; in < vMarkInters.size(); in++)
+            {
+                if (idx == vMarkInters[in].idx_start && idx_next == vMarkInters[in].idx_end)
+                {
+                    return in;
+                }
+            }
+
+            return -1;
+        };
+
+        // seek intersection point and near intersection point index
+        // located on the left side of intersection point mark
+        auto funGetIndexIntersectNearest = [&](int idxInter)
+        {
+            GFloat fDisMin = -1.f, fDis = 0.f;
+            int idxInterMin = -1;
+            EnumOrien ori_min;
+
+            if (idxInter < 0 || idxInter >= vMarkInters.size())
+                return -1;
+
+            auto& markInter = vMarkInters[idxInter];
+
+            for (int in = 0; in < vMarkInters.size(); in++)
+            {
+                fDis = mag(vMarkInters[in].pt - vMarkInters[idxInter].pt);
+                ori_min = get_orientation_point_vector(poly[markInter.idx_start], poly[markInter.idx_end], vMarkInters[in].pt);
+
+                if (in != idxInter && (ori_min == EnumOrien::LEFT && (fDisMin < 0 || fDis <= fDisMin)))
+                {
+                    idxInterMin = in;
+                    fDisMin = fDis;
+                }
+            }
+
+            return idxInterMin;
+        };
+
+        EnumOrien or_pfirst = EnumOrien::LEFT;
+        int nIdx, nIdxNext, i, x, y;
+
+        // loop to seek all polygon after cutting
+        for (i = 0; i < nPolyCnt; i++)
+        {
+            if (arMark[i] == true) continue;
+
+            VecPoint2D poly_split;
+            int idx = i, count = 0;
+
+            while (count < nPolyCnt) //PS: Prevents infinite looping
+            {
+                x = idx; y = (idx + 1) % nPolyCnt;
+
+                poly_split.push_back(poly[x]);
+                arMark[x] = true;
+                idx = y;
+
+                if ((nIdx = funExistIntersect(x, y)) >= 0)
+                {
+                    poly_split.push_back(vMarkInters[nIdx].pt);
+
+                    if ((nIdxNext = funGetIndexIntersectNearest(nIdx)) >= 0)
+                    {
+                        poly_split.push_back(vMarkInters[nIdxNext].pt);
+
+                        int st = vMarkInters[nIdxNext].idx_start;
+                        int ed = vMarkInters[nIdxNext].idx_end;
+
+                        if (get_orientation_point_vector(vMarkInters[nIdx].pt, vMarkInters[nIdxNext].pt, poly[ed]) == or_pfirst)
+                        {
+                            idx = ed;
+                        }
+                        else if (get_orientation_point_vector(vMarkInters[nIdx].pt, vMarkInters[nIdxNext].pt, poly[st]) == or_pfirst)
+                        {
+                            idx = st;
+                        }
+                    }
+                }
+
+                count++;
+
+                if (i == idx) break;
+            }
+            vec_poly_split.push_back(poly_split);
+        }
+
+        delete[] arMark;
+
+        //for (INT i = 0; i < vec_poly_split.size(); i++)
+        //{
+        //	V2remove_double_point(vec_poly_split[i]);
+        //}
+
+        return vec_poly_split;
+    }
+    ```
 
 
 ## Tham khảo
