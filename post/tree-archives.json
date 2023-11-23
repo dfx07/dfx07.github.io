@@ -50,36 +50,14 @@
             "type" : "folder",
             "sub" :[
                 {
-                    "name" : "Git",
-                    "type" : "folder",
-                    "sub":[
-                        {
-                            "name" : "Remote Debug sử dụng Teamviewer",
-                            "type" : "link",
-                            "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
-                        },
-                        {
-                            "name" : " Cài đặt VS SDK",
-                            "type" : "link",
-                            "href" : "https://www.google.com"
-                        }
-                    ]
+                    "name" : "Xử lý dump file trên Window sử dụng C++",
+                    "type" : "link",
+                    "href" : "/post/CrashReport/crash_report.html"
                 },
                 {
-                    "name" : "Visual studio",
-                    "type" : "folder",
-                    "sub":[
-                        {
-                            "name" : "Remote Debug sử dụng Teamviewer",
-                            "type" : "link",
-                            "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
-                        },
-                        {
-                            "name" : " Cài đặt VS SDK",
-                            "type" : "link",
-                            "href" : "https://www.google.com"
-                        }
-                    ]
+                    "name" : "Remote Debug sử dụng Teamviewer",
+                    "type" : "link",
+                    "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
                 }
             ]
         }
