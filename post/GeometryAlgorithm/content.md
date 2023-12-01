@@ -1,4 +1,4 @@
-#  Algorithms 2D Geometry using C/C++
+# 2D Geometry Algorithms
 ---
 <p style="text-align: right; font-size:12px;">
 <b>Create date</b>: 2023.10.04 by <a href="#">thuong.nv</a>

@@ -13,17 +13,17 @@
             "type" : "folder",
             "sub":[
                 {
-                    "name" : "2D Geometry",
+                    "name" : "2D Operations",
                     "type" : "link",
                     "href" : "/post/2DGeometry/vector-2d.html"
                 },
                 {
-                    "name" : "Thuật toán 2D cơ bản",
+                    "name" : "Basic 2D Geometry Algorithms",
                     "type" : "link",
                     "href" : "/post/GeometryAlgorithm/geo-algorithm-2d.html"
                 },
                 {
-                    "name" : "Bài toán 2D nâng cao",
+                    "name" : "Advanced 2D Geometry Algorithms",
                     "type" : "link",
                     "href" : "/post/GeometryAdvanced/geo-algorithm-advanced.html"
                 }
@@ -34,7 +34,7 @@
             "type" : "folder",
             "sub":[
                 {
-                    "name" : "Da luồng",
+                    "name" : "Multiple thread",
                     "type" : "link",
                     "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
                 },
@@ -46,16 +46,21 @@
             ]
         },
         {
-            "name" : "Thủ thật",
+            "name" : "Blog trick",
             "type" : "folder",
             "sub" :[
                 {
-                    "name" : "Xử lý dump file trên Window sử dụng C++",
+                    "name" : "Handle DUMP for Window use C++",
                     "type" : "link",
                     "href" : "/post/CrashReport/crash_report.html"
                 },
                 {
-                    "name" : "Remote Debug sử dụng Teamviewer",
+                    "name" : "Remote Debug use Teamviewer",
+                    "type" : "link",
+                    "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
+                },
+                {
+                    "name" : "Memory Usage",
                     "type" : "link",
                     "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
                 }

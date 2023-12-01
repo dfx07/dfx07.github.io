@@ -102,7 +102,6 @@ struct Vec2D
     ![Alt text](./image/formula_dot.png)
 
     ```cpp
-
     float Dot(const Vec2D& vec1, const Vec2D& vec2)
     {
         return vec1.x * vec2.x + vec1.y + vec2.y;
@@ -121,7 +120,6 @@ struct Vec2D
     ![Alt text](./image/formula_cross.png)
 
     ```cpp
-
     float Cross(Vec2D& v1, Vec2D& v2)
     {
         return (v1.x * v2.y) - (v1.y * v2.x);
@@ -171,7 +169,6 @@ struct Vec2D
     Di chuyển một điểm hoặc một vector sử dụng vector đơn vị và độ lớn.
 
     ```cpp
-
     Point2D Move(const Point2D& pt, const Vec2D& vn, const float fDistance)
     {
         Point2D ptMove;
@@ -188,7 +185,6 @@ struct Vec2D
     2.1 Quay tại gốc tọa độ 
 
     ```cpp
-
     Vec2D Rotate(const Vec2D& v, const float fDegree)
     {
         float fRadAngle = ConvertDegToRad(fDegree);
