@@ -46,7 +46,7 @@
             ]
         },
         {
-            "name" : "Blog trick",
+            "name" : "Blog",
             "type" : "folder",
             "sub" :[
                 {
@@ -55,14 +55,19 @@
                     "href" : "/post/CrashReport/crash_report.html"
                 },
                 {
-                    "name" : "Remote Debug use Teamviewer",
+                    "name" : "Templates in C++",
+                    "type" : "link",
+                    "href" : "/post/CppTemplate/cpp_template.html"
+                },
+                {
+                    "name" : "Remote debugging over TeamViewer",
                     "type" : "link",
                     "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
                 },
                 {
                     "name" : "Memory Usage",
                     "type" : "link",
-                    "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
+                    "href" : "/post/MemoryUsage/memory_usage.html"
                 }
             ]
         }
