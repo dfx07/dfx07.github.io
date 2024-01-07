@@ -60,6 +60,11 @@
                     "href" : "/post/CppTemplate/cpp_template.html"
                 },
                 {
+                    "name" : "Git overview and commands",
+                    "type" : "link",
+                    "href" : "/post/GitCommands/git_command.html"
+                },
+                {
                     "name" : "Remote debugging over TeamViewer",
                     "type" : "link",
                     "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
