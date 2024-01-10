@@ -41,7 +41,6 @@
     padding: 1px;
     border-radius: var(--border-radius-default);
     border: 1px solid var(--border-color-default);
-    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
 }
 .author-info
 {

@@ -24,11 +24,11 @@ Giới thiệu tổng quan về Git và các lệnh hay được sử dụng tro
 
 ## Nội dung
 
-##### <b> Giới thiệu về Git </b>
+##### <b>Giới thiệu về Git</b>
 
 Git is a free and open source distributed version control system. It handles projects of all sizes quickly and efficiently, while providing support for rolling back changes when needed.
 
-##### </br><b> Các lệnh hay sử dụng </b>
+##### </br><b>Các lệnh hay sử dụng</b>
 
 1. <b>Branch</b> <a id="branch"></a>
 
@@ -216,4 +216,37 @@ Git is a free and open source distributed version control system. It handles pro
     ```
     git submodule foreach --recursive git clean -fxd
     ```
+1. <b>Diff</b> <a id="Diff"></a>
 
+    Ta có thể xem được những khác biệt hiện tại với commit gần nhất hoặc giữa 2 commit bất kỳ.
+    
+    ```git
+    git diff [<options>] [<commit>] [--] [<path>…​]
+    git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>…​]
+    git diff [<options>] [--merge-base] <commit> [<commit>…​] <commit> [--] [<path>…​]
+    git diff [<options>] <commit>…​<commit> [--] [<path>…​]
+    git diff [<options>] <blob> <blob>
+    git diff [<options>] --no-index [--] <path> <path>
+    ```
+
+    ```sh
+    git diff <commit_hash> <commit_hash>
+    ```
+
+    Có thể export những thay đổi ra file.
+    ```sh
+    git diff <commit_hash> <commit_hash> [--] <path> <path>
+    Ex : git diff a2323 32cedf34 --diffcommit.diff
+    ```
+
+    Áp dụng các thay đổi ở file diff này vào một git nào đó bằng lệnh dưới đây:
+    ```sh
+    git apply diffcommit.diff
+    ```
+
+##### </br><b>Một số vấn đề hay gặp</b>
+
+
+## Cập nhật
+
+* 2024.01.10 : cập nhật git diff
