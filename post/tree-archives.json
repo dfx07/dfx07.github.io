@@ -48,6 +48,26 @@
                     "href" : "/post/BehavioralPattern/behavioral_patterns.html"
                 }
             ]
+        },{
+            "name" : "Window UI",
+            "type" : "folder",
+            "sub":[
+                {
+                    "name" : "Double Buffer",
+                    "type" : "link",
+                    "href" : "/post/UI_DoubleBuffer/double_buffer.html"
+                },
+                {
+                    "name" : "Edit custom",
+                    "type" : "link",
+                    "href" : "/post/UI_DoubleBuffer/double_buffer.html"
+                },
+                {
+                    "name" : "ComBobox custom",
+                    "type" : "link",
+                    "href" : "/post/UI_DoubleBuffer/double_buffer.html"
+                }
+            ]
         },
         {
             "name" : "C++",
