@@ -1,4 +1,4 @@
-#  Window UI - Edit Custom
+#  Window UI - TextBox
 ---
 <p style="text-align: right; font-size:12px;">
 <b>Create date</b>: 2024.01.17 by <a href="#">thuong.nv</a>
@@ -41,7 +41,7 @@ _Vậy ta sẽ cần triển khai thêm những gì ?_
 </p>
 
 Hình ảnh Edit search thông thường và sau khi cải tiến.
-[](#giới-thiệu)
+
 ##### </br><b>Triển khai</b>
 
 1. <b>Code triển khai</b><a id="Code"></a>
