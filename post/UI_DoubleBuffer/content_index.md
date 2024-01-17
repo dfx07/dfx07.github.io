@@ -6,7 +6,7 @@
     * [Một số cấu trúc Double buffer](#một-số-cấu-trúc-double-buffer)
         * [Double buffer class](#DoubleBufferClass)
 
-* [Tham khảo](#tham-khảo) 
+* [Tham khảo](#tham-khảo)
 
-* [Cập nhật](#tham-khảo) 
+* [Cập nhật](#cập-nhật)
 

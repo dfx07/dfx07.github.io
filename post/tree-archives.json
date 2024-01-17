@@ -60,7 +60,7 @@
                 {
                     "name" : "Edit custom",
                     "type" : "link",
-                    "href" : "/post/UI_DoubleBuffer/double_buffer.html"
+                    "href" : "/post/UI_EditCustom/edit_custom.html"
                 },
                 {
                     "name" : "ComBobox custom",
