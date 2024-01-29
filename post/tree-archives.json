@@ -82,6 +82,11 @@
                     "name" : "Bitwise",
                     "type" : "link",
                     "href" : "/post/Bitwise/bitwise.html"
+                },
+                {
+                    "name" : "Variadic Arguments",
+                    "type" : "link",
+                    "href" : "/post/VariadicArguments/variadic_arguments.html"
                 }
             ]
         },
