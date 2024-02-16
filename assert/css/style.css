@@ -11,13 +11,14 @@ h1, h2, h3, h4, h5, h5 {
 }
 
 h5 {
-    margin-top: 25px !important;
+    margin-top: 20px !important;
 }
 
 h2 {
-    font-size: 26px;
+    font-size: 26px !important;
     line-height: 1.4;
     letter-spacing: -1px;
+    margin-top: 25px !important;
 }
     
 #content-sans-footer{

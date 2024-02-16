@@ -1,6 +1,4 @@
-* [Tổng quan](#tổng-quan) 
-
-* [Tham khảo](#tham-khảo) 
+* [Giới thiệu](#giới-thiệu) 
 
 * [Nội dung](#nội-dung) 
     * [Giới thiệu bitwise](#giới-thiệu-về-bitwise) 
@@ -15,3 +13,7 @@
         * [Clear](#CLEARBIT) 
         * [Flip](#FLIPBIT) 
         * [Check](#CHECKBIT) 
+
+* [Tham khảo](#tham-khảo)
+
+* [Cập nhật](#cập-nhật)

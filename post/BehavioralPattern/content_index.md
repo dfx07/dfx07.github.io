@@ -1,4 +1,4 @@
-* [Tổng quan](#tổng-quan) 
+* [Giới thiệu](#giới-thiệu) 
 
 * [Nội dung](#nội-dung) 
     * [Khái niệm Behavioral Patterns](#khái-niệm-behavioral-patterns)

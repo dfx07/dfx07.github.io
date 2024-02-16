@@ -4,7 +4,7 @@
 <b>Create date</b>: 2024.01.17 by <a href="#">thuong.nv</a>
 </p>
 
-## Tổng quan
+## Giới thiệu
 
 Cải tiến UI và tính năng cho Edit MFC trên Window
 
@@ -21,7 +21,8 @@ Download source code : <a href="./src/TextBoxCS.rar" download>TextBoxCS C++</a>
 
 ## Nội dung
 
-##### <b>Giới thiệu</b>
+##### Giới thiệu
+---
 
 Sau một thời gian sử dụng MFC ta thấy edit của MFC hỗ trợ khá đơn điệu, nó cũng không thể hỗ trợ những tính năng mà ta muốn như : hình ảnh, màu sắc, hoặc các icon.
 
@@ -42,7 +43,8 @@ _Vậy ta sẽ cần triển khai thêm những gì ?_
 
 Hình ảnh Edit search thông thường và sau khi cải tiến.
 
-##### </br><b>Triển khai</b>
+##### Triển khai
+---
 
 1. <b>Code triển khai</b><a id="Code"></a>
 
@@ -75,8 +77,6 @@ Hình ảnh Edit search thông thường và sau khi cải tiến.
 		pTextBoxSearch->ShowWindow(SW_SHOW);
 	}
     ```
-
-</br>
 
 1. <b>Vấn đề nảy sinh và giải pháp</b><a id="proandsol"></a>
 

@@ -1,4 +1,4 @@
-* [Tổng quan](#tổng-quan) 
+* [Giới thiệu](#giới-thiệu) 
 
 * [Nội dung](#nội-dung) 
     * [Khái niệm Double buffer](#khái-niệm)

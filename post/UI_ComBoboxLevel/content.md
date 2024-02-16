@@ -4,7 +4,7 @@
 <b>Create date</b>: 2024.01.18 by <a href="#">thuong.nv</a>
 </p>
 
-## Tổng quan
+## Giới thiệu
 
 Cải tiến ComBobox trong MFC trên Window
 
@@ -19,7 +19,8 @@ Download source code : <a href="./src/ComBobox.rar" download>ComBobox C++</a>
 
 ## Nội dung
 
-##### <b>Giới thiệu</b>
+##### Giới thiệu
+---
 
 ComBobox là sự kết hợp của TextBox và một popup menu.
 
@@ -29,7 +30,8 @@ Vì thế trước khi triển khai cần triển khai 2 control cơ bản là T
     <img src="./image/combobox_level.png" />
 </p>
 
-##### </br><b>Triển khai</b>
+##### Triển khai
+---
 
 1. <b>Code triển khai</b><a id="Code"></a>
 

@@ -4,15 +4,14 @@
 <b>Create date</b>: 2024.01.16 by <a href="#">thuong.nv</a>
 </p>
 
-## Tổng quan
+## Giới thiệu
 
 Trình bày về double buffer trên window UI. Khái niệm, ứng dụng và triển khai chúng.
 
-</br><!--Section-->
-
 ## Nội dung
 
-##### <b>Khái niệm</b>
+##### Khái niệm
+---
 
 Khi sử dụng MFC hoặc WinAPI ta hay sử dụng GDI hoặc GDIplus cho việc vẽ lên các control, thông qua hàm ```OnPaint```. Nó giúp ta có thể custom được giao diện một cách tùy thích. Nhưng có một vấn đề là khi vẽ nhiều đối tượng một lúc (đường thẳng, hình vuông, hình ảnh,...) nó thường gây ra hiện tượng giật rất khó chịu, hiện tượng này được gọi là ```flickers```. 
 
@@ -32,9 +31,8 @@ Tham khảo cơ chế ```single buffer``` và ```double buffer``` bên dưới.
     <img src="./image/double_buffer.png" />
 </p>
 
-
-
-##### </br><b>Một số cấu trúc Double buffer</b>
+##### Một số cấu trúc Double buffer
+---
 
 1. <b>Double buffer class</b><a id="DoubleBufferClass"></a>
 

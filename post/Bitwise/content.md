@@ -8,22 +8,14 @@
 
 Giới thiệu bitwise bit shift và các bài toán liên quan
 
-</br><!--Section-->
-
-## Tham khảo
-
-+ [https://en.wikipedia.org/wiki/Bitwise_operation](https://en.wikipedia.org/wiki/Bitwise_operation)
-+ [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
-
-</br><!--Section-->
-
 ## Nội dung
 
 Công cụ kiểm tra (online) : 
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
 
 
-##### <b> Giới thiệu về bitwise </b>
+##### Giới thiệu về bitwise
+---
 
 1. NOT <a id="NOT"></a>
 
@@ -72,8 +64,8 @@ Công cụ kiểm tra (online) :
     =   0110 (decimal 6)
     ```
 
-
-##### </br><b> Các bài toán điển hình </b>
+##### Các bài toán điển hình
+---
 
 1. Set Bit <a id="SETBIT"></a>
 
@@ -145,11 +137,12 @@ Công cụ kiểm tra (online) :
 
     ```
 
-</br><!--Section-->
+## Tham khảo
 
-## Chú ý
++ [https://en.wikipedia.org/wiki/Bitwise_operation](https://en.wikipedia.org/wiki/Bitwise_operation)
++ [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
 
+## Cập nhật
 
-
-
+* 2023.11.09 : Create
 

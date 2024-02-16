@@ -87,6 +87,11 @@
                     "name" : "Variadic Arguments",
                     "type" : "link",
                     "href" : "/post/VariadicArguments/variadic_arguments.html"
+                },
+                {
+                    "name" : "Data structure",
+                    "type" : "link",
+                    "href" : "/post/Structure/data_structure.html"
                 }
             ]
         },

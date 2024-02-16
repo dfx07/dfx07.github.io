@@ -4,7 +4,7 @@
 <b>Create date</b>: 2023.12.27 by <a href="#">thuong.nv</a>
 </p>
 
-## Tổng quan
+## Giới thiệu
 
 Giới thiệu tổng quan về Git và các lệnh hay được sử dụng trong thực tế (hữu ích). Ngoài ra chúng ta có thể sử dụng tool hỗ trợ git bên dưới chúng vẫn được cập nhật thường xuyên :
 
@@ -12,23 +12,12 @@ Giới thiệu tổng quan về Git và các lệnh hay được sử dụng tro
 
 **sourcetree** : [https://www.sourcetreeapp.com/](https://www.sourcetreeapp.com/)
 
-</br><!--Section-->
-
-## Tham khảo
-
-+ [https://git-scm.com/docs/git#_git_commands](https://git-scm.com/docs/git#_git_commands)
-+ [https://en.wikipedia.org/wiki/Git](https://en.wikipedia.org/wiki/Git)
-+ [https://docs.gitlab.com/ee/topics/git/](https://docs.gitlab.com/ee/topics/git/)
-
-</br><!--Section-->
-
 ## Nội dung
-
-##### <b>Giới thiệu về Git</b>
 
 Git is a free and open source distributed version control system. It handles projects of all sizes quickly and efficiently, while providing support for rolling back changes when needed.
 
-##### </br><b>Các lệnh hay sử dụng</b>
+##### Các lệnh hay sử dụng
+---
 
 1. <b>Branch</b> <a id="branch"></a>
 
@@ -244,8 +233,14 @@ Git is a free and open source distributed version control system. It handles pro
     git apply diffcommit.diff
     ```
 
-##### </br><b>Một số vấn đề hay gặp</b>
+##### Một số vấn đề hay gặp
+---
 
+## Tham khảo
+
++ [https://git-scm.com/docs/git#_git_commands](https://git-scm.com/docs/git#_git_commands)
++ [https://en.wikipedia.org/wiki/Git](https://en.wikipedia.org/wiki/Git)
++ [https://docs.gitlab.com/ee/topics/git/](https://docs.gitlab.com/ee/topics/git/)
 
 ## Cập nhật
 

@@ -4,15 +4,18 @@
 <b>Create date</b>: 2024.01.13 by <a href="#">thuong.nv</a>
 </p>
 
-## Tổng quan
+## Giới thiệu
 
 Trình bày khái niệm và một số các design pattern tiêu biểu trong nhóm Behaviral Pattern.
 
-</br><!--Section-->
+## Tham khảo
+
++ [https://refactoring.guru/design-patterns](https://refactoring.guru/design-patterns)
 
 ## Nội dung
 
-##### <b>Khái niệm Behavioral Patterns</b>
+##### Khái niệm Behavioral Patterns
+---
 
 Là một nhóm mẫu thiết kế phần mềm (software design pattern) tập chung vào giao tiếp và tương tác giữa các đối tượng trong một hệ thống. Nhằm tăng tính linh hoạt giữa các đối tượng, hay rộng hơn là giữa các mô hình. Ngoài ra còn giúp hệ thống dễ bảo trì.
 
@@ -37,7 +40,8 @@ Việc trình bày sẽ dự trên việc đọc tài liệu và kiến thức c
 
 Ta sẽ đi vào từng lại design pattern cụ thể cùng ví dụ liên quan. Thứ tự sẽ được trình bày theo độ phổ biến giảm dần.
 
-##### </br><b>Một số mẫu design patterns</b>
+##### Một số mẫu design patterns
+---
 
 1. <b>Observer</b><a id="Observer"></a>
 
@@ -476,10 +480,6 @@ Ta sẽ đi vào từng lại design pattern cụ thể cùng ví dụ liên qua
     > Command is behavioral design pattern that converts requests or simple operations into objects.
 
     > Usage examples: The Command pattern is pretty common in C++ code. Most often it’s used as an alternative for callbacks to parameterizing UI elements with actions. It’s also used for queueing tasks, tracking operations history, etc.
-
-## Tham khảo
-
-+ [https://refactoring.guru/design-patterns](https://refactoring.guru/design-patterns)
 
 </br><!--Section-->
 

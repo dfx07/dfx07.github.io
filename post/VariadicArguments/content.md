@@ -44,6 +44,7 @@ Có 3 cách tiếp cận:
 ## Nội dung
 
 ##### 1. Sử dụng template
+---
 
 Sử dụng teamplate được hỗ trợ bởi C++ để giúp ta giải quyết. Chúng ta không cần code nhiều hàm mà chỉ sử dụng một mẫu duy nhất.
 
@@ -70,6 +71,7 @@ AddTypeFilter(ShapeType::RECTANGLE, ShapeType::LINE);
 **Giải thích** : Khi ta truyền vào hàm ```AddTypeFilter``` nó sẽ được gọi đệ quy và kết thúc việc gọi thì hàm ```AddTypeFilter(ShapeType _type)``` sẽ được gọi.
 
 ##### 2. Sử dụng tham số truyền vào dạng cấu trúc hoặc mảng
+---
 
 Thay vì sử dụng các hàm riêng biệt ta sẽ nhóm các tham số và một dạng cấu trúc hoặc mảng để truyền.
 
@@ -92,6 +94,7 @@ AddTypeFilter(vect);
 ```
 
 ##### 3. Sử dụng va_list hỗ trợ
+---
 
 Thay vì sử dụng các hàm riêng biệt ta sẽ nhóm các tham số và một dạng cấu trúc hoặc mảng để truyền.
 
@@ -121,8 +124,6 @@ AddTypeFilter(ShapeType::RECTANGLE, ShapeType::LINE, ShapeType::END);
 
 ## Tham khảo
 * [https://en.cppreference.com/w/cpp/language/variadic_arguments](https://en.cppreference.com/w/cpp/language/variadic_arguments)
-
-</br><!--Section-->
 
 ##### Cập nhật
 

@@ -6,9 +6,7 @@
 
 ## Giới thiệu 
 
-Dưới đây sẽ trình bày về các xử lý cơ bản vector 2D. Nó là cơ sở để thực hiện các thuật toán liên quan đến hình học trong ứng dụng thực tế.
-
-Nó sẽ bao gồm các giải thích và triển khai code sử dụng C++.
+Dưới đây sẽ trình bày về các xử lý cơ bản vector 2D. Nó là cơ sở để thực hiện các thuật toán liên quan đến hình học trong ứng dụng thực tế. Nó sẽ bao gồm các giải thích và triển khai code sử dụng C++.
 
 ## Yêu cầu
 
@@ -17,7 +15,8 @@ Cấn có các kiến thức cơ bản về Vector, Điểm, Độ lớn. Ngoài
 
 ## Nội dung
 
-##### <b>Định nghĩa</b>
+##### Định nghĩa
+---
 
 Ta sẽ sử dụng định nghĩa này xuyên xuốt 
 
@@ -34,7 +33,8 @@ struct Vec2D
 
 > Dưới đây sẽ trình bày theo phong cách C, Ngoài ra có thể định nghĩa lại thành lớn phù hợp cho C++
 
-##### <b>Phép toán trên vector</b>
+##### Phép toán trên vector
+---
 
 1. Cộng (Add) <a id="Add"></a>
 
@@ -128,7 +128,8 @@ struct Vec2D
 
     Link tham khảo: https://www.mathsisfun.com/algebra/vectors-cross-product.html
 
-##### <b>Tính chất vector</b>
+##### Tính chất vector
+---
 
 1. Độ lớn (Magnitude) <a id="Mag"></a>
 
@@ -162,7 +163,8 @@ struct Vec2D
 
     Link tham khảo: 
 
-##### <b>Biến đổi vector</b>
+##### Biến đổi vector
+---
 
 1. Di chuyển (Move)<a id="Move"></a>
  
@@ -216,6 +218,7 @@ struct Vec2D
     ```
 
 ##### Bài toán điển hình trên vector
+---
 
 1. Góc giữa 2 vector (Angle bettwen two vector)<a id="Angle2Vector"></a>
 

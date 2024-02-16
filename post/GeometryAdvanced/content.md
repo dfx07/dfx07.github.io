@@ -8,8 +8,6 @@
 
 Bài post này sẽ trình bày một vài thuật toán hình học 2D hay được sử dụng. Nó là nâng cao hơn và kết hợp nhiều bài toán nhỏ.
 
-</br><!--Section-->
-
 ## Yêu cầu
 
 Cần nắm vũng kiến thức hình học 2D cơ bản.
@@ -18,8 +16,6 @@ Ngoài ra trong bài post này sẽ sử dụng các thuật toán, hàm đã đ
 Vì thế cần tìm hiểu trước khi bắt đầu.
 - [Vector2D cơ bản](/post/GeometryVector/vector-2d.html)
 - [Thuật toán 2D cơ bản](/post/GeometryAlgorithm/geo-algorithm-2d.html)
-
-</br><!--Section-->
 
 ## Nội dung
 

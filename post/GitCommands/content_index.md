@@ -1,6 +1,4 @@
-* [Tổng quan](#tổng-quan) 
-
-* [Tham khảo](#tham-khảo) 
+* [Giới thiệu](#giới-thiệu) 
 
 * [Nội dung](#nội-dung) 
     * [Giới thiệu về Git](#giới-thiệu-về-git) 
@@ -15,5 +13,7 @@
     * [Một số vấn đề hay gặp](#một-số-vấn-đề-hay-gặp) 
         </br>
 </br>
+
+* [Tham khảo](#tham-khảo) 
 
 * [Cập nhật](#cập-nhật) 
