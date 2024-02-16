@@ -217,16 +217,265 @@ Ta sẽ đi vào từng lại design pattern cụ thể cùng ví dụ liên qua
 
 1. <b>Mediator</b><a id="Mediator"></a>
 
-    > Defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
+    > Mediator is a behavioral design pattern that reduces coupling between components of a program by making them communicate indirectly, through a special mediator object
 
+    Đưa thông tin đi qua một nơi chung chuyển xử lý logic nó. Mọi đối tượng hành động của đối tượng sẽ tương tác với các đối tượng khác thông qua đối tượng trung gian.
 
+    Nó tương tự Controller trong mô hình MVC. Rất hữu ích trong giao tiếp giữ các thành phần GUI của app.
     
     <p align="center">
-        <img src="./image/singleton.png" />
+        <img src="./image/uml_mediator.png" />
     </p>
 
+    Dưới đây là ví dụ bài toán liên quan đến các component trong một dialog.
 
+    <p align="center">
+        <img src="./image/mediator_ex1.png" />
+    </p>
 
+    _Vậy nó khác với Observer ở điểm gì ?_
+
+    > Observer và Mediator khá giống nhau vì các đối tượng đều có notify. Điểm khác ở đây là bản chất của Observer không xử lý mà chỉ có tác dụng gửi thông điệp đến các đối tượng khác các đối tượng ngang bằng nhau, bên Mediator thì nó là thành phần xử lý.
+
+    ```cpp
+    #include <iostream>
+    #include <string>
+    /**
+    * The Mediator interface declares a method used by components to notify the
+    * mediator about various events. The Mediator may react to these events and
+    * pass the execution to other components.
+    */
+    class BaseComponent;
+    class Mediator {
+    public:
+        virtual void Notify(BaseComponent *sender, std::string event) const = 0;
+    };
+
+    /**
+    * The Base Component provides the basic functionality of storing a mediator's
+    * instance inside component objects.
+    */
+    class BaseComponent {
+    protected:
+        Mediator *mediator_;
+
+    public:
+        BaseComponent(Mediator *mediator = nullptr) : mediator_(mediator) {
+        }
+        void set_mediator(Mediator *mediator) {
+            this->mediator_ = mediator;
+        }
+    };
+
+    /**
+    * Concrete Components implement various functionality. They don't depend on
+    * other components. They also don't depend on any concrete mediator classes.
+    */
+    class Component1 : public BaseComponent {
+    public:
+        void DoA() {
+            std::cout << "Component 1 does A.\n";
+            this->mediator_->Notify(this, "A");
+        }
+        void DoB() {
+            std::cout << "Component 1 does B.\n";
+            this->mediator_->Notify(this, "B");
+        }
+    };
+
+    class Component2 : public BaseComponent {
+    public:
+        void DoC() {
+            std::cout << "Component 2 does C.\n";
+            this->mediator_->Notify(this, "C");
+        }
+        void DoD() {
+            std::cout << "Component 2 does D.\n";
+            this->mediator_->Notify(this, "D");
+        }
+    };
+
+    /**
+    * Concrete Mediators implement cooperative behavior by coordinating several
+    * components.
+    */
+    class ConcreteMediator : public Mediator {
+    private:
+        Component1 *component1_;
+        Component2 *component2_;
+
+    public:
+        ConcreteMediator(Component1 *c1, Component2 *c2) : component1_(c1), component2_(c2) {
+            this->component1_->set_mediator(this);
+            this->component2_->set_mediator(this);
+        }
+        void Notify(BaseComponent *sender, std::string event) const override {
+            if (event == "A") {
+            std::cout << "Mediator reacts on A and triggers following operations:\n";
+            this->component2_->DoC();
+            }
+            if (event == "D") {
+            std::cout << "Mediator reacts on D and triggers following operations:\n";
+            this->component1_->DoB();
+            this->component2_->DoC();
+            }
+        }
+    };
+
+    /**
+    * The client code.
+    */
+
+    void ClientCode() {
+        Component1 *c1 = new Component1;
+        Component2 *c2 = new Component2;
+        ConcreteMediator *mediator = new ConcreteMediator(c1, c2);
+        std::cout << "Client triggers operation A.\n";
+        c1->DoA();
+        std::cout << "\n";
+        std::cout << "Client triggers operation D.\n";
+        c2->DoD();
+
+        delete c1;
+        delete c2;
+        delete mediator;
+    }
+
+    int main() {
+        ClientCode();
+        return 0;
+    }
+    
+    ```
+
+1. <b>Strategy</b><a id="Strategy"></a>
+
+    > Strategy is a behavioral design pattern that lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable.
+
+    Giả sử ta có một đối tượng thực hiện một thuật toán nào đó, nhưng khi bạn tách thuật toán thành một thành phần riêng biệt. Và muốn với mỗi đối tượng có đặc điểm nào đó thì thuật toán tương ứng sẽ được áp dụng.
+
+    Ví dụ thực tế chút. Khi bạn muốn khoan thì bạn dùng mũi khoan, nhưng nếu muốn đục thì bạn chỉ cần thay mũi khoan thanh mũi đục là được.
+
+    <p align="center">
+        <img src="./image/uml_strategy.png" />
+    </p>
+
+    Không chỉ là thuật toán, ta có thể thay đổi cả đối tượng tương ứng.
+
+    ```cpp
+    /**
+    * The Strategy interface declares operations common to all supported versions
+    * of some algorithm.
+    *
+    * The Context uses this interface to call the algorithm defined by Concrete
+    * Strategies.
+    */
+    class Strategy
+    {
+    public:
+        virtual ~Strategy() = default;
+        virtual std::string doAlgorithm(std::string_view data) const = 0;
+    };
+
+    /**
+    * The Context defines the interface of interest to clients.
+    */
+
+    class Context
+    {
+        /**
+        * @var Strategy The Context maintains a reference to one of the Strategy
+        * objects. The Context does not know the concrete class of a strategy. It
+        * should work with all strategies via the Strategy interface.
+        */
+    private:
+        std::unique_ptr<Strategy> strategy_;
+        /**
+        * Usually, the Context accepts a strategy through the constructor, but also
+        * provides a setter to change it at runtime.
+        */
+    public:
+        explicit Context(std::unique_ptr<Strategy> &&strategy = {}) : strategy_(std::move(strategy))
+        {
+        }
+        /**
+        * Usually, the Context allows replacing a Strategy object at runtime.
+        */
+        void set_strategy(std::unique_ptr<Strategy> &&strategy)
+        {
+            strategy_ = std::move(strategy);
+        }
+        /**
+        * The Context delegates some work to the Strategy object instead of
+        * implementing +multiple versions of the algorithm on its own.
+        */
+        void doSomeBusinessLogic() const
+        {
+            if (strategy_) {
+                std::cout << "Context: Sorting data using the strategy (not sure how it'll do it)\n";
+                std::string result = strategy_->doAlgorithm("aecbd");
+                std::cout << result << "\n";
+            } else {
+                std::cout << "Context: Strategy isn't set\n";
+            }
+        }
+    };
+
+    /**
+    * Concrete Strategies implement the algorithm while following the base Strategy
+    * interface. The interface makes them interchangeable in the Context.
+    */
+    class ConcreteStrategyA : public Strategy
+    {
+    public:
+        std::string doAlgorithm(std::string_view data) const override
+        {
+            std::string result(data);
+            std::sort(std::begin(result), std::end(result));
+
+            return result;
+        }
+    };
+    class ConcreteStrategyB : public Strategy
+    {
+        std::string doAlgorithm(std::string_view data) const override
+        {
+            std::string result(data);
+            std::sort(std::begin(result), std::end(result), std::greater<>());
+
+            return result;
+        }
+    };
+    /**
+    * The client code picks a concrete strategy and passes it to the context. The
+    * client should be aware of the differences between strategies in order to make
+    * the right choice.
+    */
+
+    void clientCode()
+    {
+        Context context(std::make_unique<ConcreteStrategyA>());
+        std::cout << "Client: Strategy is set to normal sorting.\n";
+        context.doSomeBusinessLogic();
+        std::cout << "\n";
+        std::cout << "Client: Strategy is set to reverse sorting.\n";
+        context.set_strategy(std::make_unique<ConcreteStrategyB>());
+        context.doSomeBusinessLogic();
+    }
+
+    int main()
+    {
+        clientCode();
+        return 0;
+    }
+
+    ```
+
+1. <b>Command</b><a id="Command"></a>
+
+    > Command is behavioral design pattern that converts requests or simple operations into objects.
+
+    > Usage examples: The Command pattern is pretty common in C++ code. Most often it’s used as an alternative for callbacks to parameterizing UI elements with actions. It’s also used for queueing tasks, tracking operations history, etc.
 
 ## Tham khảo
 
