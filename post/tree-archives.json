@@ -48,6 +48,26 @@
                     "href" : "/post/BehavioralPattern/behavioral_patterns.html"
                 }
             ]
+        },{
+            "name" : "Window UI",
+            "type" : "folder",
+            "sub":[
+                {
+                    "name" : "Double Buffer",
+                    "type" : "link",
+                    "href" : "/post/UI_DoubleBuffer/double_buffer.html"
+                },
+                {
+                    "name" : "TextBox custom",
+                    "type" : "link",
+                    "href" : "/post/UI_EditCustom/edit_custom.html"
+                },
+                {
+                    "name" : "ComBobox custom",
+                    "type" : "link",
+                    "href" : "/post/UI_ComBoboxLevel/combobox_level.html"
+                }
+            ]
         },
         {
             "name" : "C++",
@@ -62,6 +82,11 @@
                     "name" : "Bitwise",
                     "type" : "link",
                     "href" : "/post/Bitwise/bitwise.html"
+                },
+                {
+                    "name" : "Variadic Arguments",
+                    "type" : "link",
+                    "href" : "/post/VariadicArguments/variadic_arguments.html"
                 }
             ]
         },
