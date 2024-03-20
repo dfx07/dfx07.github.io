@@ -343,7 +343,7 @@ ___
     ```
 
 
-4. Hình chiếu của một điểm xuống đường thẳng <a id="PerpPoint2Line"></a>
+4. Khoảng cách gần nhất điểm xuống đường thẳng<a id="PerpPoint2Line"></a>
 
     ```cpp
     Point2D PerpPoint2Line(const Point2D& ptLine1, const Point2D& ptLine2,
@@ -373,7 +373,7 @@ ___
     }
     ```
 
-5. Hình chiếu của một điểm xuống đoạn thẳng <a id="PerpPoint2Segment"></a> 
+5. Khoảng cách gần nhất điểm xuống đoạn thẳng<a id="PerpPoint2Segment"></a> 
 
 
     </br>
@@ -388,29 +388,26 @@ ___
     Hàm [PerpPoint2Line](#PerpPoint2Line) được định nghĩa ở trên
 
     ```cpp
-
-    Point2D PerpPoint2Segment(const Point2D& ptSeg1, const Point2D& ptSeg2,
-                              const Point2D& pt)
+    Point2D PerpPoint2Segment(const Point2D& ptSeg1, const Point2D& ptSeg2, const Point2D& pt)
     {
-        Vec2D ab = ptSeg2 - ptSeg1;
-        Vec2D ae = pt     - ptSeg1;
-        Vec2D be = pt     - ptSeg2;
+        Vec2D vp1p2 = ptSeg2 - ptSeg1;
+        Vec2D vp1p  = pt - ptSeg1;
+        Vec2D vp2p  = pt - ptSeg2;
 
-        float fDot_ab_be = Dot(ab, be);
-        float fDot_ab_ae = Dot(ab, ae);
+        float fDot_vp1p2_vp2p = GetDotProduct(vp1p2, vp2p);
+        float fDot_vp1p2_vp1p = GetDotProduct(vp1p2, vp1p);
 
-        if(fDot_ab_be > 0)
+        if (kygeo::IsEqual(fDot_vp1p2_vp2p, 0.f, GEO_EPSILON) != TRUE && fDot_vp1p2_vp2p > 0)
         {
             return ptSeg2;
         }
-        else if(fDot_ab_ae < 0)
+
+        if (kygeo::IsEqual(fDot_vp1p2_vp1p, 0.f, GEO_EPSILON) != TRUE && fDot_vp1p2_vp1p < 0)
         {
             return ptSeg1;
         }
-        else
-        {
-            return PerpPoint2Line(ptSeg1, ptSeg2, pt);
-        }
+
+        return PerpPoint2Line(ptSeg1, ptSeg2, pt);
     }
     ```
 
@@ -970,6 +967,176 @@ ___
         {
             std::swap(poly[i], poly[nPolyCnt - i]);
         }
+    }
+    ```
+
+1. Khoảng cách gần nhất giữa 2 polygon <a id="GetClosestPolygonAndPolygon"></a>
+
+    Tìm khoảng cách gần nhất giữa 2 polygon 
+
+    [Trả về]
+    - TRUE/ FALSE : có hoặc không.
+    - Tọa độ 2 điểm gần nhất giữa 2 polygon là p1 và p2 tương ứng với POLY1 và POLY2.
+
+    <br/>
+
+    [Chú ý]
+    - Trường hợp nằm trong hoặc giao sẽ bị bỏ qua.
+    - Tự triển khai tìm quan hệ giữa 2 đường tròn.
+
+    <br>
+
+    ```cpp
+    BOOL GetClosestPolygonAndPolygon(const VecPoint2D& poly1, const VecPoint2D& poly2, Point2D* pt1, Point2D* pt2)
+    {
+        EnumRel2Poly eRel = GetRelation2Polygon(poly1, poly2);
+
+        if (eRel == EnumRel2Poly::INTERSECT ||
+            eRel == EnumRel2Poly::INVALID   ||
+            eRel == EnumRel2Poly::INSIDE_1  ||
+            eRel == EnumRel2Poly::INSIDE_2)
+            return FALSE;
+
+        Point2D ptTemp;
+        Point2D ptClosest11, ptClosest12;
+        Point2D ptClosest21, ptClosest22;
+        int nIdx1 = 0, nIdx2 = 0;
+
+        auto fnFindClosest2Poly = [&](const VecPoint2D& _poly1, const VecPoint2D& _poly2,
+            Point2D& _ptClosest1, Point2D& _ptClosest2, int& nIdx) ->void
+        {
+            float fDis, fMinDistance = -1;
+            int i, nPolyCnt = static_cast<int>(_poly1.size());
+
+            for (i = 0; i < nPolyCnt; i++)
+            {
+                ptTemp = GetClosestPoint2Polygon(_poly1[i], _poly2, false);
+
+                fDis = GetMagnitude(ptTemp - _poly1[i]);
+
+                if (fDis < fMinDistance || fMinDistance < 0)
+                {
+                    _ptClosest1 = _poly1[i];
+                    _ptClosest2 = ptTemp;
+
+                    nIdx = i;
+
+                    fMinDistance = fDis;
+                }
+            }
+        };
+
+        /* Tìm điểm hoàn hảo hơn là điểm từ đỉnh. Nhìn trông sẽ đẹp hơn.
+        * cần loại bỏ các điểm thẳng hàng trong polygon thì sẽ cho ra kết quả đẹp hơ
+        * nIdx : closest index in _poly1
+        * fMinDistance : min distance from _poly1 to _poly2
+        */
+        auto fnFindPerfectClosest = [&](int& nIdx, const float& fMinDistance,
+            const VecPoint2D& _poly1, const VecPoint2D& _poly2,
+            Point2D& _ptClosest1, Point2D& _ptClosest2) -> void
+        {
+            int nPolyCnt = static_cast<int>(_poly1.size());
+
+            if (nIdx >= nPolyCnt)
+                return;
+
+            int nNext = (nIdx + 1) % nPolyCnt;
+            int nPrev = (nPolyCnt + nIdx - 1) % nPolyCnt;
+
+            Point2D ptPrevMid = kygeo::GetMidPoint(_poly1[nPrev], _poly1[nIdx]);
+            Point2D ptNextMid = kygeo::GetMidPoint(_poly1[nNext], _poly1[nIdx]);
+
+            Point2D ptPerfectPrev = GetClosestPoint2Polygon(ptPrevMid, _poly2, false);
+            Point2D ptPerfectNext = GetClosestPoint2Polygon(ptNextMid, _poly2, false);
+
+            float fPerfectPrevDis = kygeo::GetMagnitude(ptPerfectPrev - ptPrevMid);
+            float fPerfectPNextDis = kygeo::GetMagnitude(ptPerfectNext - ptNextMid);
+
+            if (kygeo::IsEqual(fPerfectPrevDis, fMinDistance, GEO_EPSILON))
+            {
+                _ptClosest1 = ptPrevMid;
+                _ptClosest2 = ptPerfectPrev;
+            }
+            else if (kygeo::IsEqual(fPerfectPNextDis, fMinDistance, GEO_EPSILON))
+            {
+                _ptClosest1 = ptNextMid;
+                _ptClosest2 = ptPerfectNext;
+            }
+        };
+
+
+        fnFindClosest2Poly(poly1, poly2, ptClosest11, ptClosest12, nIdx1);
+        fnFindClosest2Poly(poly2, poly1, ptClosest22, ptClosest21, nIdx2);
+
+        float fClosestDis1 = GetMagnitude(ptClosest11 - ptClosest12);
+        float fClosestDis2 = GetMagnitude(ptClosest21 - ptClosest22);
+
+        if (fClosestDis1 <= fClosestDis2)
+        {
+            fnFindPerfectClosest(nIdx1, fClosestDis1, poly1, poly2, ptClosest11, ptClosest12);
+
+            if (pt1) *pt1 = ptClosest11;
+            if (pt2) *pt2 = ptClosest12;
+        }
+        else
+        {
+            fnFindPerfectClosest(nIdx2, fClosestDis2, poly2, poly1, ptClosest21, ptClosest22);
+
+            if (pt1) *pt1 = ptClosest21;
+            if (pt2) *pt2 = ptClosest22;
+        }
+
+        return TRUE;
+    }
+    ```
+
+1. Khoảng cách gần nhất giữa điểm và polygon <a id="GetClosestPointAndPolygon"></a>
+
+    Tìm khoảng cách gần nhất giữa một điểm và polygon 
+
+    Trong hàm có sử dụng khoảng cách ngắn nhất từ một điểm xuống 1 đoạn thẳng tham khảo: [PerpPoint2Segment](#PerpPoint2Segment).
+     
+    [Trả về]
+    - Tọa độ điểm gần nhất gần nhất. trường hợp nằm trong sẽ được kiểm tra. và trả về chính nó nếu xảy ra.
+
+    <br/>
+
+    [Chú ý]
+    - Có thể tính luôn trường hợp nằm trong.
+
+    <br>
+
+    ```cpp
+   Point2D GetClosestPointAndPolygon(const Point2D& pt, const VecPoint2D& poly, bool bIgnoreInside /*= true*/)
+    {
+        if (bIgnoreInside)
+        {
+            if (IsPointInPolygon(pt, poly) == TRUE)
+            {
+                return pt;
+            }
+        }
+
+        int i, j;
+        int nPolyCnt = static_cast<int>(poly.size());
+
+        Point2D ptClosest = pt, ptTemp;
+        float fMinDistance = -1, fDistance = 0;
+
+        for (i = 0, j = nPolyCnt - 1; i < nPolyCnt; j = i++)
+        {
+            ptTemp = PerpPoint2Segment(pt, poly[i], poly[j]);
+
+            fDistance = GetMagnitude(ptTemp - pt);
+
+            if (fDistance < fMinDistance || fMinDistance < 0)
+            {
+                ptClosest = ptTemp;
+                fMinDistance = fDistance;
+            }
+        }
+
+        return ptClosest;
     }
     ```
 ## Tham khảo

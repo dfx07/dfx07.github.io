@@ -4,8 +4,8 @@
     * [Giao điểm hai đường thẳng](#Intersect2Line)
     * [Giao điểm hai đoạn thẳng](#Intersect2Segment)
     * [Giao điểm đường thẳng và đoạn thẳng](#IntersectLine2Segment)
-    * [Hình chiếu của một điểm xuống đường thẳng](#PerpPoint2Line)
-    * [Hình chiếu của một điểm xuống đoạn thẳng](#PerpPoint2Segment)
+    * [Khoảng cách gần nhất điểm và đường thẳng](#PerpPoint2Line)
+    * [Khoảng cách gần nhất điểm và đoạn thẳng](#PerpPoint2Segment)
 
     </br>
 * [Tia](#tia)
@@ -25,6 +25,8 @@
     * [Quan hệ polygon và polygon](#Relation2Polygon)
     * [Quan hệ đoạn thẳng và polygon](#PerpPoint2Segment)
     * [Kiểm tra chiều polygon (CW, CCW)](#IsCCW)
-    * [Đảo ngược](#ReversePolygon)
+    * [Đảo ngược polygon](#ReversePolygon)
     * [Tâm đường tròn ngoại tiếp tam giác](#Intersect2Line)
     * [Trọng tâm polygon](#Intersect2Line)
+    * [Khoảng cách gần nhất giữa điểm và polygon](#GetClosestPointAndPolygon)
+    * [Khoảng cách gần nhất giữa 2 polygon](#GetClosestPolygonAndPolygon)
