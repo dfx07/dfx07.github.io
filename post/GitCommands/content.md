@@ -236,6 +236,30 @@ Git is a free and open source distributed version control system. It handles pro
 ##### Một số vấn đề hay gặp
 ---
 
+1. <b>Đồng bộ nhánh giống nhanh cha sau khi merge</b> <a id="issue1"></a>
+
+    Khi ta phát triển một feature nào đó trên nhánh riêng. Ta có đã merge những thanh đổi sang nhánh chính. Để tiếp tục thực hiện dev trên nhánh cũ và tránh nhưng sai sót. 
+
+    Giải sử nhánh chính là :`feature_master` và nhánh phát triển là `feature_dev`. ta vừa merge `feature_dev` -> `feature_master`. Bây giờ ta muốn đồng bộ nhánh `feature_dev` sao cho giống với `feature_master` nhất có thể
+
+    Đầu tiên hãy pull của nhánh chính về.
+    ```sh
+    git pull origin feature_master
+
+    ```
+
+    Sau đó ta tiến hành reset nó về head của feautre_master 
+
+    ```sh
+    git reset --hard origin/feature_master
+    ```
+
+    Cuối cùng là đẩy lên nhánh remote:
+    ```sh
+    git push -f origin feature_dev
+    ```
+
+
 ## Tham khảo
 
 + [https://git-scm.com/docs/git#_git_commands](https://git-scm.com/docs/git#_git_commands)
