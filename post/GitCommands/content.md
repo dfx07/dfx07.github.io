@@ -236,7 +236,7 @@ Git is a free and open source distributed version control system. It handles pro
 ##### Một số vấn đề hay gặp
 ---
 
-1. <b>Đồng bộ nhánh giống nhanh cha sau khi merge</b> <a id="issue1"></a>
+1. <b>Đồng bộ branch hiện tại giống branch cha sau khi merge</b> <a id="issue1"></a>
 
     Khi ta phát triển một feature nào đó trên nhánh riêng. Ta có đã merge những thanh đổi sang nhánh chính. Để tiếp tục thực hiện dev trên nhánh cũ và tránh nhưng sai sót. 
 

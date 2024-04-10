@@ -5,22 +5,13 @@
 </p>
 
 
-## Tổng quan
+## Giới thiệu
 
-Các kỹ thuật kiểm tra bộ nhớ trong quá trình debug trong Visual studio
-
-</br><!--Section-->
-
-## Tham khảo
-
-+ [https://stackoverflow.com/questions/4790564/finding-memory-leaks-in-a-c-application-with-visual-studio](https://stackoverflow.com/questions/4790564/finding-memory-leaks-in-a-c-application-with-visual-studio)
-+ [https://learn.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp?view=vs-2022](https://learn.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp?view=vs-2022)
-
-</br><!--Section-->
+Các kỹ thuật kiểm tra bộ nhớ trong quá trình debug trong Visual studio. Ngoài ra còn đề xuất một vài tip cho việc debug trên Visual Studio
 
 ## Nội dung
 
-##### </br><b>Kiểm tra bộ nhớ đã được cấp phát và sử dụng</b>
+##### Kiểm tra bộ nhớ đã được cấp phát và sử dụng
 
 Quá trình sử dụng và cấp phát vùng nhớ ta không thể biết đã cấp phát bao nhiều và liệu có có vùng nhớ nào ta đã cấp phát mà quên chưa giải phóng chưa.
 
@@ -99,7 +90,7 @@ Hơn nữa chức năng này có thể giúp ta biết chính xác đoạn code 
 
 <b>Chú ý</b> : Không phải bộ nhớ tăng là rò rỉ. Ta cần kiểm tra chức năng của hàm và các đoạn code sử dụng chúng.
 
-##### </br><b>Kiểm tra giá trị biến và giá trị hiển thị</b>
+##### Kiểm tra giá trị biến và giá trị hiển thị
 
 1. Hiển thị giá trị nhị phân của biến <a id="showbinaryvalue"></a>
 
@@ -141,11 +132,70 @@ Hơn nữa chức năng này có thể giúp ta biết chính xác đoạn code 
         <img src="./images/break_condi_1.png" />
     </p>
 
+1. Hiển thị giá trị của biến thông qua breakpoint <a id="showvalueusebreakpoint"></a>
+
+    Trong trường hợp ta muốn hiển thị thông tin của biến ra màn hình output ta có thể sử dung hàm `OutputDebugPrint()`. Nhưng việc này có nhược điểm là ta cần phải build lại chương trình rồi ms có thể chạy được.
+
+    Thay vào đó ta có thể sử dụng tính năng `Action` trong beakpoint của visual studio.
+
+    Cụ thể được trình bày bên dưới với đoạn code sau:
+
+    ```cpp
+    #include <iostream>
+    #include <memory>
+
+    int n = 0;
+
+    void funTest()
+    {
+        n++;
+        if (n == 3)
+        {
+            n = n / a;
+        }
+    }
+
+    int main()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            funTest();
+        }
+    }
+
+    ```
+
+    Giả sử ta muốn hiển thị giá trị của biến n trong đoạn code minh họa bên trên ta làm như sau.
+    - Đặt breakpoint vào chỗ ta cần xem.
+    - Chuột phải vào breakpoint và click vào `Action`
+    - Nhập thông giá trị ta cần xuất ra màn hình Output.
+    - Nó có thể là một hàm tính toán hoặc chỉ là giá trị hoặc text thông thường.
+
+    </br>
+
+    **Cú pháp**
+
+    ```
+    {$<bien>} -> {$n}
+    ```
+
+    </br>
+    <p align="center">
+        <img src="./images/break_action.png" />
+    </p>
+
+    <p align="center">
+        <img src="./images/break_condi_set.png" />
+    </p>
 </br><!--Section-->
 
-## Chú ý
+## Tham khảo
 
++ [https://stackoverflow.com/questions/4790564/finding-memory-leaks-in-a-c-application-with-visual-studio](https://stackoverflow.com/questions/4790564/finding-memory-leaks-in-a-c-application-with-visual-studio)
++ [https://learn.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp?view=vs-2022](https://learn.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp?view=vs-2022)
 
+## Cập nhật
 
+* 2024.04.10 : [Hiển thị giá trị của biến thông qua breakpoint](#showvalueusebreakpoint)
 
 
