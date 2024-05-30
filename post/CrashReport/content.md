@@ -11,15 +11,6 @@ Giới thiệu cách thứ tạo dump file và xử lý khi có được dump fi
 - Xử lý lấy dump file
 - Phân tích dump file và tìm lỗi
 
-</br><!--Section-->
-
-## Tham khảo
-
-+ [https://stackoverflow.com/questions/9020353/create-a-dump-file-for-an-application-whenever-it-crashes](https://stackoverflow.com/questions/9020353/create-a-dump-file-for-an-application-whenever-it-crashes)
-+ [https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/)
-
-</br><!--Section-->
-
 ## Nội dung
 
 Trong quá trình sử dụng ứng dụng đôi lúc ta có thể bắt gặp các trường hợp chương trình bị crash bất thường mà không biết nguyên nhân do đâu.
@@ -151,16 +142,22 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
         <img src="./image/setting_folder_dump.png" />
     </p>
 
+    Nếu chay trên máy thì không cần thiết thiết lập `Symbol path` nhưng trong hầu hết trường hợp ta cần set `Symbol path`.
+
     Cần thiết lập đúng đường dẫn của ```Symbol path```
     Đây là nơi ta chỉ định thư mục chứa các file ```.pdb```, ```.dll``` của chương trình crash.
 
     <b> Chú ý </b> : File dll và pdb phải cùng version với dll của chương trình crash. Trong trường hợp không giống ta sẽ không thể nhìn stack một cách chính xác nhất.
 
-    Ví dụ: ``` SRV*<thư mục chứa>*<Thư mục tìm kiếm> ```
+    Ví dụ: ``` SRV*<thư mục local chứa>*<Thư mục | đường dẫn tìm kiếm tải về> ```
+
+    Trong trường hợp các `symbol` là local trên máy ta có thể thiết lập trực tiếp :
+
+    Ví dụ: ``` <Thư mục | đường dẫn tìm kiếm tải về> ```
 
     ```
     SRV*D:\symbols\web*https://msdl.microsoft.com/download/symbols
-    SRV*D:\symbols\app*F:\win32_framework\build\Debug
+    F:\win32_framework\build\Debug
     ```
 
     Sau đó chạy lệnh ```!analyze -v```. Đợi một thời gian xử lý dump file và ta sẽ thu được kết quả.
@@ -174,9 +171,50 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
         <img src="./image/dump_result.png" />
     </p>
 
-</br><!--Section-->
+1. Một số lệnh WinDbg sử dụng command<a id="SomeCommand"></a>
 
-## Chú ý
+    * Phân tích dump file.
+    ```cmd
+    !analyze -v
+    ```
+    * Lưu trữ các lệnh chạy và output của nó ra file thông qua 2 lệnh theo các bước dưới đây.
+
+    ```git
+    .logopen "<đường-dẫn>"
+     < Chạy các command cần xuất >
+    .logclose
+    ```
+
+    Ví dụ:
+    ```sh
+    .logopen "C:\Users\thuong.nv\Desktop\TestDump\DumpLoger\analyze.txt"
+    !analyze -v
+    .logclose
+    ```
+
+    * Xem thông tin trạng thái trước khi crash của thanh ghi `.ecxr"`
+    Display Exception Context Record
+
+    <p align="center">
+        <img src="./image/ecxr.png" />
+    </p>
+
+    * Xem trạng thái của stack và các thông số của nó `k`
+
+    Tham khảo tham số của lệnh: [WinDbg: k command](https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/k--kb--kc--kd--kp--kp--kv--display-stack-backtrace-)
+    
+    Thường thì ta sẽ chạy lệnh `.ecxr` trước để nó chuyển sang theard crash. rồi mới chạy lệnh này để nó có thể hiển thị một cách chính xác nhất.
+
+    ```
+    kP L
+    ```
+## Tham khảo
+
++ [https://stackoverflow.com/questions/9020353/create-a-dump-file-for-an-application-whenever-it-crashes](https://stackoverflow.com/questions/9020353/create-a-dump-file-for-an-application-whenever-it-crashes)
++ [https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/)
+
+## Cập nhật
+- 2024.05.30 : Update command WinDbg
 
 
 
