@@ -192,7 +192,7 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
     .logclose
     ```
 
-    * Xem thông tin trạng thái trước khi crash của thanh ghi `.ecxr"`
+    * Xem thông tin trạng thái trước khi crash của thanh ghi `.ecxr`
     Display Exception Context Record
 
     <p align="center">
@@ -203,18 +203,50 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
 
     Tham khảo tham số của lệnh: [WinDbg: k command](https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/k--kb--kc--kd--kp--kp--kv--display-stack-backtrace-)
     
-    Thường thì ta sẽ chạy lệnh `.ecxr` trước để nó chuyển sang theard crash. rồi mới chạy lệnh này để nó có thể hiển thị một cách chính xác nhất.
+    Thường thì ta sẽ chạy lệnh `.ecxr` trước để nó chuyển sang theard crash. Rồi mới chạy lệnh `kP L` này để nó có thể hiển thị một cách chính xác nhất.
+
+    <p align="center">
+        <img src="./image/kPL.png" />
+    </p>
+
+    <br/>
+
+1. Xây dựng symbol Store<a id="SymbolFolder"></a>
+
+    Việc sao chép các tệp *.pdb là rất mất thời gian và không phù hợp nếu ta có nhiều version cho dll. chưa kể đến việc khó quản lý.
+
+    Chúng ta có thể sử dụng tính năng `index symbol` được hỗ trợ trong `Debugging Tools` cho Window.
+
+    Đầu tiên chúng ta cần cài đặt `Debugging Tools` theo đường link sau : [link download](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools)
+
+
+    Sử dụng công cụ `symstore.exe` của tool. Đường dẫn mặc định : `C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\symstore.exe`.
+
+    Sử dụng như sau câu lệnh sau: `symstore.exe add /r /f <*.pdb> /s <folder-out> /t <tên-project>`.
 
     ```
-    kP L
+    symstore.exe add /r /f "$(OutDir)$(ProjectName).pdb" /s "C:\Users\thuong.nv\Desktop\dfx07\labs\systoremlabs" /t "mlabs" /v "1.0.0.0"
     ```
+    Có thể xem thêm hướng dẫn ở [đây](https://learn.microsoft.com/en-us/windows/win32/debug/using-symstore).
+
+    Ngoài ra ta có thể thiết lập chúng vào dự án project của mình trong VS. Giống như bên dưới.
+    Nó sẽ được cài đặt trong `Post build`.
+
+    <p align="center">
+        <img src="./image/symstore.png" />
+    </p>
+
+    Khi muốn sử dụng symstore này ta chỉ cần trỏ đường dẫn của winpdb vào nó là được.
+
 ## Tham khảo
 
 + [https://stackoverflow.com/questions/9020353/create-a-dump-file-for-an-application-whenever-it-crashes](https://stackoverflow.com/questions/9020353/create-a-dump-file-for-an-application-whenever-it-crashes)
 + [https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/)
++ [https://learn.microsoft.com/en-us/windows/win32/debug/using-symstore](https://learn.microsoft.com/en-us/windows/win32/debug/using-symstore)
 
 ## Cập nhật
 - 2024.05.30 : Update command WinDbg
+- 2024.05.31 : Update symbol store
 
 
 
