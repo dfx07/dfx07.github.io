@@ -1,4 +1,5 @@
-import { treeview_util, src_loader } from "./util.js"
+import { src_loader } from "./util.js"
+import { classic_treeview_creater, confluence_treeview_creater } from "./treeview.creater.js"
 
 $(function () {
 
@@ -26,7 +27,7 @@ $(function () {
                   var root_nav = $("nav.tree-nav");
                   var tree_archives = json_data.archives;
 
-                  treeview_util.create_treeview_from_json(root_nav, tree_archives, 0);
+                  classic_treeview_creater.create_treeview_from_json(root_nav, tree_archives, 0);
             });
 
             // { media }  : { file name }
