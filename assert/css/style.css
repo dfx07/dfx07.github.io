@@ -820,12 +820,11 @@ div.pagetree__expander--current {
 
 .archives-table-of-contents::-webkit-scrollbar,
 .archives-list::-webkit-scrollbar {
-    background: rgb(245, 245, 245);
     width: 8px;
 }
 
 .archives-table-of-contents::-webkit-scrollbar-thumb,
 .archives-list::-webkit-scrollbar-thumb {
     background: var(--var1);
-    border-radius: 4px;
+    border-radius: 3px;
 }
