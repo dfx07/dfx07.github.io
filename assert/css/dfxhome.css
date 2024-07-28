@@ -4,6 +4,9 @@
     padding: 10px;
     margin-top: 10px;
 }
+.container-content{
+    padding-top: 30px;
+}
 
 .container-fluid12 {
     display: block;

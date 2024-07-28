@@ -1,26 +1,55 @@
-import { all_post_loader } from "./util.js";
-import { confluence_treeview_creater} from "./treeview.creater.js";
+import { common_creater } from "./com.creater.js";
+import { src_loader , PageType} from "./src.loader.js";
+import { Treeview_Creater, classic_treeview_creater, confluence_treeview_creater, treeview_setter} from "./treeview.creater.js";
 
 
 $(function () {
+    /** load resource */
+    var tag_page_type = $("head").attr("type-page");
 
+    var page_type =
+        String(tag_page_type).toLowerCase() === "Common".toLowerCase()
+            ? PageType.Common
+            : PageType.Post;
+
+    src_loader.load_src_page(page_type);
+
+    /** loader content */ 
     var root_add = $("div.container-navbar");
 
-    all_post_loader.add_all_post(root_add);
-    all_post_loader.add_table_of_content(root_add);
+    var treeview_use = Treeview_Creater.confluence;
 
-    // $.getJSON("../tree-archives.json", function(json_data)
-    // {
-    //     var root_nav = $("nav.tree-nav");
+    common_creater.create_all_post(root_add, treeview_use);
+    common_creater.create_table_of_content(root_add);
 
-    //     var tree_archives = json_data.archives;
+    $.getJSON("../tree-archives.json", function(json_data){
+        var root_nav = $("nav.tree-nav");
+        var tree_archives = json_data.archives;
+        if (treeview_use === Treeview_Creater.confluence) {
+           
+            var item_children = $(root_nav).children('.tree-nav__item').children('.side-navigation-scrollable-list');
+            confluence_treeview_creater.create_treeview_from_json(
+                item_children,
+                tree_archives
+            );
+        } else if (treeview_use === Treeview_Creater.classic) {
+            classic_treeview_creater.create_treeview_from_json(
+                root_nav,
+                tree_archives
+            );
+        }
+        confluence_treeview_creater.load_event_handle();
 
-    //     treeview_util.create_treeview_from_json(root_nav, tree_archives);
+    }).fail(function()
+    {
+        alert("An error has accurred.");
+    })
 
-    // }).fail(function()
-    // {
-    //     alert("An error has accurred.");
-    // })
+    /** mark to document treeview*/
+    setTimeout(function() { 
+        var url = $(location).attr('href');
+        var root_treeview_node = $("div.side-navigation-scrollable-list > ul"); 
+        treeview_setter._make_node_open(root_treeview_node, url);
+    }, 600); /* need a delay time for the document node is rendered completely */
 
-    confluence_treeview_creater._load_event_handle();
 });

@@ -92,6 +92,22 @@
                     "name" : "Data structure",
                     "type" : "link",
                     "href" : "/post/Structure/data_structure.html"
+                },
+                {
+                    "name" : "Habit and Tips",
+                    "type" : "link",
+                    "href" : "/post/CppHabit/cpp_habits.html"
+                }
+            ]
+        },
+        {
+            "name" : "OpenGL",
+            "type" : "folder",
+            "sub":[
+                {
+                    "name" : "Instroduction",
+                    "type" : "link",
+                    "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
                 }
             ]
         },

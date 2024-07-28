@@ -2,7 +2,6 @@
 
 * [Nội dung](#nội-dung) 
     * [Khái niệm Double buffer](#khái-niệm)
-        </br>
     * [Một số cấu trúc Double buffer](#một-số-cấu-trúc-double-buffer)
         * [Double buffer class](#DoubleBufferClass)
 

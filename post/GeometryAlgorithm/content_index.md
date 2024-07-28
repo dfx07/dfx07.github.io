@@ -7,12 +7,10 @@
     * [Khoảng cách gần nhất điểm và đường thẳng](#PerpPoint2Line)
     * [Khoảng cách gần nhất điểm và đoạn thẳng](#PerpPoint2Segment)
 
-    </br>
 * [Tia](#tia)
     * [Giao điểm tia với đường thẳng](#IntersectRay2Line)
     * [Kiểm tra điểm thuộc tia](#IsPointInRay)
 
-    </br>
 * [Polygon](#đường-thẳng-đoạn-thẳng)
     * [Tìm max polygon bounding](#MaxBounding)
         * [Sử dụng thuật toán Gift_wrap](#Gift_wrap)

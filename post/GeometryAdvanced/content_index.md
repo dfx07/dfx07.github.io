@@ -4,5 +4,4 @@
     * [Clip polygon](#Clip2Polygon)
         * [Sử dụng thuật toán Weiler Atherton](#Clip2PolygonUseWeilerAtherton)
         * [Sử dụng thuật toán Sutherland Hodgman](#Clip2PolygonUseSutherlandHodgman)
-        <br>
     * [Line cut polygon](#cut_line2poly)
