@@ -1,10 +1,5 @@
+import { PageType } from "./com.def.js";
 import { classic_treeview_creater, confluence_treeview_creater, Treeview_Creater } from "./treeview.creater.js";
-
-/* Define Page type */
-export const PageType = {
-    Common: 1,
-    Post: 2,
-};
 
 var src_loader = {
     /**

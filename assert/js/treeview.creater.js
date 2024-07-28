@@ -1,3 +1,4 @@
+import { get_tree_node_type, TreeNodeType } from "./com.def.js";
 
 /** Define treeview creater */
 export const Treeview_Creater = {
@@ -36,18 +37,32 @@ var classic_treeview_creater ={
      */
     _create_treeview_from_jsondata : function($root, $json_data, $level = 0, $level_expand = -1){
         $.each($json_data, function(key, item){
-            if(item.type === "folder"){
+            var item_type = get_tree_node_type(item.type);
+
+            if(item_type === TreeNodeType.Folder){
                 var tag_push = $root.children("div.tree-nav__item:first");
-                var tag_folder_added = classic_treeview_creater.create_tag_folder(tag_push, item.name,
-                     ($level === $level_expand));
-                if(item.sub !== undefined)
-                {
-                    classic_treeview_creater._create_treeview_from_jsondata(tag_folder_added, item.sub,
-                         $level+1, $level_expand);
+                var tag_folder_added =
+                    classic_treeview_creater.create_tag_folder(
+                        tag_push,
+                        item.name,
+                        $level === $level_expand
+                    );
+
+                if(item.sub !== undefined) {
+                    classic_treeview_creater._create_treeview_from_jsondata(
+                        tag_folder_added,
+                        item.sub,
+                        $level + 1,
+                        $level_expand
+                    );
                 }
-            }else if(item.type === "link"){
+            }else if(item_type === TreeNodeType.Link){
                 var tag_push = $root.children("div.tree-nav__item:first");
-                classic_treeview_creater.add_link(tag_push, item.name, item.href);
+                classic_treeview_creater.add_link(
+                    tag_push,
+                    item.name,
+                    item.href
+                );
             }
             else {
                 alert("type not define");

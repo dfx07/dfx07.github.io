@@ -1,7 +1,8 @@
 {
     "comments" :
     " name : folder name | type = {folder | link} ",
-
+    "comments1" :
+    " propery : name | type | date | brief | sub",
 
     "options":
     {
@@ -14,16 +15,19 @@
             "sub":[
                 {
                     "name" : "2D Operations",
+                    "date" : "2023-10-03",
                     "type" : "link",
                     "href" : "/post/2DGeometry/vector-2d.html"
                 },
                 {
                     "name" : "Basic 2D Geometry Algorithms",
+                    "date" : "2023-10-04",
                     "type" : "link",
                     "href" : "/post/GeometryAlgorithm/geo-algorithm-2d.html"
                 },
                 {
                     "name" : "Advanced 2D Geometry Algorithms",
+                    "date" : "2023-10-11",
                     "type" : "link",
                     "href" : "/post/GeometryAdvanced/geo-algorithm-advanced.html"
                 }

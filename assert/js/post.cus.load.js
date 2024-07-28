@@ -1,18 +1,11 @@
+import { base_loader } from "./base.cus.load.js";
 import { common_creater } from "./com.creater.js";
-import { src_loader , PageType} from "./src.loader.js";
 import { Treeview_Creater, classic_treeview_creater, confluence_treeview_creater, treeview_setter} from "./treeview.creater.js";
 
 
 $(function () {
-    /** load resource */
-    var tag_page_type = $("head").attr("type-page");
-
-    var page_type =
-        String(tag_page_type).toLowerCase() === "Common".toLowerCase()
-            ? PageType.Common
-            : PageType.Post;
-
-    src_loader.load_src_page(page_type);
+    
+    base_loader.load_common();
 
     /** loader content */ 
     var root_add = $("div.container-navbar");

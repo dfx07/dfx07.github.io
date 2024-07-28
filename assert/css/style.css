@@ -322,7 +322,9 @@ ul.list-all-articles li {
 }
 
 ul.list-all-articles li time {
-    float:right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
     color:#AAAAAA;
     font-family:"PT Sans","Helvetica Neue",Arial,sans-serif;
     font-size: 0.9em;
@@ -694,4 +696,16 @@ html {
     padding-top: 10px;
     padding-bottom: 0px;
     color: #42526E;
+}
+
+.content-brief{
+    padding-bottom: 10px;
+    padding-top: 5px;
+    position: relative;
+    font-size: 13px;
+}
+
+.content-ex-info{
+    width: 100%;
+    position: relative;
 }
