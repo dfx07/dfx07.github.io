@@ -1,12 +1,10 @@
 
 var util ={
     get_current_url : function(){
-        return $(location).attr('href');
+        return window.location.href;
     },
     get_base_url : function(){
-        var url = util.get_current_url();
-        var m = url.match(/^http:\/\/[^/]+/);
-        return m ? m[0] : null;
+        return window.location.origin;
     },
     redirect_url : function(url){
         window.location.replace(url);

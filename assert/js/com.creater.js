@@ -67,7 +67,7 @@ var common_creater ={
         var search_result_cnt = $array_search_result.length;
         if(search_result_cnt > 0){
             $('h1#contain-result-status').text('Kết quả tìm kiếm')
-            var str_result_msg = `Tồn tại ${search_result_cnt} kết quả tìm kiếm cho : "${$search_key}"`
+            var str_result_msg = `Có ${search_result_cnt} kết quả tìm kiếm cho : "${$search_key}"`
             $('.contain-result-brief').text(str_result_msg);
 
             $root_tag.append(tag_list_archives);
