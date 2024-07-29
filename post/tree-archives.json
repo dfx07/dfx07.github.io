@@ -15,18 +15,23 @@
             "sub":[
                 {
                     "name" : "2D Operations",
+                    "brief": "Trình bày về về vector, các phép biến đổi cơ bản trong hình học 2D. Nó là cơ sở để thực hiện các thuật toán liên quan đến hình học trong ứng dụng thực tế. Nó sẽ bao gồm các giải thích và triển khai code sử dụng C++",
+                    "image": "/assert/image/archives/vector-2d.png",
                     "date" : "2023-10-03",
                     "type" : "link",
                     "href" : "/post/2DGeometry/vector-2d.html"
                 },
                 {
                     "name" : "Basic 2D Geometry Algorithms",
+                    "brief": "Trình bày các thuật toán, các bài toán cơ sở liên quan đến đến hình học 2D. Dựa trên cái phép biến đổi cơ bản.",
+                    "image": "/assert/image/archives/geo-algorithm-2d.png",
                     "date" : "2023-10-04",
                     "type" : "link",
                     "href" : "/post/GeometryAlgorithm/geo-algorithm-2d.html"
                 },
                 {
                     "name" : "Advanced 2D Geometry Algorithms",
+                    "brief": "Trình bày các bài toán lập trình nâng cao liên quan đến hình học 2D. Giải bài toán dựa trên các phép biến đổi và các bài toán cơ bản của hình học 2D",
                     "date" : "2023-10-11",
                     "type" : "link",
                     "href" : "/post/GeometryAdvanced/geo-algorithm-advanced.html"
@@ -38,16 +43,22 @@
             "sub":[
                 {
                     "name" : "Behavioral Design Patterns",
+                    "brief": "Trình bày về một số loại mẫu thiết kế hay sử dụng trong nhóm Hành vi.",
+                    "date" : "2024.01.13",
                     "type" : "link",
                     "href" : "/post/BehavioralPattern/behavioral_patterns.html"
                 },
                 {
                     "name" : "Structural Design Patterns",
+                    "brief": "Trình bày về một số loại mẫu thiết kế hay sử dụng trong nhóm Cấu trúc.",
+                    "date" : "2024.01.13",
                     "type" : "link",
                     "href" : "/post/BehavioralPattern/behavioral_patterns.html"
                 },
                 {
                     "name" : "Creational Design Patterns",
+                    "brief": "Trình bày về một số loại mẫu thiết kế hay sử dụng trong nhóm Khởi tạo.",
+                    "date" : "2024.01.13",
                     "type" : "link",
                     "href" : "/post/BehavioralPattern/behavioral_patterns.html"
                 }
@@ -58,16 +69,20 @@
             "sub":[
                 {
                     "name" : "Double Buffer",
+                    "brief": "Giới thiệu và giải thích về double buffer, triển khai double buffer trên window handle",
+                    "date" : "2024.01.16",
                     "type" : "link",
                     "href" : "/post/UI_DoubleBuffer/double_buffer.html"
                 },
                 {
                     "name" : "TextBox custom",
+                    "date" : "2024.01.17",
                     "type" : "link",
                     "href" : "/post/UI_EditCustom/edit_custom.html"
                 },
                 {
                     "name" : "ComBobox custom",
+                    "date" : "2024.01.18",
                     "type" : "link",
                     "href" : "/post/UI_ComBoboxLevel/combobox_level.html"
                 }
@@ -79,26 +94,34 @@
             "sub":[
                 {
                     "name" : "Multiple thread",
+                    "date" : "2023.09.26",
                     "type" : "link",
                     "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
                 },
                 {
                     "name" : "Bitwise",
+                    "date" : "2023.11.09",
                     "type" : "link",
                     "href" : "/post/Bitwise/bitwise.html"
                 },
                 {
                     "name" : "Variadic Arguments",
+                    "brief" : "Giới thiệu về nhiều tham số và các triển khai.",
+                    "date" : "2024.01.29",
                     "type" : "link",
                     "href" : "/post/VariadicArguments/variadic_arguments.html"
                 },
                 {
                     "name" : "Data structure",
+                    "brief" : "Giới thiệu về các cấu trúc dữ liệu đã gặp và sử dụng hữu ích.",
+                    "date" : "2024.02.16",
                     "type" : "link",
                     "href" : "/post/Structure/data_structure.html"
                 },
                 {
                     "name" : "Habit and Tips",
+                    "brief" : "Các kỹ thuật và lưu ý trong lập trình C++ nhằm giúp nâng cao hiệu quả giảm thiểu sai xót.",
+                    "date" : "2024.05.01",
                     "type" : "link",
                     "href" : "/post/CppHabit/cpp_habits.html"
                 }
@@ -121,21 +144,25 @@
             "sub" :[
                 {
                     "name" : "Handle DUMP for Window use C++",
+                    "brief" : "Tạo và xử lý file dump trên hệ điều hành window trong lập trình sử dụng C++.",
                     "type" : "link",
                     "href" : "/post/CrashReport/crash_report.html"
                 },
                 {
                     "name" : "Templates in C++",
+                    "brief" : "Trình bày về khái niệm templates trong C++ và đưa ra các ví dụ minh họa.",
                     "type" : "link",
                     "href" : "/post/CppTemplate/cpp_template.html"
                 },
                 {
                     "name" : "Git overview and commands",
+                    "brief" : "Trình bày về git và các câu lệnh hay được sử dụng trong lập trình, các bài toán và hướng giải quyết trong quản lý mã nguồn.",
                     "type" : "link",
                     "href" : "/post/GitCommands/git_command.html"
                 },
                 {
                     "name" : "Remote debugging over TeamViewer",
+                    "brief" : "Trình bày về tính năng remote debug thông qua Teamview của Visual studio trên Windows.",
                     "type" : "link",
                     "href" : "/post/VSRemoteDebug/vs-remote-debug.html"
                 },

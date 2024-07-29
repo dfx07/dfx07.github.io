@@ -550,6 +550,12 @@ blockquote p
     }
 }
 
+@media (max-width: 979px) {
+    body {
+        padding-top: 20px;
+    }
+}
+
 @media only screen and (max-width: 600px){ 
     .container-row {
         padding-top: 0;
@@ -703,6 +709,23 @@ html {
     padding-top: 5px;
     position: relative;
     font-size: 13px;
+}
+
+div.content-brief{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    position: relative;
+    font-size: 13px;
+}
+.content-brief .img-brief{
+    width: 150px;
+    min-height: 150px;
+}
+.content-brief .text-brief{
+    margin: 0px 10px 0px 10px;
+    flex: 1;
 }
 
 .content-ex-info{
