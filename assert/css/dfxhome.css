@@ -86,6 +86,10 @@
     }
 
     .author-description{
-        width: calc(100% - 286px);
+        flex: 1;
     }
+}
+
+.home-contain-data p, .author-description p{
+    text-align: justify;
 }
