@@ -3,4 +3,5 @@
 * [Tham khảo](#tham-khảo) 
 
 * [Nội dung](#nội-dung) 
-    * [Buffer](#buffer) 
+    * [Buffer](#section1) 
+    * [Vector](#section2) 

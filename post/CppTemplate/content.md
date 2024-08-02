@@ -185,6 +185,11 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 	Trong C++17 có thể sử dụng `if constexpr` để thay cho `std::enable_if`
 
 	``` cpp
+
+	////////////////////////////////////////////////////////////////////////////////
+	/******************************************************************************/
+	//.Tag3
+
 	struct _XYZ;
 	struct _RGB;
 
@@ -203,23 +208,95 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 
 	template<typename T, typename N>
 	struct tag3 : public _t3Trait<T, N> {
-
-		template< typename U = N,
-			typename  std::enable_if_t< std::is_same_v<U, _XYZ>, int > = 0 >
-			tag3() {
-			this->x = static_cast<T>(0);
-			this->y = static_cast<T>(0);
-			this->z = static_cast<T>(0);
+		template< typename _N = N,
+			typename  std::enable_if_t< std::is_same_v<_N, _XYZ>, bool > = true >
+		tag3()
+		{
+			value.x = static_cast<T>(0);
+			value.y = static_cast<T>(0);
+			value.z = static_cast<T>(0);
 		}
 
-		template< typename U = N,
-			typename  std::enable_if_t< std::is_same_v<U, _RGB_>, int > = 0 >
-			tag3() {
-			this->r = static_cast<T>(0);
-			this->g = static_cast<T>(0);
-			this->b = static_cast<T>(0);
+		template< typename _N = N,
+			typename  std::enable_if_t< std::is_same_v<_N, _RGB>, bool > = true >
+		tag3() {
+			value.r = static_cast<T>(0);
+			value.g = static_cast<T>(0);
+			value.b = static_cast<T>(0);
 		}
-	}
+
+		template <typename U, typename V, typename K, typename _N = N,
+			typename  std::enable_if_t< std::is_same_v<_N, _XYZ>, bool > = true >
+		tag3(const U& _u, const V& _v, const K& _k)
+		{
+			value.x = static_cast<T>(_u);
+			value.y = static_cast<T>(_v);
+			value.z = static_cast<T>(_k);
+		}
+
+		template <typename U, typename V, typename K, typename _N = N,
+			typename  std::enable_if_t< std::is_same_v<_N, _RGB>, bool > = true >
+			tag3(const U& _u, const V& _v, const K& _k)
+		{
+			value.r = static_cast<T>(_u);
+			value.g = static_cast<T>(_v);
+			value.b = static_cast<T>(_k);
+		}
+	};
+
+	////////////////////////////////////////////////////////////////////////////////
+	/******************************************************************************/
+	//.Tag2
+
+	struct _XY;
+	struct _UV;
+
+	template<typename T, typename N>
+	struct _t2Trait;
+
+	template<typename T>
+	struct _t2Trait<T, _XY> {
+		T x, y;
+	};
+
+	template<typename T>
+	struct _t2Trait<T, _UV> {
+		T u, v;
+	};
+
+	template<typename T, typename N>
+	struct tag2 : public _t2Trait<T, N> {
+		template< typename _N = N,
+			typename  std::enable_if_t< std::is_same_v<_N, _XY>, bool > = true >
+			tag2()
+		{
+			value.x = static_cast<T>(0);
+			value.y = static_cast<T>(0);
+		}
+
+		template< typename _N = N,
+			typename  std::enable_if_t< std::is_same_v<_N, _UV>, bool > = true >
+			tag2() {
+			value.u = static_cast<T>(0);
+			value.v = static_cast<T>(0);
+		}
+
+		template <typename U, typename V, typename _N = N,
+			typename  std::enable_if_t< std::is_same_v<_N, _XY>, bool > = true >
+			tag2(const U& _u, const V& _v)
+		{
+			value.x = static_cast<T>(_u);
+			value.y = static_cast<T>(_v);
+		}
+
+		template <typename U, typename V, typename _N = N,
+			typename  std::enable_if_t< std::is_same_v<_N, _UV>, bool > = true >
+			tag2(const U& _u, const V& _v)
+		{
+			value.u = static_cast<T>(_u);
+			value.v = static_cast<T>(_v);
+		}
+	};
 	```
 
 ## Tham khảo

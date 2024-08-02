@@ -456,7 +456,7 @@ dt:hover > a.headerlink {
 }
 
 .md-content-wapper p{
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 14px;
 }
 
@@ -466,6 +466,7 @@ blockquote p
     font-weight: 200;
     line-height: 2.75;
     color: #808080;
+    font-style: italic;
 }
 
 .wapper
