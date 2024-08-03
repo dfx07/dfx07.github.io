@@ -103,6 +103,20 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 	template<typename T, typename std::enable_if<std::is_same<int, T>::value>::type* = nullptr>
 	<=>
 	template<typename T, typename std::enable_if_t<std::is_same_v<int, T>>* = nullptr>
+
+	template<typename _N = N, std::enable_if_t< std::is_same_v<_N, _XYZ>, bool> = true>
+	<=>
+	template<typename _N = N, typename = std::enable_if_t< std::is_same_v<_N, _XYZ>>>
+
+	// ERR
+	using EnableXYZ = std::enable_if_t< std::is_same_v<N, _XYZ>>;
+	template<typename = EnableXYZ>
+
+	// OK
+	template<typename _N>
+	using EnableXYZ = std::enable_if_t< std::is_same_v<_N, _XYZ>>;
+	template<typename = EnableXYZ<N>>
+
 	```
 
 	Hơn nữa ta có thể viết ngắn gọn biểu thứ thành một bí danh ```using``` ngắn gọn hơn như sau:
@@ -178,14 +192,11 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 
 1. Định nghĩa hàm sử dụng tùy thuộc vào loại dữ liệu của template<a id="section8"></a>
 
-	Ví dụ dưới bạn sẽ thấy với loại là `_XYZ` thì hàm khởi tạo là hàm đầu tiên và biến : x, y, z.
-
-	Nhưng với loại đầu vào là `_RGB` thì hàm khởi tạo là hàm thứ 2 biến : r, g, b.
+	Ví dụ dưới bạn sẽ thấy với loại là `_XYZ` thì hàm khởi tạo là hàm đầu tiên và biến : x, y, z. Nhưng với loại đầu vào là `_RGB` thì hàm khởi tạo là hàm thứ 2 biến : r, g, b.
 
 	Trong C++17 có thể sử dụng `if constexpr` để thay cho `std::enable_if`
 
 	``` cpp
-
 	////////////////////////////////////////////////////////////////////////////////
 	/******************************************************************************/
 	//.Tag3
@@ -243,61 +254,50 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 			value.b = static_cast<T>(_k);
 		}
 	};
-
-	////////////////////////////////////////////////////////////////////////////////
-	/******************************************************************************/
-	//.Tag2
-
-	struct _XY;
-	struct _UV;
-
-	template<typename T, typename N>
-	struct _t2Trait;
-
-	template<typename T>
-	struct _t2Trait<T, _XY> {
-		T x, y;
-	};
-
-	template<typename T>
-	struct _t2Trait<T, _UV> {
-		T u, v;
-	};
-
-	template<typename T, typename N>
-	struct tag2 : public _t2Trait<T, N> {
-		template< typename _N = N,
-			typename  std::enable_if_t< std::is_same_v<_N, _XY>, bool > = true >
-			tag2()
-		{
-			value.x = static_cast<T>(0);
-			value.y = static_cast<T>(0);
-		}
-
-		template< typename _N = N,
-			typename  std::enable_if_t< std::is_same_v<_N, _UV>, bool > = true >
-			tag2() {
-			value.u = static_cast<T>(0);
-			value.v = static_cast<T>(0);
-		}
-
-		template <typename U, typename V, typename _N = N,
-			typename  std::enable_if_t< std::is_same_v<_N, _XY>, bool > = true >
-			tag2(const U& _u, const V& _v)
-		{
-			value.x = static_cast<T>(_u);
-			value.y = static_cast<T>(_v);
-		}
-
-		template <typename U, typename V, typename _N = N,
-			typename  std::enable_if_t< std::is_same_v<_N, _UV>, bool > = true >
-			tag2(const U& _u, const V& _v)
-		{
-			value.u = static_cast<T>(_u);
-			value.v = static_cast<T>(_v);
-		}
-	};
 	```
+
+	Sử dụng `enable_if_t` còn khá nhiều vấn đề ở đây, chính vì thế nên đã search và thấy được một vài cách rất hay sau. Nó hoạt động. Dưới đây là ví dụ :
+
+	```cpp
+	template <typename T1, typename T2>
+	class MyClass {
+	public:
+		MyClass(int a, int b, int c) {
+			construct(a, b, c, std::is_same<T1, A>(), std::is_same<T2, B>(), std::is_same<T1, C>(), std::is_same<T2, A>());
+		}
+
+	private:
+		// Với x, y, z là hàm riêng, với r, g, b là hàm riêng
+		void construct(int a, int b, int c, std::true_type, std::true_type, std::false_type, std::false_type) {
+			std::cout << "Constructing MyClass with T1=A and T2=B: a=" << a << ", b=" << b << ", c=" << c << std::endl;
+		}
+	```
+
+	Sử dụng khởi tạo của lớp cha cũng khá hay. Lúc sẽ sử dụng hàm khởi tạo của lớp cơ sở thay cho lớp kế thừa. Dưới đây là ví dụ :
+
+	```cpp
+
+	// Lớp con cho T là B
+	template <>
+	class MyClassBase<B> {
+	public:
+		struct {
+			int r, g, b;
+		} data;
+
+		MyClassBase(int a, int b, int c) {
+			data = { a, b, c };
+			std::cout << "Constructing MyClass type B: r=" << data.r << ", g=" << data.g << ", b=" << data.b << std::endl;
+		}
+	};
+
+	// Lớp chính kế thừa từ lớp cơ sở
+	template <typename T>
+	class MyClass : public MyClassBase<T> {
+	public:
+		using MyClassBase<T>::MyClassBase;  // Sử dụng các constructor của lớp cơ sở
+	};
+	``` 
 
 ## Tham khảo
 
