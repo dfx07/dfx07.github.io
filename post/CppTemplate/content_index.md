@@ -9,6 +9,7 @@
     * [Xử lý riêng cho từng loại dữ liệu](#section6)
     * [Template chỉ định loại kết quả trả về của hàm](#section7)
     * [Định nghĩa hàm sử dụng tùy thuộc vào loại dữ liệu của template](#section8)
+    * [Thiết lập giá trị mặc định tham số hàm.](#section9)
 
 * [Tham khảo](#tham-khảo) 
 

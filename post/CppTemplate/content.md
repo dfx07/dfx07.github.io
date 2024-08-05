@@ -299,6 +299,21 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 	};
 	``` 
 
+1. Thiết lập giá trị mặc định tham số hàm.<a id="section9"></a>
+
+	Muốn đặt tham số mặc định đầu tiên cần phải thiết lập template -> typename mặc định
+
+	VD :
+
+	```cpp
+	template<typename U, typename K = int, typename V = int>
+	_t3Tag(const U u, K k = 0, V v = 0) noexcept {
+		x = static_cast<T>(u);
+		y = static_cast<T>(k);
+		z = static_cast<T>(v);
+	}
+	```
+
 ## Tham khảo
 
 + [https://en.cppreference.com/w/cpp/language/templates](https://en.cppreference.com/w/cpp/language/templates)
@@ -308,5 +323,6 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 
 * 2024.05.08 : Template chỉ định loại kết quả trả về của hàm *[#](#section7)*
 * 2024.08.01 : Định nghĩa hàm sử dụng tùy thuộc vào loại dữ liệu của template *[#](#section8)*
+* 2024.08.05 : Thiết lập giá trị mặc định tham số hàm *[#](#section9)*
 
 <br/>
