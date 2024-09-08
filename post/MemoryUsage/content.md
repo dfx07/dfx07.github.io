@@ -66,7 +66,7 @@ Sử dụng công cụ **Memory Usage** của VS ta tiến hành track như sau:
 
 Trước khi chạy hàm  ```leakMemory``` ta tiến hành ```Task Snapshot``` và kiểm tra. Nhận thấy không cấp phát gì cả và giá trị vẫn là 0.
 
-<p align="center">
+<p class="img-post">
     <img src="./images/mem_before_leak.png" />
 </p>
 
@@ -74,7 +74,7 @@ Sau khi chạy hàm  ```leakMemory``` ta tiến hành ```Task Snapshot``` để 
 
 Ta mong muốn là vùng nhớ sẽ trở về trạng thái trước khi chạy hàm. Nếu trường hợp vùng nhớ không được giải phóng hết sẽ lớn một lượng bộ nhớ so với ban đầu.
 
-<p align="center">
+<p class="img-post">
     <img src="./images/mem_after_leak.png" />
 </p>
 
@@ -84,7 +84,7 @@ Ngoài ra ta cũng có thể biết được lượng bộ nhớ đã được c
 
 Hơn nữa chức năng này có thể giúp ta biết chính xác đoạn code nào đã cấp được cấp phát như hình ảnh bên dưới.
 
-<p align="center">
+<p class="img-post">
     <img src="./images/mem_leak_track.png" />
 </p>
 
@@ -100,7 +100,7 @@ Hơn nữa chức năng này có thể giúp ta biết chính xác đoạn code 
     - Kết quả sẽ hiển thị ở cột bên cạnh.
 
     </br><!--Section-->
-    <p align="center">
+    <p class="img-post">
         <img src="./images/showbinaryvalue.png" />
     </p>
 
@@ -112,7 +112,7 @@ Hơn nữa chức năng này có thể giúp ta biết chính xác đoạn code 
 
     Trong ví dụ dưới ta đã hiển thị 10 giá trị của con trỏ ```arr```.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./images/showarrayelement.png" />
     </p>
 
@@ -122,13 +122,13 @@ Hơn nữa chức năng này có thể giúp ta biết chính xác đoạn code 
 
     Ở ví dụ dưới nếu giá trị của ```a = 12``` thì break mới dùng.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./images/break_condi.png" />
     </p>
 
     Hoặc có thể sử dụng cách bên dưới :
 
-    <p align="center">
+    <p class="img-post">
         <img src="./images/break_condi_1.png" />
     </p>
 
@@ -180,11 +180,11 @@ Hơn nữa chức năng này có thể giúp ta biết chính xác đoạn code 
     ```
 
     </br>
-    <p align="center">
+    <p class="img-post">
         <img src="./images/break_action.png" />
     </p>
 
-    <p align="center">
+    <p class="img-post">
         <img src="./images/break_condi_set.png" />
     </p>
 </br><!--Section-->

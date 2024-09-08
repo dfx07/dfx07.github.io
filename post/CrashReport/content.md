@@ -121,7 +121,7 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
 
     Download WinDbg truy cập đường link : [https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/) 
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/download_windbg.png" />
     </p>
 
@@ -131,14 +131,14 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
 
     Tiến hành mở dump file thu được sử dụng WinDbg.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/dumpfile.png" />
     </p>
 
     Try cập :
     > Setting -> Debugging settings -> Symbol path
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/setting_folder_dump.png" />
     </p>
 
@@ -167,7 +167,7 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
 
     </br>
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/dump_result.png" />
     </p>
 
@@ -195,7 +195,7 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
     * Xem thông tin trạng thái trước khi crash của thanh ghi `.ecxr`
     Display Exception Context Record
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/ecxr.png" />
     </p>
 
@@ -205,7 +205,7 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
     
     Thường thì ta sẽ chạy lệnh `.ecxr` trước để nó chuyển sang theard crash. Rồi mới chạy lệnh `kP L` này để nó có thể hiển thị một cách chính xác nhất.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/kPL.png" />
     </p>
 
@@ -232,7 +232,7 @@ LONG WINAPI handle_crash(IN struct _EXCEPTION_POINTERS* apExceptionInfo)
     Ngoài ra ta có thể thiết lập chúng vào dự án project của mình trong VS. Giống như bên dưới.
     Nó sẽ được cài đặt trong `Post build`.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/symstore.png" />
     </p>
 

@@ -26,7 +26,7 @@ ComBobox là sự kết hợp của TextBox và một popup menu.
 
 Vì thế trước khi triển khai cần triển khai 2 control cơ bản là TextBox và Popup riêng biệt.
 
-<p align="center">
+<p class="img-post">
     <img src="./image/combobox_level.png" />
 </p>
 

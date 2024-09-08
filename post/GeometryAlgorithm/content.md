@@ -166,7 +166,7 @@ ___
 
     </br>
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/inter_line.png" />
     </p>
 
@@ -378,7 +378,7 @@ ___
 
     </br>
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/perp_p2seg.png" />
     </p>
 
@@ -573,7 +573,7 @@ ___
 
     </br>
 
-    <p align="center">
+    <p class="img-post">
         <img src="//upload.wikimedia.org/wikipedia/commons/thumb/7/71/GrahamScanDemo.gif/200px-GrahamScanDemo.gif" decoding="async" width="200" height="205" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/71/GrahamScanDemo.gif/300px-GrahamScanDemo.gif 1.5x, //upload.wikimedia.org/wikipedia/commons/7/71/GrahamScanDemo.gif 2x" data-file-width="344" data-file-height="353">
     </p>
 
@@ -633,7 +633,7 @@ ___
 
     C. Sử dụng thuật toán Alpha-Shapes <a id="Alpha_shapes"></a>
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/hull_alpha_shapes.png" >
     </p>
 
@@ -651,7 +651,7 @@ ___
     - Không hỗ trợ các loại bo đầu như (squared, round and mitered)
 
     </br>
-    <p align="center">
+    <p class="img-post">
         <img src="./image/maxbounding_offset_style.png" />
     </p>
 

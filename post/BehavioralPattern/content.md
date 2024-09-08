@@ -31,7 +31,7 @@ Dưới đây là một vài mẫu design pattern thuộc nhóm này sẽ đư�
 * [Iterator](#Iterator)
 * [State](#State)
 
-<p align="center">
+<p class="img-post">
     <img src="./image/behavioral_patterns_list.png" />
 </p>
 
@@ -58,7 +58,7 @@ Ta sẽ đi vào từng lại design pattern cụ thể cùng ví dụ liên qua
 
     Ngoài ra chúng ta có thể kiểm soát các message được điều phối giữa các đối tượng.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/uml_observer.png" />
     </p>
 
@@ -227,13 +227,13 @@ Ta sẽ đi vào từng lại design pattern cụ thể cùng ví dụ liên qua
 
     Nó tương tự Controller trong mô hình MVC. Rất hữu ích trong giao tiếp giữ các thành phần GUI của app.
     
-    <p align="center">
+    <p class="img-post">
         <img src="./image/uml_mediator.png" />
     </p>
 
     Dưới đây là ví dụ bài toán liên quan đến các component trong một dialog.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/mediator_ex1.png" />
     </p>
 
@@ -360,7 +360,7 @@ Ta sẽ đi vào từng lại design pattern cụ thể cùng ví dụ liên qua
 
     Ví dụ thực tế chút. Khi bạn muốn khoan thì bạn dùng mũi khoan, nhưng nếu muốn đục thì bạn chỉ cần thay mũi khoan thanh mũi đục là được.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/uml_strategy.png" />
     </p>
 

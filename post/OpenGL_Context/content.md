@@ -39,7 +39,7 @@ Vậy làm sao để tạo OpenGL context trên window sử dụng C++. Bài vi�
 > Thiết kế interface
 
 **Thiết kế**
-<p align="center">
+<p class="img-post">
 	<img src="./image/design_context.png" />
 </p>
 

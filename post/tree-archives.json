@@ -37,7 +37,32 @@
                     "href" : "/post/GeometryAdvanced/geo-algorithm-advanced.html"
                 }
             ]
-        }, {
+        } , {
+            "name" : "Algorithms",
+            "type" : "folder",
+            "sub":[
+                {
+                    "name" : "Common",
+                    "type" : "folder",
+                    "sub":[
+                        {
+                            "name" : "Grid pathfinding",
+                            "brief": "Cấu trúc dữ liệu biểu diễn grid cho pathfinding",
+                            "date" : "2024.09.08",
+                            "type" : "link",
+                            "href" : "/post/Algorithm_GridPF/grid_pf.html"
+                        }
+                    ]
+                }, {
+                    "name" : "A-star",
+                    "brief": "Thuật toán duyệt đồ thị tìm đường đi A*, Triển khai thuật toán sử dụng C++",
+                    "image": "/assert/image/archives/vector-2d.png",
+                    "date" : "2024-09-08",
+                    "type" : "link",
+                    "href" : "/post/Algorithm_Astar/a_star.html"
+                }
+            ]
+        } , {
             "name" : "Design Patterns",
             "type" : "folder",
             "sub":[

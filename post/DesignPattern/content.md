@@ -30,7 +30,7 @@ Dựa trên mục đích ta có thể chia thành 3 nhóm Desgin Pattern.
 - Structural design pattern.
 - Behavioral design pattern.
 
-<p align="center">
+<p class="img-post">
     <img src="./image/design_pattern_type.png" />
 </p>
 Ta sẽ đi vào từng lại design pattern cụ thể và ví dụ liên quan.
@@ -44,7 +44,7 @@ Ta sẽ đi vào từng lại design pattern cụ thể và ví dụ liên quan.
     Cần chú ý nếu sử dụng singleton với multiple thread.
     Có thể xem ví dụ trong hình ảnh bên dưới.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/singleton.png" />
     </p>
 
@@ -54,7 +54,7 @@ Ta sẽ đi vào từng lại design pattern cụ thể và ví dụ liên quan.
 
     Ví dụ về một ```Abstract factory pattern```:
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/abstract_factory_pattern.png" />
     </p>
 
@@ -66,7 +66,7 @@ Ta sẽ đi vào từng lại design pattern cụ thể và ví dụ liên quan.
 
     Thường thì Prototy sẽ đi với Copy function được overwrite
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/prototy_and_builder_pattern.png" />
     </p>
 
@@ -76,7 +76,7 @@ Ta sẽ đi vào từng lại design pattern cụ thể và ví dụ liên quan.
 
     Tham khảo hướng dẫn thiết kết bên dưới.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/Service Locator pattern.png" />
     </p>
 
@@ -88,12 +88,12 @@ Ta sẽ đi vào từng lại design pattern cụ thể và ví dụ liên quan.
 
     Cái này đã được triển khai khi tiến hành phát triển ```Kyhttp``` từ ```libcurl```.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/https_use_libcurl.png" />
     </p>
 
     Tham khảo thêm ví dụ bên dưới.
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/AdaptorPattern.png" />
     </p>

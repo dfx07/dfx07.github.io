@@ -29,7 +29,7 @@ Vì thế cần tìm hiểu trước khi bắt đầu.
 
     a. Sử dụng kỹ thuật ear_clipping <a id="poly2trig_ear_clipping"></a>
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/poly2trig_ear_clipping.png" />
     </p>
 
@@ -128,7 +128,7 @@ Vì thế cần tìm hiểu trước khi bắt đầu.
 
     a. Sử dụng thuật toán Weiler Atherton.<a id="Clip2PolygonUseWeilerAtherton"></a>
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/clip_poly_weiler_atherton.png" />
     </p>
 
@@ -456,7 +456,7 @@ Vì thế cần tìm hiểu trước khi bắt đầu.
 
     b. Sử dụng thuật toán Weiler Atherton.<a id="Clip2PolygonUseSutherlandHodgman"></a>
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/clip_poly_weiler_atherton.png" />
     </p>
 
@@ -553,7 +553,7 @@ Vì thế cần tìm hiểu trước khi bắt đầu.
     
     Sử dụng đoạn thẳng cắt polygon. Chỉ áp dụng cho concave hoặc convex polygon
 
-    <p align="center">
+    <p class="img-post">
         <img src="./image/cut_line2poly.png" />
     </p>
 

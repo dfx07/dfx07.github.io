@@ -27,7 +27,7 @@ Cơ chế vừa miêu tả người ta gọi nó double buffer.
 Trong hàm ```Paint``` người ta tạo ra một cấu trúc giúp giải quyết điều này.
 
 Tham khảo cơ chế ```single buffer``` và ```double buffer``` bên dưới.
-<p align="center">
+<p class="img-post">
     <img src="./image/double_buffer.png" />
 </p>
 

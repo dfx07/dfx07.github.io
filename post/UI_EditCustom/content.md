@@ -37,7 +37,7 @@ _Vậy ta sẽ cần triển khai thêm những gì ?_
 > - Thêm button hiển thị clear all.
 > - Thêm option custom UI tùy ý.
 
-<p align="center">
+<p class="img-post">
     <img src="./image/edit_cmp.png" />
 </p>
 

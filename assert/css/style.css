@@ -461,6 +461,14 @@ dt:hover > a.headerlink {
     text-align: justify;
 }
 
+.md-content-wapper .img-post{
+    text-align: center;
+}
+
+.md-content-wapper .img-post-left{
+    text-align: left;
+}
+
 blockquote p
 {
     font: 13px/22.5px "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
