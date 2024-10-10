@@ -92,10 +92,11 @@ Hình ảnh :
 #include <Windows.h>
 #include "xpathfinder.h"
 
-typedef void (*pFunAstarPerform)(std::set<stGridCellPF*>&, stGridCellPF*);
+typedef void (*pFunAstarPerform)(std::set<stCellPF*>&, stCellPF*);
 
 class AStar : public PathFinding
 {
+protected:
 	typedef struct tagWayDirectionalMove
 	{
 		int x{ 0 };
@@ -104,19 +105,19 @@ class AStar : public PathFinding
 		float w{ 0.f };
 	} WayDirectionalMove;
 
-	typedef struct _stAStarGridCellPF
+	typedef struct _stAStarCellPF
 	{
-		int			nIdx{ 0 };
-		float		fDistanceSrc{ 0 };
-		float		fDistanceDst{ 0 };
-		_stAStarGridCellPF* pPrev{ nullptr };
+		int				nIdx{ 0 };
+		float			fDistanceSrc{ 0 };
+		float			fDistanceDst{ 0 };
+		_stAStarCellPF* pPrev{ nullptr };
+		stCellPF*		pGrid{ nullptr };
 
-		stGridCellPF* pGrid{ nullptr };
-	} stAStarGridCell;
+	} stAStarCellPF;
 
-	typedef struct _ptrAStarGridCellCompare
+	typedef struct _stAStarCellPFCompare
 	{
-		bool operator()(const stAStarGridCell* pC1, const stAStarGridCell* pC2) const
+		bool operator()(const stAStarCellPF* pC1, const stAStarCellPF* pC2) const
 		{
 			float fV1 = pC1->fDistanceSrc + pC1->fDistanceDst;
 			float fV2 = pC2->fDistanceSrc + pC2->fDistanceDst;
@@ -126,20 +127,32 @@ class AStar : public PathFinding
 
 			return fV1 > fV2;
 		}
-	}ptrAStarDataCompare;
+	}stAStarCellPFCompare;
 
-	typedef std::set<stGridCellPF*> GridPFUniqueManager;
-	typedef std::set<stAStarGridCell*> AstarUniqueManager;
-	typedef std::unordered_map<stGridCellPF*, stAStarGridCell> AstarMappingData;
-	typedef std::priority_queue<stAStarGridCell*, std::vector<stAStarGridCell*>,
-		_ptrAStarGridCellCompare> AstarCellPriorityQueue;
+	typedef std::set<stCellPF*> GridPFUniqueManager;
+	typedef std::set<stAStarCellPF*> AstarUniqueManager;
+	typedef std::unordered_map<stCellPF*, stAStarCellPF> AstarMappingData;
+	typedef std::priority_queue<stAStarCellPF*, std::vector<stAStarCellPF*>, stAStarCellPFCompare> AstarCellPriorityQueue;
 
 	static const int m_nWayDirection = 8;
 
 public:
-	enum WayDirectionMode {
+	enum WayDirectionMode
+	{
 		Four,
 		Eight,
+	};
+
+	enum WayDirection
+	{
+		LeftUp		= 0x0,
+		Up			= 0x1,
+		RightUp		= 0x2,
+		Left		= 0x3,
+		Right		= 0x4,
+		LeftDown	= 0x5,
+		Down		= 0x6,
+		RightDown	= 0x7,
 	};
 
 	WayDirectionalMove m_arWayDirection[m_nWayDirection];
@@ -229,12 +242,12 @@ protected:
 	}
 
 protected:
-	virtual _stAStarGridCellPF* GetCellPriorityQuery()
+	virtual stAStarCellPF* PopCellPriorityQuery()
 	{
 		if (m_CellPriorityQueue.empty())
 			return nullptr;
 
-		stAStarGridCell* pAstarCellCur = m_CellPriorityQueue.top();
+		stAStarCellPF* pAstarCellCur = m_CellPriorityQueue.top();
 		if (pAstarCellCur->pGrid == nullptr)
 			return nullptr;
 
@@ -246,7 +259,7 @@ protected:
 		return pAstarCellCur;
 	}
 
-	virtual bool PushToPriorityQuery(_stAStarGridCellPF* pCell, float fDisSrcToCell, float fDisCell2Dest, _stAStarGridCellPF* pParent)
+	virtual bool PushToPriorityQuery(stAStarCellPF* pCell, float fDisSrcToCell, float fDisCell2Dest, stAStarCellPF* pParent)
 	{
 		if (fDisSrcToCell < 0 || fDisCell2Dest < 0)
 			return false;
@@ -277,6 +290,7 @@ protected:
 				pCell->fDistanceDst = fDisCell2Dest;
 
 				pCell->pPrev = pParent;
+
 				return true;
 			}
 		}
@@ -284,9 +298,9 @@ protected:
 		return false;
 	};
 
-	virtual std::vector<stGridCellPF*> GetPath(_stAStarGridCellPF* pCell)
+	virtual std::vector<stCellPF*> GetPath(stAStarCellPF* pCell)
 	{
-		std::vector<stGridCellPF*> path;
+		std::vector<stCellPF*> path;
 		path.reserve(100);
 
 		size_t szMaxPath = m_GridDataMapping.size();
@@ -294,7 +308,7 @@ protected:
 		if (pCell == nullptr)
 			return path;
 
-		stAStarGridCell* pAstarGridCellCur = pCell;
+		stAStarCellPF* pAstarGridCellCur = pCell;
 
 		int nStep = 0;
 
@@ -309,7 +323,7 @@ protected:
 		return path;
 	}
 
-	virtual float GetDistance(_stAStarGridCellPF* pC1, _stAStarGridCellPF* pC2)
+	virtual float GetDistance(stAStarCellPF* pC1, stAStarCellPF* pC2)
 	{
 		if (!pC1 || !pC2) return -1;
 
@@ -323,56 +337,86 @@ protected:
 		return (stCur.nX != stNext.nX) && (stCur.nY != stNext.nY);
 	}
 
-	virtual bool IsMoveable(GridPF* pGridBoard, _stAStarGridCellPF* _pCellCur, _stAStarGridCellPF* _pCellNext)
+	virtual bool IsCellMoveable(stAStarCellPF* _pCell)
 	{
-		if (!_pCellNext) return false;
-		if (_pCellNext->pGrid->stCellData.fWeight > 0)
+		if (!_pCell)
 			return false;
 
-		auto funIsCross = [](stCellIdxPF& stCur, stCellIdxPF& stNext) -> bool
+		if (_pCell->pGrid && _pCell->pGrid->stData.fWeight <= 0)
+			return true;
+
+		return false;
+	}
+
+	virtual bool IsCellMoveableArround(stAStarCellPF* _pCell, WayDirectionMode mode)
+	{
+		auto funCheckMove = [&](WayDirection eway) -> bool
 		{
-			return (stCur.nX != stNext.nX) && (stCur.nY != stNext.nY);
+			stCellIdxPF stIdx;
+
+			stIdx.nX = _pCell->pGrid->stIdx.nX + m_arInitWayDirection[eway].x;
+			stIdx.nY = _pCell->pGrid->stIdx.nY + m_arInitWayDirection[eway].y;
+
+			auto pCell = GetCell(stIdx);
+
+			if (pCell && !IsCellMoveable(pCell))
+				return false;
+
+			return true;
 		};
 
-		if (funIsCross(_pCellCur->pGrid->stIdx, _pCellNext->pGrid->stIdx))
+		// Up + Down + Left + Right
+		if (!funCheckMove(WayDirection::Up)   ||
+			!funCheckMove(WayDirection::Down) ||
+			!funCheckMove(WayDirection::Left) ||
+			!funCheckMove(WayDirection::Right))
+			return false;
+
+		return true;
+	}
+
+	virtual bool IsCellMoveableTo(stAStarCellPF* _pCellCur, stAStarCellPF* _pCellNext)
+	{
+		if (!_pCellNext || _pCellNext->pGrid->stData.fWeight > 0)
+			return false;
+
+		if (IsCrossCell(_pCellCur->pGrid->stIdx, _pCellNext->pGrid->stIdx))
 		{
 			int delX = _pCellNext->pGrid->stIdx.nX - _pCellCur->pGrid->stIdx.nX;
 			int delY = _pCellNext->pGrid->stIdx.nY - _pCellCur->pGrid->stIdx.nY;
 
-			_stAStarGridCellPF* pCellCrs1 = GetAStarGridCell(_pCellCur->pGrid->stIdx.nX + delX, _pCellCur->pGrid->stIdx.nY);
-			_stAStarGridCellPF* pCellCrs2 = GetAStarGridCell(_pCellCur->pGrid->stIdx.nX, _pCellCur->pGrid->stIdx.nY + delY);
+			stAStarCellPF* pCellCrs1 = GetCell(_pCellCur->pGrid->stIdx.nX + delX, _pCellCur->pGrid->stIdx.nY);
+			stAStarCellPF* pCellCrs2 = GetCell(_pCellCur->pGrid->stIdx.nX, _pCellCur->pGrid->stIdx.nY + delY);
 
 			if (pRefOption->m_bDontCrossCorners)
 			{
-				if (pCellCrs1 != nullptr && pCellCrs2 != nullptr &&
-					pCellCrs1->pGrid->stCellData.fWeight <= 0 &&
-					pCellCrs2->pGrid->stCellData.fWeight <= 0)
-					return true;
-
-				return false;
+				return IsCellMoveable(pCellCrs1) &&
+					IsCellMoveable(pCellCrs2);
 			}
 			else
 			{
-				if (pCellCrs1 == nullptr || pCellCrs2 == nullptr)
-					return (_pCellNext->pGrid->stCellData.fWeight > 0);
+				if (!pCellCrs1 || !pCellCrs2)
+					return IsCellMoveable(_pCellNext);
 
-				return(
-					pCellCrs1->pGrid->stCellData.fWeight <= 0 ||
-					pCellCrs2->pGrid->stCellData.fWeight <= 0);
+				return  IsCellMoveable(pCellCrs1) ||
+					IsCellMoveable(pCellCrs2);
 			}
 		}
 		else
 		{
-			return !(_pCellNext->pGrid->stCellData.fWeight > 0);
+			return IsCellMoveable(_pCellNext);
 		}
 	}
 
-	virtual stAStarGridCell* GetAStarGridCell(const int nX, const int nY) noexcept
+protected:
+
+	// Get cell
+	virtual stAStarCellPF* GetCell(const int nX, const int nY) noexcept
 	{
-		return GetAStarGridCell({ nX, nY });
+		return GetCell({ nX, nY });
 	}
 
-	virtual stAStarGridCell* GetAStarGridCell(const stCellIdxPF& stIdx) noexcept
+	virtual stAStarCellPF* GetCell(const stCellIdxPF& stIdx) noexcept
 	{
 		if (m_pGridBoard == nullptr)
 			return nullptr;
@@ -382,7 +426,7 @@ protected:
 		if (pCell == nullptr)
 			return nullptr;
 
-		stAStarGridCell* pAstarData = &m_GridDataMapping[pCell];
+		stAStarCellPF* pAstarData = &m_GridDataMapping[pCell];
 		if (!pAstarData->pGrid)
 		{
 			pAstarData->pGrid = pCell;
@@ -392,7 +436,7 @@ protected:
 		return pAstarData;
 	}
 
-private:
+protected:
 	virtual bool Prepar(GridPF* pGridBoard)
 	{
 		m_pGridBoard = pGridBoard;
@@ -403,6 +447,8 @@ private:
 		m_GridDataMapping.reserve(m_pGridBoard->Size());
 
 		Reset();
+
+		InitWayDirection(pRefOption->m_bAllowCross ? WayDirectionMode::Eight : WayDirectionMode::Four);
 
 		return true;
 	}
@@ -416,21 +462,19 @@ private:
 		m_nIdxPriority = 0;
 	}
 
-	virtual std::vector<stGridCellPF*> Execute(GridPF* pGridBoard, stCellIdxPF start, stCellIdxPF target)
+	virtual std::vector<stCellPF*> Execute(GridPF* pGridBoard, stCellIdxPF start, stCellIdxPF target)
 	{
-		_stAStarGridCellPF* pCellCur, *pNextCell, *pCellStart, *pCellTarget;
+		stAStarCellPF* pCellCur, *pNextCell, *pCellStart, *pCellTarget;
 		float fDisNext2Dest, fDisTraveled = 0.f;
-		std::vector<stGridCellPF*> path;
+		std::vector<stCellPF*> path;
 
 		stCellIdxPF stIdx;
 
 		if (!Prepar(pGridBoard))
 			return path;
 
-		pCellCur = pCellStart = GetAStarGridCell(start);
-		pCellTarget = GetAStarGridCell(target);
-
-		InitWayDirection(pRefOption->m_bAllowCross ? WayDirectionMode::Eight : WayDirectionMode::Four);
+		pCellCur = pCellStart = GetCell(start);
+		pCellTarget = GetCell(target);
 
 		UpdateWayPriority(start, target);
 
@@ -450,7 +494,7 @@ private:
 					stIdx.nX = pCellCur->pGrid->stIdx.nX + m_arWayDirection[i].x;
 					stIdx.nY = pCellCur->pGrid->stIdx.nY + m_arWayDirection[i].y;
 
-					pNextCell = GetAStarGridCell(stIdx);
+					pNextCell = GetCell(stIdx);
 
 					if (pNextCell == nullptr)
 						continue;
@@ -458,7 +502,7 @@ private:
 					fDisTraveled = pCellCur->fDistanceSrc +
 						(IsCrossCell(pCellCur->pGrid->stIdx, stIdx) ? 1.412f : 1.f);
 
-					fDisNext2Dest = IsMoveable(pGridBoard, pCellCur, pNextCell) && (pCellCur->pPrev != pNextCell) ?
+					fDisNext2Dest = (IsCellMoveableTo(pCellCur, pNextCell) && (pCellCur->pPrev != pNextCell)) ?
 						GetDistance(pNextCell, pCellTarget) : -1.f;
 
 					if (fDisNext2Dest >= 0)
@@ -466,7 +510,7 @@ private:
 				}
 			}
 
-			pCellCur = GetCellPriorityQuery();
+			pCellCur = PopCellPriorityQuery();
 
 			if (m_pFunPerform)
 			{
@@ -485,7 +529,7 @@ private:
 		return path;
 	}
 
-private:// internal
+protected:// internal
 	AstarCellPriorityQueue		m_CellPriorityQueue;
 	AstarUniqueManager			m_CellUniqueManager;
 	AstarMappingData			m_GridDataMapping;
@@ -510,3 +554,4 @@ protected:// setup
 ##### Cập nhật
 
 - 2024.08.18 : Create
+- 2024.10.10 : Update code (refactor - function name, format code)
