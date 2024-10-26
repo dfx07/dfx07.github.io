@@ -74,6 +74,12 @@
         
                         }
                     ]
+                },{
+                    "name" : "Read pattern",
+                    "brief": "Đọc dữ liệu file theo mẫu sử dụng multiple thread.",
+                    "date" : "2024-10-26",
+                    "type" : "link",
+                    "href" : "/post/Algorithm_ReadPatternThread/read_pattern_thread.html"
                 }
             ]
         } , {

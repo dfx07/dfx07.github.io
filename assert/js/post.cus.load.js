@@ -40,9 +40,14 @@ $(function () {
 
     /** mark to document treeview*/
     setTimeout(function() { 
-        var url = $(location).attr('href');
+        /** remove param in url */
+        var url = new URL($(location).attr('href'))
+        url.search =""
+        var str_url_href = url.href;
+        const str_url_href_wo_hash = str_url_href.split('#')[0];
+
         var root_treeview_node = $("div.side-navigation-scrollable-list > ul"); 
-        treeview_setter._make_node_open(root_treeview_node, url);
+        treeview_setter._make_node_open(root_treeview_node, str_url_href_wo_hash);
     }, 600); /* need a delay time for the document node is rendered completely */
 
 });
