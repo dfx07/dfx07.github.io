@@ -171,6 +171,23 @@
                     "href" : "/post/CppHabit/cpp_habits.html"
                 }
             ]
+        },{
+            "name" : "WPF (Windows Presentation Foundation)",
+            "type" : "folder",
+            "sub":[
+                {
+                    "name" : "Instroduction",
+                    "date" : "2024.12.29",
+                    "type" : "link",
+                    "href" : "/post/WPF_Instroduction/wpf_instro.html"
+                },
+                {
+                    "name" : "Cpp communication",
+                    "date" : "2024.12.29",
+                    "type" : "link",
+                    "href" : "/post/WPF_CPP/wpf_cpp.html"
+                }
+            ]
         },
         {
             "name" : "OpenGL",
