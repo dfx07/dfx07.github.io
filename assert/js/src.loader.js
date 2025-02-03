@@ -109,6 +109,7 @@ var src_loader = {
                 { media: "screen", src: "xtreeview.css" },
                 { media: "screen", src: "bootstrap-combined.min.css" },
                 { media: "print", src: "dfxprint.css" },
+                { media: "screen", src: "utilites.css" },
             ];
 
             /** { type }  : { file name } */
