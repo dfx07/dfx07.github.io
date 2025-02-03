@@ -2,7 +2,7 @@
 <html lang="en-US">
 
 <head type-page="post">
-    <title>2D Geometry: Vector and Point</title>
+    <title>English practices</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
@@ -16,10 +16,11 @@
     <meta property="og:url" content="https://dfx07.github.io/post/2DGeometry/vector-2d.html">
     <meta property="og:locale" content="vi">
 
-    <script src="../../assert/js/ui/jquery.min.js"></script>
-    <script src="../../assert/js/post.cus.load.js" type="module"></script>
+    <script type="module" src="../../assert/js/ui/jquery.min.js"></script>
+    <script type="module" src="../../assert/js/post.cus.load.js" ></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="../../assert/js/utilities.js"></script>
 </head>
 
 <body>
@@ -36,6 +37,27 @@
                     <div class="md-content-wapper">
                         <div class="wapper">
                             <md-block src="content.md"></md-block>
+                            <div class="chat-container">
+                                <div class="chat-header">
+                                    <div class="chat-optional">
+                                        <div class="dropdown-container">
+                                            <select id="myDropdown">
+                                                <option value="en2vi">English to Vietnamese</option>
+                                                <option value="vi2en">Vietnamese to English</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-body" id="chat-body">
+                                    <!-- Chat messages will appear here -->
+                                </div>
+                                <div class="chat-footer">
+                                    <div class="input-container">
+                                        <input type="text" id="message-input" placeholder="Type a message...">
+                                        <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -43,7 +65,6 @@
             <div class="container-padding"></div>
         </div>
     </div>
-
     <!-- Footer -->
     <footer class="navbar-footer" page-content="footer"></footer>
 </body>
