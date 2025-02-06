@@ -21,14 +21,8 @@
             {
                 "TY": 0,
                 "ID": 2,
-                "EN": "I am a giáo viên.",
+                "EN": "I am a teacher.",
                 "VI": "Tôi là một giáo viên."
-            },
-            {
-                "TY": 0,
-                "ID": 3,
-                "EN": "I am a student",
-                "VI": "Tôi là một sinh viên"
             }
         ]
     }
