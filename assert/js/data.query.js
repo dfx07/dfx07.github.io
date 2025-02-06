@@ -64,6 +64,32 @@ var data_query = {
             }
         })
         return rel_archives;
+    },
+
+    /**
+     * Query list english to vietnamese
+     * @param {*} $json_data 
+     * @returns 
+     */
+    query_list_eng_to_vi: function($json_data){
+        var rel_archives = [];
+
+        if($json_data.hasOwnProperty("eng2vi"))
+        {
+            var eng2vi = $json_data.eng2vi;
+            if(eng2vi != undefined && eng2vi.hasOwnProperty("archives"))
+            {
+                $.each(eng2vi.archives, function(key, item){
+                    rel_archives.push({ 
+                        ID : item.ID,
+                        TY: item.TY,
+                        EN : item.EN,
+                        VI : item.VI
+                    });
+                })
+            }
+        }
+        return rel_archives;
     }
 }
 
