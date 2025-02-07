@@ -1,0 +1,185 @@
+{
+    "eng2vi":
+    {
+        "comments":
+        {
+            "description": "This is a file for translating English to Vietnamese.",
+            "Thuoc tinh TY": "0 là câu khẳng định | 1 là câu phủ định | 2 là câu nghi vấn"
+        },
+        "options" :
+        {
+            
+        },
+        "archives" :
+        [
+            {
+                "ID": 1,
+                "TY": 0,
+                "LV": 1,
+                "EN": "I am a student.",
+                "VI": "Tôi là một sinh viên."
+            },
+            {
+                "ID": 2,
+                "TY": 0,
+                "LV": 1,
+                "EN": "I am a teacher.",
+                "VI": "Tôi là một giáo viên."
+            },
+            {
+                "ID": 3,
+                "TY": 0,
+                "LV": 2,
+                "EN": "I want to solve this problem.",
+                "VI": "Tôi muốn vấn đề đó được giải quyết."
+            },
+            {
+                "ID": 4,
+                "TY": 0,
+                "LV": 2,
+                "EN": "I want to make a lot of money.",
+                "VI": "Tôi muốn kiếm được nhiều tiền."
+            },
+            {
+                "ID": 5,
+                "TY": 0,
+                "LV": 2,
+                "EN": "My house has a basement.",
+                "VI": "Nhà tôi có một tầng hầm."
+            },
+            {
+                "ID": 6,
+                "TY": 0,
+                "LV": 2,
+                "EN": "They stayed here for three days.",
+                "VI": "Họ đã ở đây ba ngày."
+            },
+            {
+                "ID": 7,
+                "TY": 2,
+                "LV": 2,
+                "EN": "Have you ever been to Paris ?",
+                "VI": "Bạn đã từng đến Paris bao giờ chưa ?"
+            },
+            {
+                "ID": 8,
+                "TY": 1,
+                "LV": 2,
+                "EN": "She doesn't have enough money.",
+                "VI": "Cô ấy không có đủ tiền."
+            },
+            {
+                "ID": 9,
+                "TY": 0,
+                "LV": 2,
+                "EN": "My friend will lend me their money.",
+                "VI": "Bạn bè của tôi sẽ cho tôi mượn tiền của họ."
+            },
+            {
+                "ID": 10,
+                "TY": 0,
+                "LV": 2,
+                "EN": "He lent me his laptop for a week.",
+                "VI": "Anh ấy cho tôi mượn laptop của anh ấy một tuần."
+            },
+            {
+                "ID": 11,
+                "TY": 0,
+                "LV": 1,
+                "EN": "Winter is coming.",
+                "VI": "Mùa đông đang đến."
+            },
+            {
+                "ID": 12,
+                "TY": 0,
+                "LV": 1,
+                "EN": "I am ready to get married.",
+                "VI": "Tôi sẵn sàng kết hôn."
+            },
+            {
+                "ID": 13,
+                "TY": 0,
+                "LV": 1,
+                "EN": "That never happened before.",
+                "VI": "Điều này chưa từng xảy ra trước đây."
+            },
+            {
+                "ID": 14,
+                "TY": 0,
+                "LV": 1,
+                "EN": "It helps us remember.",
+                "VI": "Nó giúp chúng ta nhớ."
+            },
+            {
+                "ID": 15,
+                "TY": 0,
+                "LV": 2,
+                "EN": "I have been traveled here before.",
+                "VI": "Tôi đã từng du lịch đến đây."
+            },
+            {
+                "ID": 16,
+                "TY": 0,
+                "LV": 1,
+                "EN": "People remember their friends and family.",
+                "VI": "Mọi người nhớ bạn bè và gia đình của mình."
+            },
+            {
+                "ID": 17,
+                "TY": 0,
+                "LV": 1,
+                "EN": "It will bring her good luck.",
+                "VI": "Nó sẽ mang lại may mắn cho cô ấy."
+            },
+            {
+                "ID": 18,
+                "TY": 0,
+                "LV": 3,
+                "EN": "She saves people's lives erryday.",
+                "VI": "Cô ấy bảo vệ mạng sống của mọi người mỗi ngày."
+            },
+            {
+                "ID": 19,
+                "TY": 2,
+                "LV": 3,
+                "EN": "Have you worked at this company before ?",
+                "VI": "Bạn đã từng làm việc ở công ty này bao giờ chưa ?"
+            },
+            {
+                "ID": 20,
+                "TY": 0,
+                "LV": 2,
+                "EN": "Her parents are proud of her.",
+                "VI": "Bố mẹ tôi tự hào về tôi."
+            },
+            {
+                "ID": 21,
+                "TY": 2,
+                "LV": 3,
+                "EN": "Can we go out for dinner together tonight ?",
+                "VI": "Chúng ta có thể đi ăn tối cùng nhau tối nay không ?"
+            },
+            {
+                "ID": 22,
+                "TY": 2,
+                "LV": 3,
+                "VI": "Chúng ta sẽ gặp nhau như kế hoạch.",
+                "EN": "We will meet as planned."
+            },
+            {
+                "ID": 23,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Chúng tôi có thể cung cấp cho bạn các chỉ dẫn đến nhà cô ấy.",
+                "EN": "We can provide you with directions to her house."
+            },
+            {
+                "ID": 24,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Tôi dành 2 tiếng mỗi ngày để cải thiện tiếng Anh của mình.",
+                "EN": "I spend 2 hours every day to improve my English."
+            }
+        ]
+    }
+}

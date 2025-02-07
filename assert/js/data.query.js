@@ -82,6 +82,7 @@ var data_query = {
                 $.each(eng2vi.archives, function(key, item){
                     rel_archives.push({ 
                         ID : item.ID,
+                        LV : item.LV,
                         TY: item.TY,
                         EN : item.EN,
                         VI : item.VI

@@ -47,10 +47,10 @@ $(function () {
         return probabilities.length - 1;
     }
 
-    $.getJSON("../Utilities/assert/eng2vi.json", function(json_data){
+    $.getJSON("../Tool_En2Vi/assert/eng2vi.json", function(json_data){
         eng2vi_dictionary = data_query.query_list_eng_to_vi(json_data);
         eng2vi_weights = Array(eng2vi_dictionary.length).fill(1).map(function(_, index) {
-            return index;
+            return 1;
         });
 
     }).fail(function()
@@ -74,7 +74,7 @@ $(function () {
         // handle control command
         if(message === "reset"){
             eng2vi_weights =  Array(eng2vi_dictionary.length).fill(1).map(function(_, index) {
-                return index;
+                return 1;
             });
 
             $('#message-input').val('');

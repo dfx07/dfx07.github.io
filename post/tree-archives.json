@@ -108,7 +108,7 @@
                     "href" : "/post/BehavioralPattern/behavioral_patterns.html"
                 }
             ]
-        },{
+        } , {
             "name" : "Window UI",
             "type" : "folder",
             "sub":[
@@ -132,8 +132,7 @@
                     "href" : "/post/UI_ComBoboxLevel/combobox_level.html"
                 }
             ]
-        },
-        {
+        } , {
             "name" : "C++",
             "type" : "folder",
             "sub":[
@@ -171,7 +170,7 @@
                     "href" : "/post/CppHabit/cpp_habits.html"
                 }
             ]
-        },{
+        } , {
             "name" : "WPF (Windows Presentation Foundation)",
             "type" : "folder",
             "sub":[
@@ -188,8 +187,18 @@
                     "href" : "/post/WPF_CPP/wpf_cpp.html"
                 }
             ]
-        },
-        {
+        } , {
+            "name" : "Tools",
+            "type" : "folder",
+            "sub":[
+                {
+                    "name" : "Eng2Vi practice",
+                    "date" : "2025.02.07",
+                    "type" : "link",
+                    "href" : "/post/Tool_En2Vi/index.html"
+                }
+            ]
+        } , {
             "name" : "OpenGL",
             "type" : "folder",
             "sub":[
@@ -205,8 +214,7 @@
                 }
 
             ]
-        },
-        {
+        }, {
             "name" : "Blog",
             "type" : "folder",
             "sub" :[
