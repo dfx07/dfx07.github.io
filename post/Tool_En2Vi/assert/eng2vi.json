@@ -179,6 +179,216 @@
                 "LV": 3,
                 "VI": "Tôi dành 2 tiếng mỗi ngày để cải thiện tiếng Anh của mình.",
                 "EN": "I spend 2 hours every day to improve my English."
+            },
+            {
+                "ID": 25,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Khi nào kỳ thi tiếp theo sẽ diễn ra ?",
+                "EN": "When will the next exam take place ?"
+            },
+            {
+                "ID": 26,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Bao giờ bạn sẽ trở lại Vietnam ?",
+                "EN": "When will you go back to Vietnam ?"
+            },
+            {
+                "ID": 27,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Bạn đã dọn đến Hà Nôi khi nào ?",
+                "EN": "When did you move to Hanoi ?"
+            },
+            {
+                "ID": 28,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Bạn sẽ ở lại đây bao lâu ?",
+                "EN": "How long will you stay here ?"
+            },
+            {
+                "ID": 29,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Ông định ở đây bao lâu ?",
+                "EN": "How long are you going to stay here ?"
+            },
+            {
+                "ID": 30,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Mất bao lâu để bạn tới đây ?",
+                "EN": "How long did it take you to come here ?"
+            },
+            {
+                "ID": 31,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Mất bao lâu để bạn nấu bữa tối ?",
+                "EN": "How long does it take you to cooke dinner ?"
+            },
+            {
+                "ID": 32,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Anh ấy đã ở Việt Nam bao lâu rồi ?",
+                "EN": "How long has he been in the Vietnam ?"
+            },
+            {
+                "ID": 33,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Bạn mất bao lâu để mặc quần áo ?",
+                "EN": "How long does it take you to put on your clothes ?"
+            },
+            {
+                "ID": 34,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Ông đã câu ở đây bao lâu ?",
+                "EN": "How long have you been fishing here ?"
+            },
+            {
+                "ID": 35,
+                "TY": 2,
+                "LV": 3,
+                "VI": "Cô đã làm thợ may bao lâu ?",
+                "EN": "How long were you a dressmaker ?"
+            },
+            {
+                "ID": 36,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Cô đã làm thợ may bao giờ chưa ?",
+                "EN": "Did you ever be a dressmaker ?"
+            },
+            {
+                "ID": 37,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Bạn đã lập gia đình được bao lâu rồi ?",
+                "EN": "How long have you been married ?"
+            },
+            {
+                "ID": 38,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Mất bao lâu để cô ấy dọn dẹp nhà bếp ?",
+                "EN": "How long does it take her to clean up the kitchen ?"
+            },
+            {
+                "ID": 39,
+                "TY": 2,
+                "LV": 2,
+                "VI": "Anh ấy có bao nhiêu tiền ?",
+                "EN": "How much money does he have ?"
+            },
+            {
+                "ID": 40,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Tôi không cao bằng cha tôi.",
+                "EN": "I am not as tall as my father."
+            },
+            {
+                "ID": 41,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Tôi hát không hay bằng chị tôi.",
+                "EN": "I don't sing as well as my sister."
+            },
+            {
+                "ID": 42,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Căn nhà của họ không lớn bằng căn nhà của tôi.",
+                "EN": "Their house is not as big as my house."
+            },
+            {
+                "ID": 43,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Tôi không may mắn như họ.",
+                "EN": "I don't have as luck as them."
+            },
+            {
+                "ID": 44,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Quản lý bắt các nhân viên tham dự hội nghị.",
+                "EN": "The manager made the staff attend the conference."
+            },
+            {
+                "ID": 45,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Giáo viên bắt học sinh làm bài tập về nhà.",
+                "EN": "The teacher made the students do their homework."
+            },
+            {
+                "ID": 46,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Giáo viên bắt học sinh ở tại cỗ của họ.",
+                "EN": "The teacher made the students stay at their desks."
+            },
+            {
+                "ID": 47,
+                "TY": 0,
+                "LV": 4,
+                "VI": "Tổng thống đang bắt các thành viên nội các của mình ký vào văn kiện.",
+                "EN": "The president is making his cabinet members sign the document."
+            },
+            {
+                "ID": 48,
+                "TY": 0,
+                "LV": 4,
+                "VI": "Tôi bắt con trai mình im lặng trong rạp chiếu phim.",
+                "EN": "I made my son be quiet in the cinema."
+            },
+            {
+                "ID": 49,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Tôi bắt nhân viên của mình phải làm việc.",
+                "EN": "I made my staff work."
+            },
+            {
+                "ID": 50,
+                "TY": 0,
+                "LV": 5,
+                "VI": "Một vài thiết bị mới đã được công ty đặt mua.",
+                "EN": "Some new equipement has been ordered by the company."
+            },
+            {
+                "ID": 51,
+                "TY": 0,
+                "LV": 4,
+                "VI": "Giám đốc nên ký vào các hợp động này này hôm này.",
+                "EN": "The manager should sign these contracts today."
+            },
+            {
+                "ID": 52,
+                "TY": 0,
+                "LV": 4,
+                "VI": "Ủy ban đang xem xét các đề xuất mới.",
+                "EN": "The committee is considering the new proposals."
+            },
+            {
+                "ID": 44,
+                "TY": 2,
+                "LV": 2,
+                "VI": "",
+                "EN": ""
+            },
+            {
+                "ID": 34,
+                "TY": 2,
+                "LV": 3,
+                "VI": "",
+                "EN": ""
             }
         ]
     }
