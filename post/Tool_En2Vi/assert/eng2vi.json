@@ -377,10 +377,24 @@
                 "EN": "The committee is considering the new proposals."
             },
             {
+                "ID": 53,
+                "TY": 2,
+                "LV": 5,
+                "VI": "Bạn có biết cách nào để đi từ đây đến nhà của Jenny không ?",
+                "EN": "Do you know how to get from here to Jenny's house ?"
+            },
+            {
+                "ID": 54,
+                "TY": 0,
+                "LV": 4,
+                "VI": "Chúng tôi biết đánh máy trước khi chúng tôi vào đại học.",
+                "EN": "We knew how to type before we entered the university."
+            },
+            {
                 "ID": 44,
                 "TY": 2,
                 "LV": 2,
-                "VI": "",
+                "VI": "12",
                 "EN": ""
             },
             {
