@@ -391,14 +391,119 @@
                 "EN": "We knew how to type before we entered the university."
             },
             {
-                "ID": 44,
-                "TY": 2,
+                "ID": 55,
+                "TY": 0,
                 "LV": 2,
-                "VI": "12",
+                "VI": "Mẹ tôi mua cho tôi một bộ trang phục.",
+                "EN": "My mom buy me a costume."
+            },
+            {
+                "ID": 56,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Chúng tôi khắc khuôn mặt bằng một con dao.",
+                "EN": "We carve the face with a knife."
+            },
+            {
+                "ID": 57,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Chúng tôi gõ của nhà hàng xóm.",
+                "EN": "We knock on the neighbor's door."
+            },
+            {
+                "ID": 59,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Hàng xóm chúng tôi cho chúng tôi kẹo.",
+                "EN": "Our neighbor gives us candy."
+            },
+            {
+                "ID": 60,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Nhà của tôi có rất nhiều đèn trên mái nhà.",
+                "EN": "My house has a lot of lights on the roof."
+            },
+            {
+                "ID": 61,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Tôi đặt cuốn sổ lên trên bàn.",
+                "EN": "I put the notebook on the table."
+            },           
+            {
+                "ID": 62,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Chúng tôi đặt ngôi sao lên đỉnh của cây.",
+                "EN": "We put a star on the top of the tree."
+            },
+            {
+                "ID": 63,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Có rất nhiều quà ở dưới cây của chúng tôi.",
+                "EN": "There are a lot of presents under our tree."
+            },
+            {
+                "ID": 64,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Chúng tôi dọn dẹp nhà của vào cuối tuần.",
+                "EN": "We clean up the house at the weekend."
+            },
+            {
+                "ID": 65,
+                "TY": 0,
+                "LV": 1,
+                "VI": "Tôi gọt khoai tây và cà rốt.",
+                "EN": "I peel the potatoes and carrots."
+            },
+            {
+                "ID": 66,
+                "TY": 0,
+                "LV": 2,
+                "VI": "Bố tôi làm bí bánh bí ngô.",
+                "EN": "My dad makes pumpkin pie."
+            },
+            {
+                "ID": 67,
+                "TY": 0,
+                "LV": 1,
+                "VI": "Chúng tôi đặt bàn ăn ra ngoài.",
+                "EN": "We set the table outside."
+            },
+            {
+                "ID": 68,
+                "TY": 0,
+                "LV": 1,
+                "VI": "Tôi trộn bánh mì và gia vị.",
+                "EN": "I mix the bread and spices."
+            },
+            {
+                "ID": 69,
+                "TY": 0,
+                "LV": 1,
+                "VI": "Bố tôi cắt con gà tây.",
+                "EN": "My dad carves the turkey."
+            },
+            {
+                "ID": 70,
+                "TY": 0,
+                "LV": 1,
+                "VI": "Tôi và bố tôi cãi nhau trong khi nấu ăn.",
+                "EN": "I and my dad argue during cooking."
+            },
+            {
+                "ID": 71,
+                "TY": 0,
+                "LV": 3,
+                "VI": "",
                 "EN": ""
             },
             {
-                "ID": 34,
+                "ID": 69,
                 "TY": 2,
                 "LV": 3,
                 "VI": "",
