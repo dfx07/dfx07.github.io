@@ -198,7 +198,7 @@
                 "ID": 27,
                 "TY": 2,
                 "LV": 2,
-                "VI": "Bạn đã dọn đến Hà Nôi khi nào ?",
+                "VI": "Bạn đã dọn đến Hà Nội khi nào ?",
                 "EN": "When did you move to Hanoi ?"
             },
             {
@@ -408,7 +408,7 @@
                 "ID": 57,
                 "TY": 0,
                 "LV": 3,
-                "VI": "Chúng tôi gõ của nhà hàng xóm.",
+                "VI": "Chúng tôi gõ cửa nhà hàng xóm.",
                 "EN": "We knock on the neighbor's door."
             },
             {
