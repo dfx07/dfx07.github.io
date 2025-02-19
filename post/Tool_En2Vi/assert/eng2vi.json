@@ -499,12 +499,75 @@
                 "ID": 71,
                 "TY": 0,
                 "LV": 3,
+                "VI": "Có nước trên sàn nhà nơi anh ấy ngã.",
+                "EN": "There was water on the floor where he fell."
+            },
+            {
+                "ID": 72,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Có quá nhiều người trong bữa tiệc.",
+                "EN": "There are so many people at the party."
+            },
+            {
+                "ID": 73,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Có một vài người ở trong cuộc họp tối qua.",
+                "EN": "There were some people at the meeting last night."
+            },
+            {
+                "ID": 74,
+                "TY": 0,
+                "LV": 4,
+                "VI": "Tôi chưa từng làm điều này trước đây.",
+                "EN": "I have never done this before."
+            },
+            {
+                "ID": 75,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Sẽ có tuyết rơi vào cuối tuần này.",
+                "EN": "There will be snow this weekend."
+            },
+            {
+                "ID": 76,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Anh ấy không còn là người quản lý của chúng tôi nữa.",
+                "EN": "He is no longer our manager."
+            },
+            {
+                "ID": 77,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Tôi không thể trì hoãn nó lại lâu hơn nữa.",
+                "EN": "I coundn't put it off any longer."
+            },
+            {
+                "ID": 78,
+                "TY": 0,
+                "LV": 5,
+                "VI": "Tôi muốn một cái áo sơ mi giống bạn tôi.",
+                "EN": "I want the same shirt as my friend."
+            },
+            {
+                "ID": 79,
+                "TY": 0,
+                "LV": 5,
+                "VI": "Cái điện thoại của bạn giống như cái của tôi.",
+                "EN": "your phone is the same as mine."
+            },
+            {
+                "ID": 79,
+                "TY": 0,
+                "LV": 3,
                 "VI": "",
                 "EN": ""
             },
             {
-                "ID": 69,
-                "TY": 2,
+                "ID": 79,
+                "TY": 0,
                 "LV": 3,
                 "VI": "",
                 "EN": ""
