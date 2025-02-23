@@ -102,7 +102,6 @@ Trong cấu trúc "bắt ai đó phải làm gì", ta có thể dùng "make" ho�
 * Make + someone + V (nguyên mẫu) → Dùng trong hiện tại hoặc tương lai.
 * Made + someone + V (nguyên mẫu) → Dùng trong quá khứ.
 
-
 VD:
 
 1. Tôi bắt nhân viên làm việc.
@@ -113,6 +112,26 @@ VD:
 
 3. Giáo viên bắt học sinh làm bài tập về nhà.
     > The teacher made the students do homework.
+
+Ngoài ra còn có cấu trúc bị động bên dưới:
+
+<div class="warning" style='padding:0.3em; border-radius: 5px; background-color:#E9D8FD; color:#69337A'>
+    <span>
+        <p style='text-align: left; padding : 5px; margin: 0px;    font-weight: bold;'>
+            S + tobe + made  + to V + something
+        </p>
+    </span>
+</div>
+</br>
+
+VD:
+
+1. Họ bị bắt làm việc thêm giờ.
+    > I were made to work overtime.
+
+2. Các học sinh bị buộc phải hoàn thành bài tập đúng hạn
+    > The students are made to complete their assignments on time. 
+
 
 #### 5. Biết, Biết làm thế nào.
 ---
