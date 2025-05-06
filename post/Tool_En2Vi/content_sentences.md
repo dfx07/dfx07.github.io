@@ -64,8 +64,8 @@ Cấu trúc:
 
 <div class="warning" style='padding:0.3em; border-radius: 5px; background-color:#E9D8FD; color:#69337A'>
     <span>
-        <p style='text-align: center; padding : 0px; margin: 0px;    font-weight: bold;'>
-            Chủ ngữ + động từ + As + [tính từ/ trạng từ] + As + [dạnh từ/ đại từ]
+        <p style='text-align: left; padding : 5px; margin: 0px;    font-weight: bold;'>
+            S + V + As + [tính từ/ trạng từ] + As + [dạnh từ/ đại từ]
         </p>
     </span>
 </div>
@@ -91,8 +91,8 @@ Cấu trúc:
 
 <div class="warning" style='padding:0.3em; border-radius: 5px; background-color:#E9D8FD; color:#69337A'>
     <span>
-        <p style='text-align: center; padding : 0px; margin: 0px;    font-weight: bold;'>
-            Chủ ngữ + make + túc từ  + động từ (không To)
+        <p style='text-align: left; padding : 5px; margin: 0px;    font-weight: bold;'>
+            S + make + túc từ  + V (không To)
         </p>
     </span>
 </div>
@@ -101,7 +101,6 @@ Cấu trúc:
 Trong cấu trúc "bắt ai đó phải làm gì", ta có thể dùng "make" hoặc "made", tùy theo thì của câu.
 * Make + someone + V (nguyên mẫu) → Dùng trong hiện tại hoặc tương lai.
 * Made + someone + V (nguyên mẫu) → Dùng trong quá khứ.
-
 
 VD:
 
@@ -114,6 +113,26 @@ VD:
 3. Giáo viên bắt học sinh làm bài tập về nhà.
     > The teacher made the students do homework.
 
+Ngoài ra còn có cấu trúc bị động bên dưới:
+
+<div class="warning" style='padding:0.3em; border-radius: 5px; background-color:#E9D8FD; color:#69337A'>
+    <span>
+        <p style='text-align: left; padding : 5px; margin: 0px;    font-weight: bold;'>
+            S + tobe + made  + to V + something
+        </p>
+    </span>
+</div>
+</br>
+
+VD:
+
+1. Họ bị bắt làm việc thêm giờ.
+    > I were made to work overtime.
+
+2. Các học sinh bị buộc phải hoàn thành bài tập đúng hạn
+    > The students are made to complete their assignments on time. 
+
+
 #### 5. Biết, Biết làm thế nào.
 ---
 
@@ -121,8 +140,8 @@ Cấu trúc:
 
 <div class="warning" style='padding:0.3em; border-radius: 5px; background-color:#E9D8FD; color:#69337A'>
     <span>
-        <p style='text-align: center; padding : 0px; margin: 0px;    font-weight: bold;'>
-            Chủ ngữ + Know how + động từ (có to)
+        <p style='text-align: left; padding : 5px; margin: 0px;    font-weight: bold;'>
+           S + know how + V (có to)
         </p>
     </span>
 </div>
@@ -138,9 +157,80 @@ VD:
 2. Chúng tôi biết đánh máy trước khi chúng tôi vào đại học.
     > We knew how to type before we entered the university.
 
+#### 6. Có.
+---
+
+Cấu trúc:
+
+<div class="warning" style='padding:0.3em; border-radius: 5px; background-color:#E9D8FD; color:#69337A'>
+    <span>
+        <p style='text-align: left; padding : 5px; margin: 0px;    font-weight: bold;'>
+            1/ There is / there was / there has been + Chủ ngữ số ít (Không đếm được)<br>
+            2/ There are / there were/ there have  been + Chủ ngữ số nhiều.<br>
+            3/ There will be + V ( Sẽ có )<br>
+        </p>
+    </span>
+</div>
+</br>
+
+VD:
+
+1. Có một cơn báo đang kéo đến.
+    > There is a storm approaching.
+
+2. Có quá nhiều người trong bữa tiệc.
+    > There are so many people in the party.
+
+3. Có nhiều nước trên sàn nhà nơi anh ta ngã.
+    > There was water on the floor where he fall.
+
+#### 7. Còn... Nữa không, Không... còn nữa
+---
+
+Chú ý:
+* Dùng `any longer` và `any more` trong câu hỏi.
+* Dùng `no longer` và `no more`, `not.. any longer`, `not.. any more` trong câu trả lời.
 
 
+VD:
 
+1. Người cha không còn là trụ cột của gia đình nữa.
+    > A father is no longer the head of household.
 
+2. Tôi không thể trì hoãn nó lại lâu hơn nữa.
+    > I coundn't put it off any longer.
+
+3. Anh ấy không còn làm việc ở đây nữa.
+    > He doesn't work here any longer.
+
+#### 8. Giống như
+---
+
+Cấu trúc:
+
+<div class="warning" style='padding:0.3em; border-radius: 5px; background-color:#E9D8FD; color:#69337A'>
+    <span>
+        <p style='text-align: left; padding : 5px; margin: 0px;    font-weight: bold;'>
+            1/ S + the same +... + as + ... -> (Cùng... với) <br>
+            2/ S + V + the same as + O -> ( Giống như ) <br>
+        </p>
+    </span>
+</div>
+</br>
+
+VD:
+
+1. Tôi muốn một chiếc áo sơ mi như bạn tôi.
+    > I want the same shirt as my friend.
+
+2. Nhà của tôi cùng chiều cao với nhà của anh ta.
+    > My house is the same height as his.
+
+3. Xin cho tôi cũng giống như thế.
+    > Give me the same again, please.
+
+3. Cái điện thoại của bạn giống như cái của tôi.
+    > your phone is the same as mine.
+    
 
 
