@@ -64,6 +64,7 @@ Git is a free and open source distributed version control system. It handles pro
     xargs.exe -a ranch_delete.log git branch -D
     ```
 
+    ---
 1. <b>Full</b> <a id="full"></a>
 
     Lấy dữ liệu từ remote và merge vào local. bao gồm nhánh mới và cập nhật vị trí.
@@ -88,9 +89,10 @@ Git is a free and open source distributed version control system. It handles pro
     git pull origin feature/thuong.nv
     ```
 
+    ---
 1. <b>Cherry-pick</b> <a id="cherry-pick"></a>
 
-    Trong một vài trường hợp ta chỉ chọn một vài commit để di chuyển chúng qua lại giữa các nhánh. Hoặc merge không hết tất cả commit. 
+    [&] Trong một vài trường hợp ta chỉ chọn một vài commit để di chuyển chúng qua lại giữa các nhánh. Hoặc merge không hết tất cả commit. 
 
     Mỗi lần ```cherry-pick``` sẽ tạo ra các hash khác nhau hay là một commit khác.
 
@@ -114,6 +116,29 @@ Git is a free and open source distributed version control system. It handles pro
     git cherry-pick --about
     ```
 
+    [&] Trong quá trình `cherry-pick` có thể chúng ta sẽ cần sửa thêm một vài file nữa ngoài nhưng file của commit.
+
+    Nhưng những file này sẽ không tự động được thêm vào cherry-pick commit.
+
+    Để thêm các sử đổi này, chúng ta có vài cách sau:
+
+    C1. Sử dụng command sau:
+    ```sh
+    git add <file_edit>
+    ```
+    hoặc sử dụng chọn các phần sửa đổi mong muốn.
+
+    ```sh
+    git add -p 
+    ```
+    Kết thúc ta vẫ sử dụng command : ` git cherry-pick --continue` để hoàn thành pick.
+
+    C2. 
+    Vẫn sử dụng command : ` git cherry-pick --continue` như bình thường.
+    Sau đó sử dụng lệnh `git commit --amend` để sửa đổi được chấp nhận, lúc này các thông tin về commit sẽ được giữ nguyên.
+
+
+    ---
 1. <b>Commit</b> <a id="commit"></a>
     
     Đổi tên một commit gần nhất:
@@ -135,7 +160,7 @@ Git is a free and open source distributed version control system. It handles pro
     ```sh
     git push origin feature/thuong.nv -f
     ```
-
+    ---
 1. <b>Fetch</b> <a id="fetch"></a>
 
     Đầu vào có thể là vị trí của bit được set hoặc giá trị
@@ -152,7 +177,7 @@ Git is a free and open source distributed version control system. It handles pro
     ```bash
     git fetch origin feature/thuong.nv
     ```
-
+    ---
 1. <b>Stash</b> <a id="stash"></a>
 
     Lệnh này mục đích giúp ta lưu trữ lại nhưng thây đổi và có thể sử dung nó.
@@ -172,7 +197,7 @@ Git is a free and open source distributed version control system. It handles pro
     ```sh
     git stash drop
     ```
-
+    ---
 1. <b>Submodule</b> <a id="submodule"></a>
 
     Một vài lệnh liên qua đến submodule
@@ -205,6 +230,7 @@ Git is a free and open source distributed version control system. It handles pro
     ```
     git submodule foreach --recursive git clean -fxd
     ```
+    ---
 1. <b>Diff</b> <a id="Diff"></a>
 
     Ta có thể xem được những khác biệt hiện tại với commit gần nhất hoặc giữa 2 commit bất kỳ.
