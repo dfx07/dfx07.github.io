@@ -5,16 +5,6 @@
 </p>
 
 ## Giới thiệu
-
-Trình bày khái niệm và một số các design pattern tiêu biểu trong nhóm Behaviral Pattern.
-
-## Tham khảo
-
-+ [https://refactoring.guru/design-patterns](https://refactoring.guru/design-patterns)
-
-## Nội dung
-
-##### Khái niệm Behavioral Patterns
 ---
 
 Là một nhóm mẫu thiết kế phần mềm (software design pattern) tập chung vào giao tiếp và tương tác giữa các đối tượng trong một hệ thống. Nhằm tăng tính linh hoạt giữa các đối tượng, hay rộng hơn là giữa các mô hình. Ngoài ra còn giúp hệ thống dễ bảo trì.
@@ -37,10 +27,9 @@ Dưới đây là một vài mẫu design pattern thuộc nhóm này sẽ đư�
 
 Việc trình bày sẽ dự trên việc đọc tài liệu và kiến thức cá nhân thu thập được, miêu tả theo hướng dễ hiểu nhất.
 
-
 Ta sẽ đi vào từng lại design pattern cụ thể cùng ví dụ liên quan. Thứ tự sẽ được trình bày theo độ phổ biến giảm dần.
 
-##### Một số mẫu design patterns
+## Nội dung
 ---
 
 1. <b>Observer</b><a id="Observer"></a>
@@ -483,6 +472,11 @@ Ta sẽ đi vào từng lại design pattern cụ thể cùng ví dụ liên qua
 
 </br><!--Section-->
 
+## Tham khảo
+
++ [https://refactoring.guru/design-patterns](https://refactoring.guru/design-patterns)
+
 ##### Cập nhật
 
 - 2024.01.13 : Add Observer Design pattern
+- 2025.06.09 : Update layout of the post

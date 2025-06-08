@@ -96,9 +96,9 @@
                 {
                     "name" : "Structural Design Patterns",
                     "brief": "Trình bày về một số loại mẫu thiết kế hay sử dụng trong nhóm Cấu trúc.",
-                    "date" : "2024.01.13",
+                    "date" : "2025.06.09",
                     "type" : "link",
-                    "href" : "/post/BehavioralPattern/behavioral_patterns.html"
+                    "href" : "/post/StructuralPattern/structural_patterns.html"
                 },
                 {
                     "name" : "Creational Design Patterns",
