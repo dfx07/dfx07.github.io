@@ -122,7 +122,7 @@
                 "TY": 0,
                 "LV": 1,
                 "EN": "People remember their friends and family.",
-                "VI": "Mọi người nhớ bạn bè và gia đình của mình."
+                "VI": "Mọi người nhớ bạn bè và gia đình của họ."
             },
             {
                 "ID": 17,
@@ -559,14 +559,189 @@
                 "EN": "your phone is the same as mine."
             },
             {
-                "ID": 79,
+                "ID": 80,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Bạn đến đây như thế nào",
+                "EN": "How do you get here ?"
+            },
+            {
+                "ID": 81,
+                "TY": 0,
+                "LV": 3,
+                "VI": "bạn muốn nói gì | nó là gì ",
+                "EN": "what would you say ? | what would it be ?"
+            },
+            {
+                "ID": 82,
+                "TY": 0,
+                "LV": 3,
+                "VI": "để tôi thử với cách khác.",
+                "EN": "let me try again using other approach."
+            },
+            {
+                "ID": 83,
+                "TY": 0,
+                "LV": 3,
+                "VI": "bố mẹ tôi làm việc ở ngoại thành, nhưng họ không lái xe đi làm.",
+                "EN": "my parent work downtown, but they don't drive to work."
+            },
+            {
+                "ID": 84,
+                "TY": 0,
+                "LV": 3,
+                "VI": "họ sử dụng phương tiện công cộng, nhưng xe bus không dừng gần nhà chúng tôi.",
+                "EN": "they use public transportation, but the bus doesn't stop near our house."
+            },
+            {
+                "ID": 85,
+                "TY": 0,
+                "LV": 2,
+                "VI": "họ bắt tàu.",
+                "EN": "they take the train."
+            },
+            {
+                "ID": 86,
+                "TY": 2,
+                "LV": 3,
+                "VI": "bạn dạy khi nào ?",
+                "EN": "what time do you get up ?"
+            },
+            {
+                "ID": 87,
+                "TY": 2,
+                "LV": 2,
+                "VI": "đoán xem ?",
+                "EN": "guess what ?"
+            },
+            {
+                "ID": 88,
+                "TY": 0,
+                "LV": 3,
+                "VI": "tôi sống gần giao thông công cộng.",
+                "EN": "i live near the public transportation."
+            },
+            {
+                "ID": 89,
+                "TY": 0,
+                "LV": 3,
+                "VI": "tôi thực sự cần một vài đồ nội thất.",
+                "EN": "i really need some funiture."
+            },
+            {
+                "ID": 90,
+                "TY": 0,
+                "LV": 3,
+                "VI": "chỉ có một cái đèn.",
+                "EN": "there's only a lamp."
+            },
+            {
+                "ID": 91,
+                "TY": 0,
+                "LV": 3,
+                "VI": "Tôi luôn dành 1 giờ để học tiếng anh mỗi ngày.",
+                "EN": "I always speed one hour learning Engish each day."
+            },
+            {
+                "ID": 92,
+                "TY": 2,
+                "LV": 3,
+                "VI": "bạn làm gì vào thời gian rảnh ?",
+                "EN": "what do you do in your free time"
+            },
+            {
+                "ID": 93,
+                "TY": 2,
+                "LV": 3,
+                "VI": "bạn định làm gì vậy ?",
+                "EN": "are you going to do anything ?"
+            },
+            {
+                "ID": 94,
+                "TY": 2,
+                "LV": 2,
+                "VI": "hôm này bạn thế nào ?",
+                "EN": "how are you going today ?"
+            },
+            {
+                "ID": 95,
+                "TY": 2,
+                "LV": 3,
+                "VI": "bạn có bị cúm không ?",
+                "EN": "do you have the flu ?"
+            },
+            {
+                "ID": 96,
+                "TY": 2,
+                "LV": 3,
+                "VI": "tôi có thể lấy gì cho bạn ?",
+                "EN": "can i get you anything ?"
+            },
+            {
+                "ID": 97,
+                "TY": 2,
+                "LV": 3,
+                "VI": "bạn trông không ổn lắm. có chuyện gì vậy ?",
+                "EN": "you don't look so good. what's up ? | what's wrong exactly ? | how's it going ?"
+            },
+            {
+                "ID": 98,
+                "TY": 0,
+                "LV": 3,
+                "VI": "gọi cho tôi nếu bạn cần tôi.",
+                "EN": "call me if you need me."
+            },
+            {
+                "ID": 99,
+                "TY": 2,
+                "LV": 3,
+                "VI": "Có nhà vệ sinh công cộng quanh đây không ?",
+                "EN": "is there a public restroom around here ?"
+            },
+            {
+                "ID": 100,
+                "TY": 2,
+                "LV": 1,
+                "VI": "bạn thích chơi những môn thể thao nào ?",
+                "EN": "what sports do you like ?"
+            },
+            {
+                "ID": 101,
+                "TY": 1,
+                "LV": 3,
+                "VI": "tôi không chơi chúng thường xuyên.",
+                "EN": "i don't play them often."
+            },
+            {
+                "ID": 102,
+                "TY": 2,
+                "LV": 3,
+                "VI": "tại sao bạn lại mệt mỏi ?",
+                "EN": "why are you so tired ?"
+            },
+            {
+                "ID": 103,
+                "TY": 2,
+                "LV": 2,
+                "VI": "khoảng cách từ nơi bạn ở đến đây là bao nhiêu ?",
+                "EN": "how far is it from your place to here | work ?"
+            },
+            {
+                "ID": 104,
+                "TY": 2,
+                "LV": 3,
+                "VI": "bạn đã làm việc này bao giờ chưa ?",
+                "EN": "have you ever done this before? | have you ever tried this before ?"
+            },
+            {
+                "ID": 105,
                 "TY": 0,
                 "LV": 3,
                 "VI": "",
                 "EN": ""
             },
             {
-                "ID": 79,
+                "ID": 106,
                 "TY": 0,
                 "LV": 3,
                 "VI": "",
