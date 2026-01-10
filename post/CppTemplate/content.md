@@ -314,6 +314,76 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 	}
 	```
 
+1. Định nghĩa hàm cùng tên cùng tham số.<a id="section10"></a>
+
+	BT : Tôi muốn viết một hàm trong class mà với tham số là loại cơ bản thì trả về giá trị.
+	còn với các loại object khác thì trả về con trỏ
+
+	VD :
+
+	```cpp
+	namespace tsp
+	{
+		template<typename U> U* ToPtr(U& obj) { return &obj; }
+		template<typename U> U* ToPtr(U* ptr) { return ptr; }
+		template<typename U> U* ToPtr(const std::shared_ptr<U>& ptr) { return ptr.get(); }
+	}
+
+	template<typename K, typename T>
+	class __Manager__
+	{
+	public:
+		typedef T type;
+
+	public:
+		bool Add(const K& key,const type& object)
+		{
+			return m_objects.emplace(key, object).second;
+		}
+
+		bool Remove(const K& key)
+		{
+			return m_objects.erase(key) > 0;
+		}
+
+		template<typename U = T>
+		typename std::enable_if<std::is_fundamental<U>::value, U>::type
+		Get(const K& key) const
+		{
+			auto it = m_objects.find(key);
+			if (it != m_objects.end())
+				return it->second;
+
+			return T{};
+		}
+
+		template<typename U = T>
+		typename std::enable_if<!std::is_fundamental<U>::value, U*>::type
+		Get(const K& key) const
+		{
+			auto it = m_objects.find(key);
+			if (it != m_objects.end())
+				return tsp::ToPtr(it->second);
+			return nullptr;
+		}
+
+	private:
+		std::map<K, T> m_objects;
+	};
+	```
+
+	Câu hỏi được đặt ra tại sao ta cần có thêm : `template<typename U = T>` vào trước hàm.
+
+	Vì T định nghĩa là ở class thì hai hàm Get sẽ được sinh đồng thời, vì thế sẽ dẫn đến lỗi class không thể sinh ra.
+	Để giải quyết vấn đề này người ta thêm `template<typename U = T>` vào hàm đề buộc trình biên dịch tạo riêng cho mỗi hàm không tạo một thể.
+	`SFINAE không áp dụng cho khi định nghĩa các hàm thành viên của class template`
+
+	- U là tham số template riêng của hàm.
+	- Lúc class được biên dịch, compiler chưa cần sinh ra bất kỳ hàm Get() cụ thể nào cả.
+	- Khi bạn gọi obj.Get(...), compiler mới substitute U và kiểm tra điều kiện SFINAE(Substitution Failure Is Not An Error).
+	- Nếu điều kiện sai → hàm đó bị loại bỏ an toàn, không ảnh hưởng đến class.
+
+
 ## Tham khảo
 
 + [https://en.cppreference.com/w/cpp/language/templates](https://en.cppreference.com/w/cpp/language/templates)
@@ -324,5 +394,6 @@ Chỉ khi bạn chỉ định (đinh nhĩa) template một cách cụ thể thì
 * 2024.05.08 : Template chỉ định loại kết quả trả về của hàm *[#](#section7)*
 * 2024.08.01 : Định nghĩa hàm sử dụng tùy thuộc vào loại dữ liệu của template *[#](#section8)*
 * 2024.08.05 : Thiết lập giá trị mặc định tham số hàm *[#](#section9)*
+* 2025.11.07 : Định nghĩa hàm cùng tên cùng tham số.*[#](#section10)*
 
 <br/>

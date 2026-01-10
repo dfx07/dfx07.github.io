@@ -1,4 +1,4 @@
-#  Remote debugging Visual Studio over TeamViewer
+#  Remote debugging Visual Studio
 ---
 <p style="text-align: right; font-size:12px;">
 <b>Create date</b>: 2023.09.26 by <a href="#">thuong.nv</a>
