@@ -81,7 +81,7 @@ Full dump được tạo khi ta cần nhiều thông tin chi tiết. Gần như 
 
     Chúng ta có thể tải công cụ này ở đây : https://learn.microsoft.com/en-us/sysinternals/downloads/procdump
 
-    Ngoài ra chúng ta có thể tìm hiểu thêm hướng dẫn về nó.
+    Ngoài ra chúng ta có thể tìm hiểu thêm hướng dẫn về nó. Đây là một công cụ mạnh có thể bắt khi ứng dụng bị crash độ ngột hoặt treo.
 
     ```sh
     procdump.exe [-mm] [-ma] [-mt] [-mp] [-mc <Mask>] [-md <Callback_DLL>] [-mk]
@@ -109,11 +109,23 @@ Full dump được tạo khi ta cần nhiều thông tin chi tiết. Gần như 
             }
     ```
 
-    Nó là một công cụ mạnh có thể bắt khi ứng dụng bị crash độ ngột hoặt treo.
+    Ví dụ: Ghi mini dump của app tại thời điểm hiện tại:
 
-    Ví dụ : Khi chúng ta muốn tạo mini dump khi crash xảy ra của ứng dụng `app`.
+    `procdump.exe app.exe`
 
-    `procdump -e -w app.exe C:\Dumps\app_mini_%t.dmp` nếu muốn full dump `procdump -ma -e -w app.exe C:\Dumps\app_full_%t.dmp`
+    Ví dụ: Tạo mini dump khi app xảy ra exception:
+
+    `procdump.exe -e -w app.exe C:\Dumps\app_mini_%t.dmp` 
+    
+    nếu muốn full dump
+    
+    `procdump.exe -ma -e -w app.exe C:\Dumps\app_full_%t.dmp`
+
+    Ví dụ: Tạo mini dump khi app xảy ra exception hoặc hang:
+
+    `procdump.exe -h -e -w app.exe C:\Dumps\app_full_%t.dmp`
+
+    > Cấu lệnh này đợi cho app.exe chạy và bắt khi nó xảy ra exception hoặc hang
 
     Một điều lưu ý là việc sử dụng công cụ làm ứng dụng trở nên chậm chạm hơn đáng kể.
 
