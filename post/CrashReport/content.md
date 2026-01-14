@@ -83,7 +83,7 @@ Full dump được tạo khi ta cần nhiều thông tin chi tiết. Gần như 
 
     Ngoài ra chúng ta có thể tìm hiểu thêm hướng dẫn về nó. Đây là một công cụ mạnh có thể bắt khi ứng dụng bị crash độ ngột hoặt treo.
 
-    ```sh
+    ```bash
     procdump.exe [-mm] [-ma] [-mt] [-mp] [-mc <Mask>] [-md <Callback_DLL>] [-mk]
             [-n <Count>]
             [-s <Seconds>]
@@ -102,11 +102,8 @@ Full dump được tạo khi ta cần nhiều thông tin chi tiết. Gần như 
             [-at <Timeout>]
             [-wer]
             [-64]
-            {
-                {{[-w] <Process_Name> | <Service_Name> | <PID>} [<Dump_File> | <Dump_Folder>]}
-            |
-                {-x <Dump_Folder> <Image_File> [Argument, ...]}
-            }
+			[-w] <Process_Name> | <Service_Name> | <PID>
+			[-x] <Dump_Folder> <Image_File> [Argument, ...]
     ```
 
     Ví dụ: Ghi mini dump của app tại thời điểm hiện tại:
