@@ -58,7 +58,8 @@ Trong bài viết này sẽ trình bày các thói quen lập trình và sử d�
 		auto spfile_data = std::unique_ptr<char, decltype(deleter_ptr)>(read_from_file("test.data"), deleter_ptr);
 
 		// C2. 
-		auto spfile_data = std::unique_ptr<char, void(*)(char* )>(read_from_file("test.data"), [](void* ptr) {
+		// Nếu sử dụng void* cần ép kiểu về char trước khi giải phóng.
+		auto spfile_data = std::unique_ptr<char, void(*)(char*)>(read_from_file("test.data"), [](char* ptr) {
 			delete[] ptr;
 		});
 	}
@@ -80,21 +81,33 @@ Trong bài viết này sẽ trình bày các thói quen lập trình và sử d�
 
 	Để giải quyết vấn đề này, ý tưởng được đưa ra là sử dụng con trỏ thông minh (phạm vi trong hàm). Khi này ta chỉ cần custom lại hàm hủy của nó.
 
+	Ta sử dụng `shared_ptr` hoặc `unique_ptr`.
+
 	```cpp
 	void funAutoClean(int _c)
 	{
+		// Two method to clean data when run out of scope
 		int pA = new int[10];
 
-		bool __bEnd__ = false;
-		auto __pAutoCall__ = std::unique_ptr<bool, void(*)(bool *) >(&__bEnd__, [](bool* ptr)
-			{
+		// C1.
+		auto p_s = std::shared_ptr<void>(nullptr,
+			[pA](void* ) {
 				delete[] pA;
 			});
+
+		// C2.
+		auto _fndeleter = [pA](bool* p) { delete p;
+			delete[] pA;
+		};
+
+		auto p_u = std::unique_ptr<bool, decltype(_fndeleter)>(new bool(),
+			_fndeleter);
 
 		if(_c == 4)
 			return 2;
 
 		pA[1] = 100;
+
 		return pA[1] + _c;
 	}
 
