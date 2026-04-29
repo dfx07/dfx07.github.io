@@ -167,10 +167,10 @@
             "type" : "folder",
             "sub":[
                 {
-                    "name" : "Multiple thread",
+                    "name" : "MultiThreading",
                     "date" : "2023.09.26",
                     "type" : "link",
-                    "href" : "/post/??.html"
+                    "href" : "/post/Muti_Threads/mutil_threads.html"
                 },
                 {
                     "name" : "Templates",
