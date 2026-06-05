@@ -230,6 +230,7 @@
             "sub":[
                 {
                     "name" : "Eng2Vi practice",
+                    "brief" : "Bài tập hỗ trợ dịch Tiếng Anh -> Việt và ngược lại",
                     "date" : "2025.02.07",
                     "type" : "link",
                     "href" : "/post/Tool_En2Vi/index.html"
@@ -238,6 +239,12 @@
                     "date" : "2025.02.13",
                     "type" : "link",
                     "href" : "/post/Tool_En2Vi/cmm_sentences.html"
+                },{
+                    "name" : "Encode Data",
+                    "brief" : "Công cụ mã hoá và giải mã file trực tiếp trên trình duyệt. Dữ liệu không được gửi lên máy chủ — mọi xử lý đều diễn ra trên thiết bị của bạn.",
+                    "date" : "2026.06.06",
+                    "type" : "link",
+                    "href" : "/post/Tool_Encode/index.html"
                 }
             ]
         } , {

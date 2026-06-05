@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head type-page="post">
+    <title>English practices</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="keywords" content="2D Geometry,C,C++,vector,point, dot, cross product, magnitude, rotate, angle">
+    <meta name="author" content="thuong.nv">
+    <meta name="copyright" content="thuong.nv">
+
+    <meta property="og:title" content="2D Geometry: Vector and Point">
+    <meta property="og:site_name" content="dfx07">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dfx07.github.io/post/2DGeometry/vector-2d.html">
+    <meta property="og:locale" content="vi">
+
+    <script type="module" src="../../assert/js/ui/jquery.min.js"></script>
+    <script type="module" src="../../assert/js/post.cus.load.js" ></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="../../assert/js/tools.load.js"></script>
+</head>
+
+
+<style>
+.md-content-wapper {
+  max-width: none !important;
+  border: none !important;
+}
+
+.enc-tool *, .enc-tool *::before, .enc-tool *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.enc-tool {
+  --enc-bg: #f5f5f5; --enc-surface: #fff; --enc-surface2: #f0f0f0;
+  --enc-text: #1a1a1a; --enc-text2: #666; --enc-text3: #999;
+  --enc-border: #ddd; --enc-border-focus: #4a90d9;
+  --enc-primary: #4a90d9; --enc-primary-hover: #357abd; --enc-primary-text: #fff;
+  --enc-danger: #e74c3c; --enc-success: #27ae60;
+  --enc-drop-bg: #f8fafc; --enc-drop-border: #c0d0e0;
+  --enc-shadow: 0 2px 12px rgba(0,0,0,.08);
+  --enc-radius: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--enc-bg); color: var(--enc-text);
+  display: flex; justify-content: center;
+  padding: 16px 16px;
+  border-radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .enc-tool {
+    --enc-bg: #1a1a2e; --enc-surface: #16213e; --enc-surface2: #1a2540;
+    --enc-text: #e8e8e8; --enc-text2: #a0a0b0; --enc-text3: #707080;
+    --enc-border: #2a3a5a; --enc-border-focus: #5a9ae6;
+    --enc-primary: #5a9ae6; --enc-primary-hover: #4a8ad6; --enc-primary-text: #fff;
+    --enc-danger: #ff6b6b; --enc-success: #51cf66;
+    --enc-drop-bg: #1a2540; --enc-drop-border: #2a4a6a;
+    --enc-shadow: 0 2px 12px rgba(0,0,0,.3);
+  }
+}
+
+.enc-tool .enc-container {
+  background: var(--enc-surface); border-radius: var(--enc-radius); box-shadow: var(--enc-shadow);
+  width: 100%; max-width: 720px; overflow: hidden;
+}
+
+.enc-tool .enc-header {
+  padding: 24px 28px 0; display: flex; align-items: center; gap: 12px;
+}
+.enc-tool .enc-header svg { width: 28px; height: 28px; color: var(--enc-primary); flex-shrink: 0; }
+.enc-tool .enc-header h1 { font-size: 20px; font-weight: 600; flex: 1; }
+.enc-tool .enc-lang-btn {
+  background: none; border: 1.5px solid var(--enc-border); border-radius: 6px;
+  padding: 4px 10px; font-size: 12px; font-weight: 600; cursor: pointer;
+  color: var(--enc-text2); transition: all .2s;
+}
+.enc-tool .enc-lang-btn:hover { border-color: var(--enc-primary); color: var(--enc-primary); }
+
+.enc-tool .enc-tabs {
+  display: flex; margin: 20px 28px 0; background: var(--enc-surface2);
+  border-radius: 8px; padding: 3px;
+}
+.enc-tool .enc-tab {
+  flex: 1; padding: 10px; text-align: center; border-radius: 6px;
+  cursor: pointer; font-size: 14px; font-weight: 500; color: var(--enc-text2);
+  transition: all .2s; border: none; background: none;
+}
+.enc-tool .enc-tab.active { background: var(--enc-primary); color: var(--enc-primary-text); }
+.enc-tool .enc-tab:not(.active):hover { color: var(--enc-text); }
+
+.enc-tool .enc-body { padding: 24px 28px 28px; }
+
+.enc-tool .enc-seg {
+  display: inline-flex; gap: 4px; margin-bottom: 16px;
+  background: var(--enc-surface2); border-radius: 8px; padding: 3px;
+}
+.enc-tool .enc-seg-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 16px; border-radius: 6px; border: none; background: none;
+  font-size: 13px; font-weight: 500; color: var(--enc-text3); cursor: pointer;
+  transition: all .2s;
+}
+.enc-tool .enc-seg-btn svg { opacity: .5; transition: opacity .2s; }
+.enc-tool .enc-seg-btn.active {
+  background: var(--enc-surface); color: var(--enc-text);
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+.enc-tool .enc-seg-btn.active svg { opacity: 1; }
+.enc-tool .enc-seg-btn:not(.active):hover { color: var(--enc-text2); }
+
+.enc-tool .enc-dropzone {
+  border: 2px dashed var(--enc-drop-border); border-radius: var(--enc-radius);
+  background: var(--enc-drop-bg); padding: 32px 20px; text-align: center;
+  cursor: pointer; transition: all .2s; position: relative;
+}
+.enc-tool .enc-dropzone:hover, .enc-tool .enc-dropzone.dragover {
+  border-color: var(--enc-primary); background: color-mix(in srgb, var(--enc-primary) 5%, var(--enc-drop-bg));
+}
+.enc-tool .enc-dropzone svg { width: 36px; height: 36px; color: var(--enc-text3); margin-bottom: 10px; }
+.enc-tool .enc-dropzone p { font-size: 14px; color: var(--enc-text2); }
+.enc-tool .enc-dropzone small { font-size: 12px; color: var(--enc-text3); display: block; margin-top: 6px; }
+.enc-tool .enc-dropzone input { display: none; }
+
+.enc-tool .enc-file-info {
+  display: none; margin-top: 12px; padding: 10px 14px;
+  background: var(--enc-surface2); border-radius: 8px;
+  font-size: 13px; color: var(--enc-text); align-items: center; gap: 8px;
+}
+.enc-tool .enc-file-info.visible { display: flex; }
+.enc-tool .enc-file-info .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.enc-tool .enc-file-info .size { color: var(--enc-text2); flex-shrink: 0; }
+.enc-tool .enc-file-info .remove {
+  cursor: pointer; color: var(--enc-text3); background: none; border: none;
+  font-size: 18px; line-height: 1; padding: 0 2px;
+}
+.enc-tool .enc-file-info .remove:hover { color: var(--enc-danger); }
+
+.enc-tool .enc-dir-picker label {
+  display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--enc-text2);
+}
+.enc-tool .enc-dir-picker .pick-row { display: flex; gap: 8px; align-items: center; }
+.enc-tool .enc-pick-btn {
+  padding: 8px 14px; border: 1.5px solid var(--enc-border); border-radius: 8px;
+  background: none; color: var(--enc-text); font-size: 13px; cursor: pointer;
+  transition: all .2s; white-space: nowrap;
+}
+.enc-tool .enc-pick-btn:hover { border-color: var(--enc-primary); color: var(--enc-primary); }
+.enc-tool .enc-dir-path {
+  flex: 1; font-size: 12px; color: var(--enc-text2);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  direction: rtl; text-align: left;
+}
+.enc-tool .enc-folder-info { margin-top: 6px; font-size: 12px; }
+.enc-tool .enc-folder-info .folder-stats { color: var(--enc-text3); }
+
+.enc-tool .enc-field { margin-top: 16px; }
+.enc-tool .enc-field label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--enc-text2); }
+.enc-tool .enc-field .input-wrap {
+  display: flex; align-items: center; width: 100%;
+  border: 1.5px solid var(--enc-border);
+  border-radius: 8px; overflow: hidden; transition: border-color .2s;
+  box-shadow: none;
+}
+.enc-tool .enc-field .input-wrap:focus-within { border-color: var(--enc-border-focus); }
+.enc-tool .enc-field input[type="password"],
+.enc-tool .enc-field input[type="text"] {
+  flex: 1; min-width: 0; width: 100% !important; height: auto !important;
+  border: none !important; outline: none !important; padding: 10px 14px !important;
+  margin: 0 !important; font-size: 14px; line-height: 1.4;
+  background: transparent !important; color: var(--enc-text);
+  box-shadow: none !important; -webkit-box-shadow: none !important;
+  border-radius: 0 !important; -webkit-appearance: none;
+  vertical-align: middle;
+}
+.enc-tool .enc-field input[type="password"]:focus,
+.enc-tool .enc-field input[type="text"]:focus {
+  box-shadow: none !important; -webkit-box-shadow: none !important;
+  border: none !important; outline: none !important;
+}
+.enc-tool .enc-toggle-pw {
+  background: none; border: none; padding: 0 12px; cursor: pointer;
+  color: var(--enc-text3); display: flex; align-items: center;
+}
+.enc-tool .enc-toggle-pw:hover { color: var(--enc-text2); }
+.enc-tool .enc-toggle-pw svg { width: 18px; height: 18px; }
+
+.enc-tool .enc-btn {
+  width: 100%; margin-top: 20px; padding: 12px; border: none; border-radius: 8px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  background: var(--enc-primary); color: var(--enc-primary-text);
+  transition: background .2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.enc-tool .enc-btn:hover { background: var(--enc-primary-hover); }
+.enc-tool .enc-btn:disabled { opacity: .5; cursor: not-allowed; }
+.enc-tool .enc-btn .spinner {
+  width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff; border-radius: 50%; animation: encSpin .6s linear infinite;
+}
+
+@keyframes encSpin { to { transform: rotate(360deg); } }
+
+.enc-tool .enc-progress { display: none; margin-top: 16px; }
+.enc-tool .enc-progress.visible { display: block; }
+.enc-tool .enc-progress-bar { height: 4px; background: var(--enc-surface2); border-radius: 2px; overflow: hidden; }
+.enc-tool .enc-progress-bar-fill {
+  height: 100%; background: var(--enc-primary); border-radius: 2px; transition: width .3s;
+}
+.enc-tool .enc-progress-bar-fill.indeterminate {
+  animation: encIndeterminate 1.5s ease-in-out infinite; width: 40%;
+}
+@keyframes encIndeterminate {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+.enc-tool .enc-progress-text { font-size: 12px; color: var(--enc-text2); margin-top: 6px; }
+
+.enc-tool .enc-status { display: none; margin-top: 16px; padding: 12px 14px; border-radius: 8px; font-size: 13px; }
+.enc-tool .enc-status.visible { display: block; }
+.enc-tool .enc-status.error { background: color-mix(in srgb, var(--enc-danger) 10%, var(--enc-surface)); color: var(--enc-danger); }
+.enc-tool .enc-status.success { background: color-mix(in srgb, var(--enc-success) 10%, var(--enc-surface)); color: var(--enc-success); }
+
+.enc-tool .enc-intro {
+  padding: 20px 28px; border-bottom: 1px solid var(--enc-border);
+}
+.enc-tool .enc-intro p {
+  font-size: 13px; color: var(--enc-text2); line-height: 1.6; margin: 0;
+}
+.enc-tool .enc-intro .enc-badge-row {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+}
+.enc-tool .enc-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600;
+  background: var(--enc-surface2); color: var(--enc-text3);
+}
+.enc-tool .enc-badge svg { width: 12px; height: 12px; }
+
+.container-padding .enc-guide-panel {
+  --enc-surface: #fff; --enc-surface2: #f0f0f0;
+  --enc-text: #1a1a1a; --enc-text2: #666; --enc-text3: #999;
+  --enc-border: #ddd; --enc-primary: #4a90d9;
+  --enc-radius: 10px; --enc-shadow: 0 2px 12px rgba(0,0,0,.08);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--enc-surface); border-radius: var(--enc-radius); box-shadow: var(--enc-shadow);
+  padding: 20px 22px; position: sticky; top: 20px;
+}
+@media (prefers-color-scheme: dark) {
+  .container-padding .enc-guide-panel {
+    --enc-surface: #16213e; --enc-surface2: #1a2540;
+    --enc-text: #e8e8e8; --enc-text2: #a0a0b0; --enc-text3: #707080;
+    --enc-border: #2a3a5a; --enc-primary: #5a9ae6;
+    --enc-shadow: 0 2px 12px rgba(0,0,0,.3);
+  }
+}
+.container-padding .enc-guide-panel .enc-guide-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; color: var(--enc-text); margin-bottom: 14px;
+}
+.container-padding .enc-guide-panel .enc-guide-title svg { width: 18px; height: 18px; color: var(--enc-primary); }
+.container-padding .enc-guide-panel ol {
+  padding-left: 18px; margin: 0;
+}
+.container-padding .enc-guide-panel li {
+  font-size: 12.5px; color: var(--enc-text2); line-height: 1.7; margin-bottom: 8px;
+}
+.container-padding .enc-guide-panel li strong { color: var(--enc-text); font-weight: 600; }
+.container-padding .enc-guide-panel .enc-guide-note {
+  margin-top: 16px; padding: 10px 12px;
+  background: var(--enc-surface2); border-radius: 8px;
+  font-size: 11.5px; color: var(--enc-text3); line-height: 1.6;
+}
+.container-padding .enc-guide-panel .enc-guide-note svg { width: 13px; height: 13px; vertical-align: -2px; margin-right: 4px; color: var(--enc-primary); }
+@media only screen and (max-width: 979px) {
+  .container-padding .enc-guide-panel { display: none; }
+}
+
+.enc-tool .enc-footer {
+  padding: 12px 28px; border-top: 1px solid var(--enc-border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.enc-tool .enc-version {
+  font-size: 11px; color: var(--enc-text3); font-family: monospace;
+}
+.enc-tool .enc-credit {
+  font-size: 11px; color: var(--enc-text3);
+}
+</style>
+
+
+<body>
+    <!-- Header -->
+    <div class="navbar navbar-static-top" page-content="header"></div>
+    <!-- Body   -->
+    <div class="bg-light">
+        <div class="container-fluid12">
+            <div class="container-row">
+                <div class="container-navbar sticky">
+                    <!-- use js for dynamic load : all post + table of content section-->
+                </div>
+                <div id="print-area" class="container-content">
+                    <div class="md-content-wapper">
+                        <div class="wapper">
+                              <div class="enc-tool">
+                                <div class="enc-container">
+                                  <div class="enc-header">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round">
+                                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg>
+                                    <h1 id="encTitle">Mã Hoá File</h1>
+                                    <button class="enc-lang-btn" id="encLangBtn">EN</button>
+                                  </div>
+
+                                  <div class="enc-intro">
+                                    <p id="encIntroText">Công cụ mã hoá và giải mã file trực tiếp trên trình duyệt. Dữ liệu không được gửi lên máy chủ — mọi xử lý đều diễn ra trên thiết bị của bạn.</p>
+                                    <div class="enc-badge-row">
+                                      <span class="enc-badge">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                        AES-256-GCM
+                                      </span>
+                                      <span class="enc-badge">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                        PBKDF2 · 600K
+                                      </span>
+                                      <span class="enc-badge">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                        Client-side
+                                      </span>
+                                    </div>
+                                  </div>
+
+                                  <div class="enc-tabs" id="encModeTabs">
+                                    <button class="enc-tab active" data-mode="encrypt" id="encTabEncrypt">Mã hoá</button>
+                                    <button class="enc-tab" data-mode="decrypt" id="encTabDecrypt">Giải mã</button>
+                                  </div>
+
+                                  <div class="enc-body">
+                                    <div class="enc-seg" id="encTypeTabs">
+                                      <button class="enc-seg-btn active" data-type="file" id="encTabFile">
+                                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                          <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                        File
+                                      </button>
+                                      <button class="enc-seg-btn" data-type="folder" id="encTabFolder">
+                                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                                        </svg>
+                                        Folder
+                                      </button>
+                                    </div>
+                                    <div id="encFileSection">
+                                      <div class="enc-dropzone" id="encDropzone">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round">
+                                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                          <polyline points="17 8 12 3 7 8" />
+                                          <line x1="12" y1="3" x2="12" y2="15" />
+                                        </svg>
+                                        <p id="encDropText">Kéo thả file vào đây hoặc nhấn để chọn (nhiều file)</p>
+                                        <small id="encDropHint">Tối đa 2 GB</small>
+                                        <input type="file" id="encFileInput" multiple>
+                                      </div>
+                                      <div class="enc-file-info" id="encFileInfo">
+                                        <span class="name" id="encFileName"></span>
+                                        <span class="size" id="encFileSize"></span>
+                                        <button class="remove" id="encFileRemove">&times;</button>
+                                      </div>
+                                    </div>
+
+                                    <div id="encFolderSection" style="display:none">
+                                      <div class="enc-dir-picker">
+                                        <label id="encLabelInput">Thư mục đầu vào</label>
+                                        <div class="pick-row">
+                                          <button class="enc-pick-btn" id="encPickInputBtn">Chọn thư mục</button>
+                                          <span class="enc-dir-path" id="encInputPath">Chưa chọn</span>
+                                        </div>
+                                        <input type="file" id="encFolderInput" style="display:none" webkitdirectory>
+                                        <div class="enc-folder-info" id="encFolderInfo">
+                                          <div class="folder-stats" id="encFolderStats"></div>
+                                        </div>
+                                      </div>
+                                      <div class="enc-dir-picker" style="margin-top:12px">
+                                        <label id="encLabelOutput">Thư mục đầu ra</label>
+                                        <div class="pick-row">
+                                          <button class="enc-pick-btn" id="encPickOutputBtn">Chọn thư mục</button>
+                                          <span class="enc-dir-path" id="encOutputPath">Chưa chọn</span>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="enc-field">
+                                      <label id="encLabelPw">Mật khẩu</label>
+                                      <div class="input-wrap">
+                                        <input type="password" id="encPassword" placeholder="Nhập mật khẩu">
+                                        <button class="enc-toggle-pw" data-target="encPassword">
+                                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                          </svg>
+                                        </button>
+                                      </div>
+                                    </div>
+
+                                    <div class="enc-field" id="encConfirmField">
+                                      <label id="encLabelConfirm">Xác nhận mật khẩu</label>
+                                      <div class="input-wrap">
+                                        <input type="password" id="encConfirmPassword" placeholder="Nhập lại mật khẩu">
+                                        <button class="enc-toggle-pw" data-target="encConfirmPassword">
+                                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                          </svg>
+                                        </button>
+                                      </div>
+                                    </div>
+
+                                    <div class="enc-progress" id="encProgress">
+                                      <div class="enc-progress-bar">
+                                        <div class="enc-progress-bar-fill indeterminate" id="encProgressFill"></div>
+                                      </div>
+                                      <div class="enc-progress-text" id="encProgressText"></div>
+                                    </div>
+
+                                    <div class="enc-status" id="encStatus"></div>
+
+                                    <button class="enc-btn" id="encActionBtn" disabled>
+                                      <span id="encBtnText">Mã hoá file</span>
+                                    </button>
+                                  </div>
+
+                                  <div class="enc-footer">
+                                    <span class="enc-version" id="encVersion">v1.0.0</span>
+                                    <span class="enc-credit">Web Crypto API</span>
+                                  </div>
+                                </div>
+
+                              </div>
+
+<script>
+(function() {
+const T = {
+  vi: {
+    title: 'Mã Hoá File',
+    encrypt: 'Mã hoá', decrypt: 'Giải mã',
+    dropFile: 'Kéo thả file vào đây hoặc nhấn để chọn (nhiều file)',
+    maxSize: 'Tối đa 2 GB',
+    inputDir: 'Thư mục đầu vào',
+    outputDir: 'Thư mục đầu ra',
+    pickDir: 'Chọn thư mục',
+    notPicked: 'Chưa chọn',
+    password: 'Mật khẩu',
+    confirmPw: 'Xác nhận mật khẩu',
+    phPassword: 'Nhập mật khẩu',
+    phConfirm: 'Nhập lại mật khẩu',
+    btnEncFile: 'Mã hoá file', btnDecFile: 'Giải mã file',
+    btnEncFolder: 'Mã hoá folder', btnDecFolder: 'Giải mã folder',
+    processing: 'Đang xử lý...',
+    reading: 'Đang đọc file...',
+    deriving: 'Đang tạo khoá mã hoá...',
+    encrypting: 'Đang mã hoá dữ liệu...',
+    decrypting: 'Đang giải mã dữ liệu...',
+    verifying: 'Đang kiểm tra mật khẩu...',
+    creating: 'Đang tạo file...',
+    encDone: 'Mã hoá thành công! File đã được tải xuống.',
+    decDone: 'Giải mã thành công! File đã được tải xuống.',
+    encFolderDone: n => `Mã hoá thành công! ${n} file đã được ghi vào thư mục đầu ra.`,
+    decFolderDone: n => `Giải mã thành công! ${n} file đã được ghi vào thư mục đầu ra.`,
+    encFolderPartial: (ok, total, err) => `Mã hoá xong! ${ok}/${total} file thành công, ${err} file lỗi.`,
+    decFolderPartial: (ok, total, err) => `Giải mã xong! ${ok}/${total} file thành công, ${err} file lỗi.`,
+    folderEncrypting: name => `Đang mã hoá: ${name}`,
+    folderDecrypting: name => `Đang giải mã: ${name}`,
+    errNoCrypto: 'Trình duyệt không hỗ trợ Web Crypto API. Vui lòng dùng trình duyệt mới hơn.',
+    errTooBig: 'File quá lớn. Tối đa 2 GB.',
+    errEmptyFolder: 'Thư mục rỗng hoặc không có file hợp lệ.',
+    errNoEnc: 'Không tìm thấy file .enc nào trong thư mục.',
+    errNotEnc: 'Đây không phải file đã mã hoá (.enc).',
+    errVersion: 'Phiên bản file không được hỗ trợ.',
+    errTooSmall: 'File quá nhỏ, không hợp lệ.',
+    errWrongPw: 'Sai mật khẩu. Vui lòng thử lại.',
+    errCorrupt: 'File bị hỏng hoặc đã bị chỉnh sửa.',
+    errPwMismatch: 'Mật khẩu không khớp.',
+    errNoPw: 'Vui lòng nhập mật khẩu.',
+    errNoFile: 'Vui lòng chọn file.',
+    errPickDir: 'Không thể chọn thư mục đầu ra.',
+    errGeneric: 'Đã xảy ra lỗi.',
+    langSwitch: 'EN',
+    intro: 'Công cụ mã hoá và giải mã file trực tiếp trên trình duyệt. Dữ liệu không được gửi lên máy chủ — mọi xử lý đều diễn ra trên thiết bị của bạn.',
+    guideLabel: 'Hướng dẫn sử dụng',
+    guideSteps: [
+      'Chọn chế độ <strong>Mã hoá</strong> hoặc <strong>Giải mã</strong>.',
+      'Chọn <strong>File</strong> (kéo thả hoặc nhấn chọn, hỗ trợ nhiều file) hoặc <strong>Folder</strong> (chọn thư mục đầu vào và đầu ra).',
+      'Nhập <strong>mật khẩu</strong>. Khi mã hoá, cần xác nhận lại mật khẩu.',
+      'Nhấn nút để bắt đầu. File mã hoá sẽ có đuôi <strong>.enc</strong>.',
+      'Để giải mã, chọn file <strong>.enc</strong> và nhập đúng mật khẩu đã dùng khi mã hoá.',
+    ],
+    guideNote: 'Mọi dữ liệu được xử lý hoàn toàn trên thiết bị của bạn. Không có thông tin nào được gửi lên máy chủ.',
+  },
+  en: {
+    title: 'File Encryption',
+    encrypt: 'Encrypt', decrypt: 'Decrypt',
+    dropFile: 'Drag & drop files here or click to browse',
+    maxSize: 'Max 2 GB',
+    inputDir: 'Input folder',
+    outputDir: 'Output folder',
+    pickDir: 'Choose folder',
+    notPicked: 'Not selected',
+    password: 'Password',
+    confirmPw: 'Confirm password',
+    phPassword: 'Enter password',
+    phConfirm: 'Re-enter password',
+    btnEncFile: 'Encrypt file', btnDecFile: 'Decrypt file',
+    btnEncFolder: 'Encrypt folder', btnDecFolder: 'Decrypt folder',
+    processing: 'Processing...',
+    reading: 'Reading file...',
+    deriving: 'Deriving encryption key...',
+    encrypting: 'Encrypting data...',
+    decrypting: 'Decrypting data...',
+    verifying: 'Verifying password...',
+    creating: 'Creating file...',
+    encDone: 'Encryption complete! File has been downloaded.',
+    decDone: 'Decryption complete! File has been downloaded.',
+    encFolderDone: n => `Encryption complete! ${n} files written to output folder.`,
+    decFolderDone: n => `Decryption complete! ${n} files written to output folder.`,
+    encFolderPartial: (ok, total, err) => `Encryption done! ${ok}/${total} files succeeded, ${err} failed.`,
+    decFolderPartial: (ok, total, err) => `Decryption done! ${ok}/${total} files succeeded, ${err} failed.`,
+    folderEncrypting: name => `Encrypting: ${name}`,
+    folderDecrypting: name => `Decrypting: ${name}`,
+    errNoCrypto: 'Your browser does not support Web Crypto API. Please use a modern browser.',
+    errTooBig: 'File is too large. Max 2 GB.',
+    errEmptyFolder: 'Folder is empty or contains no valid files.',
+    errNoEnc: 'No .enc files found in this folder.',
+    errNotEnc: 'This is not a valid encrypted file (.enc).',
+    errVersion: 'Unsupported file format version.',
+    errTooSmall: 'File is too small to be valid.',
+    errWrongPw: 'Wrong password. Please try again.',
+    errCorrupt: 'File is corrupted or has been tampered with.',
+    errPwMismatch: 'Passwords do not match.',
+    errNoPw: 'Please enter a password.',
+    errNoFile: 'Please select a file.',
+    errPickDir: 'Could not select output folder.',
+    errGeneric: 'An error occurred.',
+    langSwitch: 'VI',
+    intro: 'Encrypt and decrypt files directly in your browser. No data is sent to any server — all processing happens on your device.',
+    guideLabel: 'How to use',
+    guideSteps: [
+      'Choose <strong>Encrypt</strong> or <strong>Decrypt</strong> mode.',
+      'Select <strong>File</strong> (drag & drop or click to browse, multiple files supported) or <strong>Folder</strong> (choose input and output folders).',
+      'Enter a <strong>password</strong>. When encrypting, confirm the password.',
+      'Click the button to start. Encrypted files will have the <strong>.enc</strong> extension.',
+      'To decrypt, select an <strong>.enc</strong> file and enter the same password used for encryption.',
+    ],
+    guideNote: 'All data is processed entirely on your device. No information is sent to any server.',
+  }
+};
+
+let lang = 'vi';
+
+function t(key, ...args) {
+  const v = T[lang][key];
+  return typeof v === 'function' ? v(...args) : v;
+}
+
+function applyLang() {
+  $('encTitle').textContent = t('title');
+  $('encTabEncrypt').textContent = t('encrypt');
+  $('encTabDecrypt').textContent = t('decrypt');
+  $('encLabelInput').textContent = t('inputDir');
+  $('encLabelOutput').textContent = t('outputDir');
+  $('encPickInputBtn').textContent = t('pickDir');
+  $('encPickOutputBtn').textContent = t('pickDir');
+  if (!inputDirHandle) $('encInputPath').textContent = t('notPicked');
+  if (!outputDirHandle) $('encOutputPath').textContent = t('notPicked');
+  $('encLabelPw').textContent = t('password');
+  $('encLabelConfirm').textContent = t('confirmPw');
+  $('encPassword').placeholder = t('phPassword');
+  $('encConfirmPassword').placeholder = t('phConfirm');
+  $('encDropText').textContent = t('dropFile');
+  $('encDropHint').textContent = t('maxSize');
+  $('encLangBtn').textContent = t('langSwitch');
+  $('encIntroText').textContent = t('intro');
+  $('encGuideLabel').textContent = t('guideLabel');
+  const steps = t('guideSteps');
+  $('encGuideList').innerHTML = steps.map(s => `<li>${s}</li>`).join('');
+  $('encGuideNote').textContent = t('guideNote');
+  updateBtnText();
+}
+
+const MAGIC = new Uint8Array([0x45, 0x46, 0x30, 0x31]);
+const VERSION = 0x01;
+const ITERATIONS = 600000;
+const SALT_LEN = 16;
+const IV_LEN = 12;
+const HASH_LEN = 32;
+const HEADER_SIZE = 4 + 1 + SALT_LEN + HASH_LEN + SALT_LEN + IV_LEN;
+const MAX_FILE_SIZE = 2 * 1024 * 1024 * 1024;
+const IGNORED_FILES = ['.ds_store', 'thumbs.db', 'desktop.ini', '.gitkeep'];
+
+let currentMode = 'encrypt';
+let inputType = 'file';
+let selectedFile = null;
+let selectedFiles = [];
+let inputDirHandle = null;
+let outputDirHandle = null;
+let processing = false;
+
+const $ = id => document.getElementById(id);
+
+async function importKey(password) {
+  return crypto.subtle.importKey(
+    'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits', 'deriveKey']
+  );
+}
+
+async function deriveHash(keyMaterial, salt) {
+  const bits = await crypto.subtle.deriveBits(
+    { name: 'PBKDF2', salt, iterations: ITERATIONS, hash: 'SHA-256' },
+    keyMaterial, 256
+  );
+  return new Uint8Array(bits);
+}
+
+async function deriveAESKey(keyMaterial, salt, usage) {
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt, iterations: ITERATIONS, hash: 'SHA-256' },
+    keyMaterial,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    [usage]
+  );
+}
+
+function constantTimeEqual(a, b) {
+  if (a.length !== b.length) return false;
+  let r = 0;
+  for (let i = 0; i < a.length; i++) r |= a[i] ^ b[i];
+  return r === 0;
+}
+
+function buildPayload(extension, content) {
+  const ext = new TextEncoder().encode(extension);
+  const payload = new Uint8Array(1 + ext.length + content.byteLength);
+  payload[0] = ext.length;
+  payload.set(ext, 1);
+  payload.set(new Uint8Array(content), 1 + ext.length);
+  return payload;
+}
+
+function parsePayload(data) {
+  const arr = new Uint8Array(data);
+  const extLen = arr[0];
+  const ext = new TextDecoder().decode(arr.slice(1, 1 + extLen));
+  const content = arr.slice(1 + extLen);
+  return { ext, content };
+}
+
+function packFile(vSalt, vHash, eSalt, iv, ciphertext) {
+  const ct = new Uint8Array(ciphertext);
+  const out = new Uint8Array(HEADER_SIZE + ct.length);
+  let o = 0;
+  out.set(MAGIC, o); o += 4;
+  out[o++] = VERSION;
+  out.set(vSalt, o); o += SALT_LEN;
+  out.set(vHash, o); o += HASH_LEN;
+  out.set(eSalt, o); o += SALT_LEN;
+  out.set(iv, o); o += IV_LEN;
+  out.set(ct, o);
+  return out;
+}
+
+function unpackFile(buffer) {
+  const arr = new Uint8Array(buffer);
+  if (arr.length < HEADER_SIZE) throw new Error(t('errTooSmall'));
+  for (let i = 0; i < 4; i++) {
+    if (arr[i] !== MAGIC[i]) throw new Error(t('errNotEnc'));
+  }
+  if (arr[4] !== VERSION) throw new Error(t('errVersion'));
+  let o = 5;
+  const vSalt = arr.slice(o, o + SALT_LEN); o += SALT_LEN;
+  const vHash = arr.slice(o, o + HASH_LEN); o += HASH_LEN;
+  const eSalt = arr.slice(o, o + SALT_LEN); o += SALT_LEN;
+  const iv = arr.slice(o, o + IV_LEN); o += IV_LEN;
+  const ciphertext = arr.slice(o);
+  return { vSalt, vHash, eSalt, iv, ciphertext };
+}
+
+function saltToHex(salt) {
+  return Array.from(salt).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function encryptSingleFile(file, password) {
+  showProgress(t('reading'));
+  const content = await file.arrayBuffer();
+  const ext = file.name.includes('.') ? file.name.split('.').pop() : '';
+
+  showProgress(t('deriving'));
+  const vSalt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
+  const eSalt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
+  const iv = crypto.getRandomValues(new Uint8Array(IV_LEN));
+
+  const keyMaterial = await importKey(password);
+  const vHash = await deriveHash(keyMaterial, vSalt);
+
+  showProgress(t('encrypting'));
+  const aesKey = await deriveAESKey(keyMaterial, eSalt, 'encrypt');
+  const payload = buildPayload(ext, content);
+  const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, aesKey, payload);
+
+  showProgress(t('creating'));
+  const packed = packFile(vSalt, vHash, eSalt, iv, ciphertext);
+  const baseName = file.name.includes('.') ? file.name.substring(0, file.name.lastIndexOf('.')) : file.name;
+  download(packed, baseName + '.enc');
+  showSuccess(t('encDone'));
+}
+
+async function decryptSingleFile(file, password) {
+  showProgress(t('reading'));
+  const buffer = await file.arrayBuffer();
+  const parsed = unpackFile(buffer);
+
+  showProgress(t('verifying'));
+  const keyMaterial = await importKey(password);
+  const computedHash = await deriveHash(keyMaterial, parsed.vSalt);
+  if (!constantTimeEqual(computedHash, parsed.vHash)) {
+    throw new Error(t('errWrongPw'));
+  }
+
+  showProgress(t('decrypting'));
+  const aesKey = await deriveAESKey(keyMaterial, parsed.eSalt, 'decrypt');
+  let decrypted;
+  try {
+    decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: parsed.iv }, aesKey, parsed.ciphertext);
+  } catch {
+    throw new Error(t('errCorrupt'));
+  }
+
+  showProgress(t('creating'));
+  const { ext, content } = parsePayload(decrypted);
+  const baseName = file.name.endsWith('.enc') ? file.name.slice(0, -4) : 'decrypted';
+  const fileName = ext ? baseName + '.' + ext : baseName;
+  download(content, fileName);
+  showSuccess(t('decDone'));
+}
+
+async function encryptMultiFiles(files, password) {
+  showProgressPercent(t('deriving'), 0, files.length);
+  const vSalt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
+  const eSalt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
+
+  const keyMaterial = await importKey(password);
+  const vHash = await deriveHash(keyMaterial, vSalt);
+  const aesKey = await deriveAESKey(keyMaterial, eSalt, 'encrypt');
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    showProgressPercent(t('encrypting'), i + 1, files.length);
+    const content = await file.arrayBuffer();
+    const ext = file.name.includes('.') ? file.name.split('.').pop() : '';
+    const iv = crypto.getRandomValues(new Uint8Array(IV_LEN));
+    const payload = buildPayload(ext, content);
+    const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, aesKey, payload);
+    const packed = packFile(vSalt, vHash, eSalt, iv, ciphertext);
+    const baseName = file.name.includes('.') ? file.name.substring(0, file.name.lastIndexOf('.')) : file.name;
+    download(packed, baseName + '.enc');
+    await new Promise(r => setTimeout(r, 100));
+  }
+  showSuccess(t('encDone') + ` (${files.length} file)`);
+}
+
+async function decryptMultiFiles(files, password) {
+  showProgressPercent(t('verifying'), 0, files.length);
+  const firstBuf = await files[0].arrayBuffer();
+  const firstParsed = unpackFile(firstBuf);
+  const keyMaterial = await importKey(password);
+  const computedHash = await deriveHash(keyMaterial, firstParsed.vSalt);
+  if (!constantTimeEqual(computedHash, firstParsed.vHash)) {
+    throw new Error(t('errWrongPw'));
+  }
+
+  const keyCache = new Map();
+  const firstESaltHex = saltToHex(firstParsed.eSalt);
+  keyCache.set(firstESaltHex, await deriveAESKey(keyMaterial, firstParsed.eSalt, 'decrypt'));
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    showProgressPercent(t('decrypting'), i + 1, files.length);
+    const parsed = i === 0 ? firstParsed : unpackFile(await file.arrayBuffer());
+    const eSaltHex = i === 0 ? firstESaltHex : saltToHex(parsed.eSalt);
+    if (!keyCache.has(eSaltHex)) {
+      keyCache.set(eSaltHex, await deriveAESKey(keyMaterial, parsed.eSalt, 'decrypt'));
+    }
+    const aesKey = keyCache.get(eSaltHex);
+    let decrypted;
+    try {
+      decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: parsed.iv }, aesKey, parsed.ciphertext);
+    } catch {
+      throw new Error(t('errCorrupt'));
+    }
+    const { ext, content } = parsePayload(decrypted);
+    const baseName = file.name.endsWith('.enc') ? file.name.slice(0, -4) : 'decrypted';
+    const fileName = ext ? baseName + '.' + ext : baseName;
+    download(content, fileName);
+    await new Promise(r => setTimeout(r, 100));
+  }
+  showSuccess(t('decDone') + ` (${files.length} file)`);
+}
+
+async function getOrCreateSubDir(rootHandle, relativePath) {
+  const parts = relativePath.split('/').filter(Boolean);
+  let current = rootHandle;
+  for (const part of parts) {
+    current = await current.getDirectoryHandle(part, { create: true });
+  }
+  return current;
+}
+
+async function writeFileToDir(dirHandle, fileName, data) {
+  const fileHandle = await dirHandle.getFileHandle(fileName, { create: true });
+  const writable = await fileHandle.createWritable();
+  await writable.write(data);
+  await writable.close();
+}
+
+async function encryptFolder(files, password) {
+  showProgressPercent(t('deriving'), 0, files.length);
+  const vSalt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
+  const eSalt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
+
+  const keyMaterial = await importKey(password);
+  const vHash = await deriveHash(keyMaterial, vSalt);
+  const aesKey = await deriveAESKey(keyMaterial, eSalt, 'encrypt');
+
+  let done = 0, errors = 0;
+  for (const file of files) {
+    try {
+      done++;
+      showProgressPercent(t('folderEncrypting', file.name), done, files.length);
+
+      const content = await file.arrayBuffer();
+      const ext = file.name.includes('.') ? file.name.split('.').pop() : '';
+      const iv = crypto.getRandomValues(new Uint8Array(IV_LEN));
+      const payload = buildPayload(ext, content);
+      const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, aesKey, payload);
+      const packed = packFile(vSalt, vHash, eSalt, iv, ciphertext);
+
+      const relPath = file._relPath || file.name;
+      const parts = relPath.split('/');
+      const dirParts = parts.slice(0, -1).join('/');
+      const originalName = parts[parts.length - 1];
+      const baseName = originalName.includes('.') ? originalName.substring(0, originalName.lastIndexOf('.')) : originalName;
+
+      const subDir = dirParts ? await getOrCreateSubDir(outputDirHandle, dirParts) : outputDirHandle;
+      await writeFileToDir(subDir, baseName + '.enc', packed);
+    } catch (e) {
+      errors++;
+      console.error(`Error encrypting ${file.name}:`, e);
+    }
+  }
+
+  if (errors > 0) {
+    showSuccess(t('encFolderPartial', done - errors, files.length, errors));
+  } else {
+    showSuccess(t('encFolderDone', files.length));
+  }
+}
+
+async function decryptFolder(files, password) {
+  const encFiles = files.filter(f => f.name.toLowerCase().endsWith('.enc'));
+  if (encFiles.length === 0) throw new Error(t('errNoEnc'));
+
+  showProgressPercent(t('verifying'), 0, encFiles.length);
+  const firstBuffer = await encFiles[0].arrayBuffer();
+  const firstParsed = unpackFile(firstBuffer);
+
+  const keyMaterial = await importKey(password);
+  const computedHash = await deriveHash(keyMaterial, firstParsed.vSalt);
+  if (!constantTimeEqual(computedHash, firstParsed.vHash)) {
+    throw new Error(t('errWrongPw'));
+  }
+
+  const keyCache = new Map();
+  keyCache.set(saltToHex(firstParsed.eSalt), await deriveAESKey(keyMaterial, firstParsed.eSalt, 'decrypt'));
+
+  let done = 0, errors = 0;
+  for (let i = 0; i < encFiles.length; i++) {
+    const file = encFiles[i];
+    try {
+      done++;
+      showProgressPercent(t('folderDecrypting', file.name), done, encFiles.length);
+
+      let buffer, parsed;
+      if (i === 0) {
+        buffer = firstBuffer;
+        parsed = firstParsed;
+      } else {
+        buffer = await file.arrayBuffer();
+        parsed = unpackFile(buffer);
+      }
+
+      const eSaltHex = saltToHex(parsed.eSalt);
+      let aesKey = keyCache.get(eSaltHex);
+      if (!aesKey) {
+        aesKey = await deriveAESKey(keyMaterial, parsed.eSalt, 'decrypt');
+        keyCache.set(eSaltHex, aesKey);
+      }
+
+      let decrypted;
+      try {
+        decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: parsed.iv }, aesKey, parsed.ciphertext);
+      } catch {
+        throw new Error(t('errCorrupt'));
+      }
+
+      const { ext, content } = parsePayload(decrypted);
+      const relPath = file._relPath || file.name;
+      const parts = relPath.split('/');
+      const dirParts = parts.slice(0, -1).join('/');
+      const encName = parts[parts.length - 1];
+      const baseName = encName.endsWith('.enc') ? encName.slice(0, -4) : encName;
+      const outName = ext ? baseName + '.' + ext : baseName;
+
+      const subDir = dirParts ? await getOrCreateSubDir(outputDirHandle, dirParts) : outputDirHandle;
+      await writeFileToDir(subDir, outName, content);
+    } catch (e) {
+      errors++;
+      console.error(`Error decrypting ${file.name}:`, e);
+    }
+  }
+
+  if (errors > 0) {
+    showSuccess(t('decFolderPartial', done - errors, encFiles.length, errors));
+  } else {
+    showSuccess(t('decFolderDone', encFiles.length));
+  }
+}
+
+function download(data, name) {
+  const blob = new Blob([data]);
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('#encModeTabs .enc-tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.mode === mode)
+  );
+  $('encConfirmField').style.display = mode === 'encrypt' ? '' : 'none';
+  clearSelection();
+  clearStatus();
+  $('encPassword').value = '';
+  $('encConfirmPassword').value = '';
+  updateBtnText();
+  updateBtn();
+}
+
+function setInputType(type) {
+  inputType = type;
+  document.querySelectorAll('#encTypeTabs .enc-seg-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.type === type)
+  );
+  $('encFileSection').style.display = type === 'file' ? '' : 'none';
+  $('encFolderSection').style.display = type === 'folder' ? '' : 'none';
+  clearSelection();
+  clearStatus();
+  updateBtnText();
+  updateBtn();
+}
+
+function clearSelection() {
+  selectedFile = null;
+  selectedFiles = [];
+  inputDirHandle = null;
+  outputDirHandle = null;
+  $('encFileInfo').classList.remove('visible');
+  $('encFileInput').value = '';
+  $('encFolderInput').value = '';
+  $('encInputPath').textContent = t('notPicked');
+  $('encOutputPath').textContent = t('notPicked');
+  $('encFolderStats').textContent = '';
+  updateBtn();
+}
+
+function selectFiles(fileList) {
+  const files = [];
+  for (let i = 0; i < fileList.length; i++) {
+    const f = fileList[i];
+    if (f.size > MAX_FILE_SIZE) {
+      showError(t('errTooBig'));
+      return;
+    }
+    files.push(f);
+  }
+  if (files.length === 0) return;
+  selectedFile = files.length === 1 ? files[0] : null;
+  selectedFiles = files;
+  if (files.length === 1) {
+    $('encFileName').textContent = files[0].name;
+    $('encFileSize').textContent = formatSize(files[0].size);
+  } else {
+    const totalSize = files.reduce((s, f) => s + f.size, 0);
+    $('encFileName').textContent = files.length + ' file';
+    $('encFileSize').textContent = formatSize(totalSize);
+  }
+  $('encFileInfo').classList.add('visible');
+  clearStatus();
+  updateBtn();
+}
+
+function pickInputDir() {
+  $('encFolderInput').click();
+}
+
+function handleFolderInput(fileList) {
+  const files = [];
+  for (let i = 0; i < fileList.length; i++) {
+    const f = fileList[i];
+    const name = f.name.toLowerCase();
+    if (!IGNORED_FILES.includes(name) && !name.startsWith('.')) {
+      const relPath = f.webkitRelativePath || f.name;
+      const parts = relPath.split('/');
+      parts.shift();
+      Object.defineProperty(f, '_relPath', { value: parts.join('/') });
+      files.push(f);
+    }
+  }
+  if (files.length === 0) {
+    showError(t('errEmptyFolder'));
+    return;
+  }
+  selectedFiles = files;
+  inputDirHandle = true;
+
+  const firstRel = fileList[0].webkitRelativePath || '';
+  const folderName = firstRel.split('/')[0] || 'Folder';
+  $('encInputPath').textContent = folderName;
+
+  const totalSize = files.reduce((s, f) => s + f.size, 0);
+  $('encFolderStats').textContent = `${files.length} file — ${formatSize(totalSize)}`;
+  clearStatus();
+  updateBtn();
+}
+
+async function pickOutputDir() {
+  try {
+    outputDirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+    $('encOutputPath').textContent = outputDirHandle.name;
+    updateBtn();
+  } catch (e) {
+    if (e.name !== 'AbortError') {
+      showError(t('errPickDir'));
+    }
+  }
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  if (bytes < 1024 * 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  return (bytes / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+}
+
+function updateBtnText() {
+  const isFolder = inputType === 'folder';
+  if (currentMode === 'encrypt') {
+    $('encBtnText').textContent = isFolder ? t('btnEncFolder') : t('btnEncFile');
+  } else {
+    $('encBtnText').textContent = isFolder ? t('btnDecFolder') : t('btnDecFile');
+  }
+}
+
+function updateBtn() {
+  if (inputType === 'file') {
+    const hasFile = selectedFiles.length > 0;
+    const hasPw = $('encPassword').value.length > 0;
+    const confirmOk = currentMode === 'decrypt' || $('encConfirmPassword').value.length > 0;
+    $('encActionBtn').disabled = !hasFile || !hasPw || !confirmOk || processing;
+  } else {
+    const hasInput = !!inputDirHandle && selectedFiles.length > 0;
+    const hasOutput = !!outputDirHandle;
+    const hasPw = $('encPassword').value.length > 0;
+    const confirmOk = currentMode === 'decrypt' || $('encConfirmPassword').value.length > 0;
+    $('encActionBtn').disabled = !hasInput || !hasOutput || !hasPw || !confirmOk || processing;
+  }
+}
+
+function showProgress(text) {
+  $('encProgress').classList.add('visible');
+  $('encProgressText').textContent = text;
+  $('encProgressFill').className = 'enc-progress-bar-fill indeterminate';
+  $('encProgressFill').style.width = '';
+  clearStatus();
+}
+
+function showProgressPercent(text, current, total) {
+  $('encProgress').classList.add('visible');
+  $('encProgressText').textContent = `${text} (${current}/${total})`;
+  const pct = Math.round((current / total) * 100);
+  $('encProgressFill').className = 'enc-progress-bar-fill';
+  $('encProgressFill').style.width = pct + '%';
+}
+
+function hideProgress() {
+  $('encProgress').classList.remove('visible');
+}
+
+function showError(msg) {
+  hideProgress();
+  const s = $('encStatus');
+  s.className = 'enc-status visible error';
+  s.textContent = msg;
+}
+
+function showSuccess(msg) {
+  hideProgress();
+  const s = $('encStatus');
+  s.className = 'enc-status visible success';
+  s.textContent = msg;
+}
+
+function clearStatus() {
+  $('encStatus').className = 'enc-status';
+}
+
+document.querySelectorAll('#encModeTabs .enc-tab').forEach(t =>
+  t.addEventListener('click', () => setMode(t.dataset.mode))
+);
+
+document.querySelectorAll('#encTypeTabs .enc-seg-btn').forEach(b =>
+  b.addEventListener('click', () => setInputType(b.dataset.type))
+);
+
+$('encLangBtn').addEventListener('click', () => {
+  lang = lang === 'vi' ? 'en' : 'vi';
+  applyLang();
+});
+
+const dz = $('encDropzone');
+dz.addEventListener('click', () => $('encFileInput').click());
+dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('dragover'); });
+dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+dz.addEventListener('drop', e => {
+  e.preventDefault();
+  dz.classList.remove('dragover');
+  if (e.dataTransfer.files.length) selectFiles(e.dataTransfer.files);
+});
+
+$('encFileInput').addEventListener('change', e => {
+  if (e.target.files.length) selectFiles(e.target.files);
+});
+
+$('encFileRemove').addEventListener('click', clearSelection);
+$('encPickInputBtn').addEventListener('click', pickInputDir);
+$('encFolderInput').addEventListener('change', e => {
+  if (e.target.files.length) handleFolderInput(e.target.files);
+});
+$('encPickOutputBtn').addEventListener('click', pickOutputDir);
+
+$('encPassword').addEventListener('input', updateBtn);
+$('encConfirmPassword').addEventListener('input', updateBtn);
+
+document.querySelectorAll('.enc-tool .enc-toggle-pw').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const input = $(btn.dataset.target);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  });
+});
+
+$('encActionBtn').addEventListener('click', async () => {
+  if (processing) return;
+  clearStatus();
+
+  const pw = $('encPassword').value;
+  if (!pw) { showError(t('errNoPw')); return; }
+  if (currentMode === 'encrypt' && pw !== $('encConfirmPassword').value) {
+    showError(t('errPwMismatch'));
+    return;
+  }
+
+  processing = true;
+  $('encActionBtn').disabled = true;
+  const prevText = $('encBtnText').textContent;
+  $('encBtnText').innerHTML = '<div class="spinner"></div> ' + t('processing');
+
+  try {
+    if (inputType === 'folder') {
+      if (currentMode === 'encrypt') {
+        await encryptFolder(selectedFiles, pw);
+      } else {
+        await decryptFolder(selectedFiles, pw);
+      }
+    } else if (selectedFiles.length === 1) {
+      if (currentMode === 'encrypt') {
+        await encryptSingleFile(selectedFiles[0], pw);
+      } else {
+        await decryptSingleFile(selectedFiles[0], pw);
+      }
+    } else {
+      if (currentMode === 'encrypt') {
+        await encryptMultiFiles(selectedFiles, pw);
+      } else {
+        await decryptMultiFiles(selectedFiles, pw);
+      }
+    }
+  } catch (e) {
+    showError(e.message || t('errGeneric'));
+  }
+
+  processing = false;
+  $('encBtnText').textContent = prevText;
+  updateBtn();
+});
+
+if (!window.crypto || !window.crypto.subtle) {
+  showError(t('errNoCrypto'));
+  $('encActionBtn').disabled = true;
+}
+})();
+</script>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-padding">
+                    <div class="enc-guide-panel">
+                        <div class="enc-guide-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            <span id="encGuideLabel">Hướng dẫn sử dụng</span>
+                        </div>
+                        <ol id="encGuideList">
+                            <li>Chọn chế độ <strong>Mã hoá</strong> hoặc <strong>Giải mã</strong>.</li>
+                            <li>Chọn <strong>File</strong> (kéo thả hoặc nhấn chọn, hỗ trợ nhiều file) hoặc <strong>Folder</strong> (chọn thư mục đầu vào và đầu ra).</li>
+                            <li>Nhập <strong>mật khẩu</strong>. Khi mã hoá, cần xác nhận lại mật khẩu.</li>
+                            <li>Nhấn nút để bắt đầu. File mã hoá sẽ có đuôi <strong>.enc</strong>.</li>
+                            <li>Để giải mã, chọn file <strong>.enc</strong> và nhập đúng mật khẩu đã dùng khi mã hoá.</li>
+                        </ol>
+                        <div class="enc-guide-note">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <span id="encGuideNote">Mọi dữ liệu được xử lý hoàn toàn trên thiết bị của bạn. Không có thông tin nào được gửi lên máy chủ.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="navbar-footer" page-content="footer"></footer>
+</body>
+
+</html>
